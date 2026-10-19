@@ -1,0 +1,2571 @@
+// Auto-generated offline fallback data for CEH v13 Platform
+window.OFFLINE_CEH_MODULES = [
+  {
+    "id": 1,
+    "number": "01",
+    "title": "Introduction to Ethical Hacking",
+    "shortTitle": "Ethical Hacking Fundamentals",
+    "domain": "Information Security and Ethical Hacking Overview",
+    "examWeight": "6%",
+    "icon": "shield-check",
+    "description": "Foundations of ethical hacking, legal boundaries, authorization frameworks, CIA triad, threat modeling, and baseline environment recording.",
+    "learningObjectives": [
+      "Understand the difference between ethical hacking, penetration testing, and malicious exploitation",
+      "Record baseline hardware and operating system telemetry safely",
+      "Inspect network interface configurations and IP routing tables",
+      "Create standardized, audit-ready technical lab reports"
+    ],
+    "labId": "lab-01"
+  },
+  {
+    "id": 2,
+    "number": "02",
+    "title": "Footprinting and Reconnaissance",
+    "shortTitle": "Reconnaissance",
+    "domain": "Reconnaissance Techniques",
+    "examWeight": "7%",
+    "icon": "globe",
+    "description": "Passive and active reconnaissance methods: DNS record enumeration (A, MX, NS, TXT), WHOIS registrar queries, and DNS response interpretation.",
+    "learningObjectives": [
+      "Query authoritative name servers using dig and nslookup",
+      "Inspect WHOIS database records for authorized domains",
+      "Extract and interpret DNS resource records (A, MX, NS, TXT)",
+      "Map attack surfaces without triggering intrusion detection alerts"
+    ],
+    "labId": "lab-02"
+  },
+  {
+    "id": 3,
+    "number": "03",
+    "title": "Scanning Networks",
+    "shortTitle": "Network Scanning",
+    "domain": "Reconnaissance Techniques",
+    "examWeight": "8%",
+    "icon": "radar",
+    "description": "Network scanning methodologies: ICMP host discovery, TCP SYN stealth scanning (-sS), TCP Connect scanning (-sT), service version detection (-sV), and OS fingerprinting.",
+    "learningObjectives": [
+      "Perform CIDR subnet host discovery in private lab networks",
+      "Differentiate between TCP SYN (half-open) and full TCP 3-way handshake scans",
+      "Identify open services and banner versions using Nmap",
+      "Interpret TCP RST/ACK and SYN/ACK probe responses"
+    ],
+    "labId": "lab-03"
+  },
+  {
+    "id": 4,
+    "number": "04",
+    "title": "Enumeration",
+    "shortTitle": "Enumeration",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "7%",
+    "icon": "list-tree",
+    "description": "Active interrogation of listening services: netstat, ss, SMB/NetBIOS null sessions, RPC endpoints, and SNMP management information base (MIB) trees.",
+    "learningObjectives": [
+      "Inspect active network sockets and daemon configurations with ss and netstat",
+      "Query NetBIOS shares and SMB dialects safely",
+      "Enumerate local users and shares using standard administrative tools",
+      "Document exposed services to construct an attack tree"
+    ],
+    "labId": "lab-04"
+  },
+  {
+    "id": 5,
+    "number": "05",
+    "title": "Vulnerability Analysis",
+    "shortTitle": "Vulnerability Analysis",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "6%",
+    "icon": "bug",
+    "description": "Vulnerability assessment life cycle: CVE lookups, CVSS v3.1 scoring metrics, automated scanner output review, false-positive triage, and remediation prioritization.",
+    "learningObjectives": [
+      "Extract running service software versions and correlate with CVE databases",
+      "Calculate CVSS v3.1 Base, Temporal, and Environmental scores",
+      "Differentiate between true vulnerabilities and benign configuration warnings",
+      "Construct actionable remediation plans for sysadmins"
+    ],
+    "labId": "lab-05"
+  },
+  {
+    "id": 6,
+    "number": "06",
+    "title": "System Hacking",
+    "shortTitle": "System Hacking",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "12%",
+    "icon": "terminal",
+    "description": "System privilege analysis: local user and group enumeration, POSIX file permissions, SUID/SGID binary auditing, sudo rules, and hardening principles.",
+    "learningObjectives": [
+      "Enumerate users, groups, and membership via passwd and group files",
+      "Locate insecure SUID/SGID executable binaries using find",
+      "Audit sudo privileges without altering system binaries",
+      "Formulate principle of least privilege (PoLP) defense policies"
+    ],
+    "labId": "lab-06"
+  },
+  {
+    "id": 7,
+    "number": "07",
+    "title": "Malware Threats",
+    "shortTitle": "Malware Analysis",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "6%",
+    "icon": "skull",
+    "description": "Static malware inspection: SHA-256 cryptographic hashing, file header magic bytes, ASCII/Unicode string extraction, and safe EICAR test-file verification.",
+    "learningObjectives": [
+      "Compute cryptographic SHA-256 hashes to verify file integrity",
+      "Inspect file magic headers to detect disguised extensions",
+      "Extract readable strings to identify hardcoded URLs and suspicious APIs",
+      "Demonstrate antivirus detection pipelines using the harmless EICAR test string"
+    ],
+    "labId": "lab-07"
+  },
+  {
+    "id": 8,
+    "number": "08",
+    "title": "Sniffing",
+    "shortTitle": "Network Sniffing",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "7%",
+    "icon": "activity",
+    "description": "Packet capture and protocol analysis: capturing loopback and subnet traffic with tcpdump, inspecting DNS, TCP, ICMP, and TLS headers, and detecting unencrypted cleartext data.",
+    "learningObjectives": [
+      "Capture packets on network interfaces using tcpdump with BPF filters",
+      "Dissect Ethernet II, IPv4, TCP, and UDP protocol header fields",
+      "Explain the risks of cleartext protocols (Telnet, HTTP, FTP)",
+      "Evaluate network-level encryption mitigations (IPsec, TLS 1.3)"
+    ],
+    "labId": "lab-08"
+  },
+  {
+    "id": 9,
+    "number": "09",
+    "title": "Social Engineering",
+    "shortTitle": "Social Engineering",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "6%",
+    "icon": "mail",
+    "description": "Analysis of human-centric attack vectors: inspecting RFC 5322 email headers, verifying SPF, DKIM, and DMARC authentication records, and building awareness assessments.",
+    "learningObjectives": [
+      "Parse raw RFC 5322 email headers for forged Return-Path and Received lines",
+      "Inspect SPF (Sender Policy Framework) and DMARC DNS policies",
+      "Identify social engineering psychological triggers (urgency, authority)",
+      "Design an enterprise phishing-awareness training matrix"
+    ],
+    "labId": "lab-09"
+  },
+  {
+    "id": 10,
+    "number": "10",
+    "title": "Denial-of-Service",
+    "shortTitle": "Denial-of-Service",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "5%",
+    "icon": "zap-off",
+    "description": "Understanding resource exhaustion attacks: establishing performance baselines, observing connection slot consumption, and deploying rate-limiting defenses with iptables and web servers.",
+    "learningObjectives": [
+      "Benchmark normal HTTP request throughput using curl and baseline metrics",
+      "Observe operating system socket state transitions (SYN_RECV, ESTABLISHED)",
+      "Configure web server connection timeouts and rate limits",
+      "Implement defensive kernel SYN cookies (tcp_syncookies)"
+    ],
+    "labId": "lab-10"
+  },
+  {
+    "id": 11,
+    "number": "11",
+    "title": "Session Hijacking",
+    "shortTitle": "Session Hijacking",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "6%",
+    "icon": "key-round",
+    "description": "State management and session security: inspecting browser cookie flags (HttpOnly, Secure, SameSite), session fixation vectors, and secure server-side session invalidation.",
+    "learningObjectives": [
+      "Analyze HTTP Set-Cookie response headers for security flags",
+      "Explain how HttpOnly prevents cross-site scripting cookie exfiltration",
+      "Demonstrate session fixation vulnerabilities and session regeneration",
+      "Implement safe server-side session termination workflows"
+    ],
+    "labId": "lab-11"
+  },
+  {
+    "id": 12,
+    "number": "12",
+    "title": "Evading IDS, Firewalls, and Honeypots",
+    "shortTitle": "IDS, Firewalls, & Honeypots",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "6%",
+    "icon": "flame",
+    "description": "Perimeter defense auditing: inspecting local firewall rule tables (iptables/ufw), analyzing Suricata NIDS alerts, understanding packet fragmentation, and detecting honeypots.",
+    "learningObjectives": [
+      "List and interpret packet filtering rules in iptables and ufw",
+      "Analyze simulated intrusion detection system (IDS) alert signatures",
+      "Explain perimeter evasion concepts (fragmentation, timing, decoy IP scanning)",
+      "Configure defensive drop rules to block unauthorized telemetry"
+    ],
+    "labId": "lab-12"
+  },
+  {
+    "id": 13,
+    "number": "13",
+    "title": "Hacking Web Servers",
+    "shortTitle": "Web Server Security",
+    "domain": "Web Application Hacking",
+    "examWeight": "6%",
+    "icon": "server",
+    "description": "Web server infrastructure security: banner grabbing, reducing ServerTokens disclosure, disabling directory browsing (Options -Indexes), and configuring modern TLS ciphers.",
+    "learningObjectives": [
+      "Audit HTTP response headers for unnecessary software version banners",
+      "Configure Apache ServerTokens and ServerSignature for minimal disclosure",
+      "Disable directory indexing to prevent sensitive file leakage",
+      "Enforce modern TLS protocols and secure cipher suites"
+    ],
+    "labId": "lab-13"
+  },
+  {
+    "id": 14,
+    "number": "14",
+    "title": "Hacking Web Applications",
+    "shortTitle": "Web Application Security",
+    "domain": "Web Application Hacking",
+    "examWeight": "10%",
+    "icon": "globe-2",
+    "description": "OWASP Top 10 vulnerabilities: testing against local training targets, HTTP request/response tampering, passive vulnerability scanning, and remediation architectures.",
+    "learningObjectives": [
+      "Inspect HTTP GET and POST request parameters in browser dev tools",
+      "Identify common OWASP Top 10 weaknesses (Broken Access Control, Injection)",
+      "Perform simulated passive vulnerability scanning using ZAP methodology",
+      "Apply Content Security Policy (CSP) and input sanitization defenses"
+    ],
+    "labId": "lab-14"
+  },
+  {
+    "id": 15,
+    "number": "15",
+    "title": "SQL Injection",
+    "shortTitle": "SQL Injection",
+    "domain": "Web Application Hacking",
+    "examWeight": "7%",
+    "icon": "database",
+    "description": "Mechanics of SQL injection: understanding dynamic query concatenation vulnerabilities, executing safe demonstrations on local test tables, and implementing parameterized queries.",
+    "learningObjectives": [
+      "Contrast vulnerable dynamic string queries with prepared statements",
+      "Explain how ' OR 1=1 -- alters relational database logic",
+      "Implement parameterized queries using Python sqlite3 / PHP PDO",
+      "Enforce database account least-privilege principles"
+    ],
+    "labId": "lab-15"
+  },
+  {
+    "id": 16,
+    "number": "16",
+    "title": "Hacking Wireless Networks",
+    "shortTitle": "Wireless Security",
+    "domain": "Wireless Network Hacking",
+    "examWeight": "5%",
+    "icon": "wifi",
+    "description": "802.11 wireless security auditing: inspecting wireless interfaces (iwconfig/airmon-ng), analyzing WPA2 4-way handshake vs WPA3 SAE Dragonfly, and evaluating WPS vulnerabilities.",
+    "learningObjectives": [
+      "Inspect 802.11 network interface modes (Managed vs Monitor)",
+      "Explain the 4-way EAPOL handshake in WPA2-PSK",
+      "Analyze why WPA3 SAE (Simultaneous Authentication of Equals) prevents offline attacks",
+      "Inspect 802.11 beacon and probe request frames from packet captures"
+    ],
+    "labId": "lab-16"
+  },
+  {
+    "id": 17,
+    "number": "17",
+    "title": "Hacking Mobile Platforms",
+    "shortTitle": "Mobile Security",
+    "domain": "Mobile, IoT, and OT Hacking",
+    "examWeight": "5%",
+    "icon": "smartphone",
+    "description": "Mobile application security: inspecting devices with Android Debug Bridge (adb), reviewing installed packages and permissions in AndroidManifest.xml, and static APK auditing.",
+    "learningObjectives": [
+      "Connect and query authorized mobile test devices using adb",
+      "Audit Android application permissions for over-privileged access",
+      "Inspect Android sandbox architecture and user identifier separation",
+      "Recommend mobile application hardening and obfuscation techniques"
+    ],
+    "labId": "lab-17"
+  },
+  {
+    "id": 18,
+    "number": "18",
+    "title": "Hacking IoT Platforms",
+    "shortTitle": "IoT Security",
+    "domain": "Mobile, IoT, and OT Hacking",
+    "examWeight": "5%",
+    "icon": "cpu",
+    "description": "Internet of Things attack surfaces: inventorying services on simulated IoT devices, identifying insecure default credentials, inspecting MQTT/Telnet telemetry, and firmware security.",
+    "learningObjectives": [
+      "Map exposed network services on simulated embedded devices",
+      "Analyze the risk of unencrypted IoT protocols (MQTT, Telnet)",
+      "Extract readable strings and credentials from firmware binaries",
+      "Implement network segmentation and isolation for IoT devices"
+    ],
+    "labId": "lab-18"
+  },
+  {
+    "id": 19,
+    "number": "19",
+    "title": "Cloud Computing",
+    "shortTitle": "Cloud Security",
+    "domain": "Cloud Computing",
+    "examWeight": "6%",
+    "icon": "cloud",
+    "description": "Cloud infrastructure and IAM security: verifying cloud identities with AWS CLI (sts get-caller-identity), auditing S3 bucket permissions, and evaluating IAM least-privilege policies.",
+    "learningObjectives": [
+      "Verify caller identity and assigned IAM role using the AWS CLI",
+      "Audit S3 bucket ACLs and public access block configurations",
+      "Inspect IAM JSON policies for overly permissive wildcards (*:*)",
+      "Apply the cloud Shared Responsibility Model across IaaS, PaaS, and SaaS"
+    ],
+    "labId": "lab-19"
+  },
+  {
+    "id": 20,
+    "number": "20",
+    "title": "Cryptography",
+    "shortTitle": "Cryptography",
+    "domain": "Cryptography",
+    "examWeight": "6%",
+    "icon": "lock",
+    "description": "Cryptographic algorithms and implementations: SHA-256 vs MD5 hash collisions, OpenSSL AES-256-CBC file encryption/decryption, RSA keypair generation, and X.509 certificate inspection.",
+    "learningObjectives": [
+      "Calculate cryptographic hashes (SHA-256, SHA-3) and evaluate collision resistance",
+      "Encrypt and decrypt files using OpenSSL and AES-256-CBC with PBKDF2",
+      "Generate RSA 4096-bit private and public keypairs",
+      "Inspect X.509 digital certificates and verify certificate chain of trust"
+    ],
+    "labId": "lab-20"
+  },
+  {
+    "id": 21,
+    "number": "AD",
+    "title": "Active Directory & AD CS Master Lab",
+    "shortTitle": "Active Directory & AD CS",
+    "domain": "Enterprise Identity & Certificate Security",
+    "examWeight": "Advanced Specialization",
+    "icon": "network",
+    "description": "Comprehensive Active Directory Certificate Services (AD CS) auditing: domain controller setup, CA hierarchy, certificate template permission auditing, ESC1 SAN misconfiguration detection, ESC8 NTLM relay mitigation, and PowerShell remediation.",
+    "learningObjectives": [
+      "Understand Active Directory Enterprise Root CA architecture and enrollments",
+      "Inspect local and machine certificate stores with PowerShell",
+      "Audit certificate templates for ESC1 (CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT + Client Auth)",
+      "Audit AD CS HTTP Web Enrollment endpoints for ESC8 NTLM relay exposure",
+      "Implement PowerShell remediation: remove enrollee subject flags, require manager approval, enforce Extended Protection for Authentication (EPA)"
+    ],
+    "labId": "lab-adcs"
+  }
+];
+window.OFFLINE_CEH_LABS = [
+  {
+    "id": "lab-01",
+    "moduleId": 1,
+    "moduleNumber": "01",
+    "title": "Ethical Hacking Fundamentals & Baseline Recording",
+    "difficulty": "Beginner",
+    "estimatedTime": "30 mins",
+    "category": "Fundamentals",
+    "learningObjectives": [
+      "Identify the operating system release, kernel architecture, and hostname",
+      "Inspect network interface addresses, subnet masks, and default gateways",
+      "Record baseline hardware and system parameters into an audit inventory",
+      "Generate an authorized, compliant technical lab assessment report"
+    ],
+    "prerequisites": "Basic command line navigation and understanding of IP addressing.",
+    "requiredSoftware": "Linux Bash terminal (or safe simulator), iproute2, uname, hostnamectl.",
+    "topology": {
+      "mode": "Local Authorized Testing Subnet",
+      "localNode": "10.10.20.10 (Cadet Workstation)",
+      "gatewayNode": "10.10.20.1 (Enclave Router)",
+      "targetSubnet": "10.10.20.0/24 (Private Lab Enclave)"
+    },
+    "setupInstructions": "Ensure you are operating within the isolated training enclave. Open the interactive terminal simulator below to begin executing commands against the authorized local stack.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Audit Operating System Release and Kernel Architecture",
+        "command": "uname -a; cat /etc/os-release | grep -E '^(NAME|VERSION)='",
+        "explanation": "Executes 'uname -a' to print kernel release, machine architecture, and hostname. Pipes '/etc/os-release' into grep to cleanly extract the distribution name and version.",
+        "expectedOutput": "Linux cadet-node 5.15.0-89-generic #99-Ubuntu SMP Mon Oct 16 14:10:00 UTC 2026 x86_64\nNAME=\"Ubuntu\"\nVERSION=\"22.04.3 LTS (Jammy Jellyfish)\"",
+        "interpretation": "Confirms the host is running a 64-bit Linux kernel on Ubuntu 22.04 LTS. Establishing the exact OS kernel is vital during penetration tests to identify kernel-specific privileges and patching levels."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Inspect Network Interfaces and Routing Configuration",
+        "command": "ip -br addr show; ip route show",
+        "explanation": "Uses 'ip -br addr show' to print a brief summary of all physical and virtual network interfaces and assigned IPs, followed by the active kernel routing table.",
+        "expectedOutput": "lo               UNKNOWN        127.0.0.1/8 ::1/128 \neth0             UP             10.10.20.10/24 fe80::20c:29ff:fe4a:8b9c/64 \ndefault via 10.10.20.1 dev eth0 proto static onlink \n10.10.20.0/24 dev eth0 proto kernel scope link src 10.10.20.10",
+        "interpretation": "Indicates eth0 is active on subnet 10.10.20.0/24 with IP 10.10.20.10, routing default traffic through gateway 10.10.20.1. This verifies the boundaries for our authorized engagement."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Record Test Environment Telemetry and Generate Baseline Audit",
+        "command": "echo \"[AUDIT] Host: $(hostname) | Date: $(date -u) | Kernel: $(uname -r)\" > baseline_env.txt; cat baseline_env.txt",
+        "explanation": "Creates a structured baseline audit record in a local text file documenting hostname, UTC timestamp, and kernel version for inclusion in the final penetration testing deliverable.",
+        "expectedOutput": "[AUDIT] Host: cadet-node | Date: Sat Oct 17 10:45:00 UTC 2026 | Kernel: 5.15.0-89-generic",
+        "interpretation": "Documenting verifiable timestamps and host metrics proves the assessment was conducted strictly within the agreed Rules of Engagement (RoE) window."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Generate Authorized Technical Lab Assessment Report",
+        "command": "cat << 'EOF' > ceh_audit_report.md\n# Penetration Testing Technical Assessment Report\n**Engagement**: CEH v13 Authorized Training Enclave\n**Target Scope**: 10.10.20.0/24\n**Tested By**: Cadet Security Analyst\n**Methodology**: NIST SP 800-115 / CEH Assessment Framework\n**Executive Summary**: Comprehensive baseline audit established on subnet 10.10.20.0/24. All testing strictly restricted to authorized IPs.\nEOF\nhead -n 7 ceh_audit_report.md",
+        "explanation": "Creates a structured Markdown lab assessment report documenting the scope, methodology, tester identification, and executive summary in compliance with Rules of Engagement (RoE).",
+        "expectedOutput": "# Penetration Testing Technical Assessment Report\n**Engagement**: CEH v13 Authorized Training Enclave\n**Target Scope**: 10.10.20.0/24\n**Tested By**: Cadet Security Analyst\n**Methodology**: NIST SP 800-115 / CEH Assessment Framework",
+        "interpretation": "Standardizes ethical hacking deliverables. Transparent documentation protects both the client and testing organization from scope disputes."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Command not found: ip",
+        "cause": "The iproute2 package may not be in system PATH on older distributions.",
+        "solution": "Use legacy 'ifconfig' or verify PATH environment variables."
+      },
+      {
+        "issue": "Permission denied writing baseline_env.txt",
+        "cause": "Attempting to write to a root-restricted directory.",
+        "solution": "Ensure current working directory is within your user home directory (/home/cadet)."
+      }
+    ],
+    "securityConcepts": "Ethical hacking requires strict adherence to legal authorization and thorough documentation. Before initiating technical scans, an ethical hacker must define the testing scope, verify network interfaces, and record baselines so any subsequent anomalies can be accurately attributed.",
+    "defensiveRemediation": "Organizations should maintain an authoritative Asset Management Inventory (CIS Control 1 & 2) tracking every system, IP address, and OS build in production. Regular audits detect rogue or unmanaged machines before attackers find them.",
+    "checklist": [
+      "Identified host operating system and kernel architecture",
+      "Documented IP address and gateway boundaries on eth0",
+      "Generated baseline audit record for RoE verification",
+      "Confirmed testing is restricted to private subnet 10.10.20.0/24",
+      "Generated formal technical lab assessment report"
+    ]
+  },
+  {
+    "id": "lab-02",
+    "moduleId": 2,
+    "moduleNumber": "02",
+    "title": "DNS Enumeration and Footprinting",
+    "difficulty": "Beginner",
+    "estimatedTime": "35 mins",
+    "category": "Reconnaissance",
+    "learningObjectives": [
+      "Perform authoritative DNS lookups using dig and nslookup",
+      "Query and interpret A, MX, NS, and TXT resource records",
+      "Query registrar information safely via WHOIS",
+      "Analyze email authentication records (SPF, DMARC) for spoofing risks"
+    ],
+    "prerequisites": "Understanding of the Domain Name System hierarchy and client-server models.",
+    "requiredSoftware": "dig, nslookup, whois, bash.",
+    "topology": {
+      "mode": "Authorised External & Internal DNS Servers",
+      "localNode": "10.10.20.10 (Cadet Workstation)",
+      "dnsServer": "10.10.20.2 (Primary Lab DNS / BIND9)",
+      "targetDomain": "corp-target.local"
+    },
+    "setupInstructions": "Point your DNS inquiries towards the lab DNS gateway 10.10.20.2 to query the simulated domain corp-target.local.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Query Authoritative Name Servers and Mail Exchangers",
+        "command": "dig @10.10.20.2 corp-target.local NS +noall +answer; dig @10.10.20.2 corp-target.local MX +noall +answer",
+        "explanation": "Directs DNS queries to nameserver 10.10.20.2 requesting Name Server (NS) and Mail Exchanger (MX) records, suppressing boilerplate text with +noall +answer.",
+        "expectedOutput": "corp-target.local.    3600    IN    NS    ns1.corp-target.local.\ncorp-target.local.    3600    IN    NS    ns2.corp-target.local.\ncorp-target.local.    3600    IN    MX    10 mail.corp-target.local.",
+        "interpretation": "Identifies that mail is processed by mail.corp-target.local with priority 10, and two DNS servers (ns1, ns2) manage the zone."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Extract and Evaluate TXT Records for SPF Policies",
+        "command": "dig @10.10.20.2 corp-target.local TXT +noall +answer",
+        "explanation": "Queries TXT records to discover domain verification tokens, SPF configurations, and domain ownership assertions.",
+        "expectedOutput": "corp-target.local.    3600    IN    TXT    \"v=spf1 ip4:10.10.20.0/24 include:_spf.corp-target.local ~all\"\ncorp-target.local.    3600    IN    TXT    \"dmarc=v=DMARC1; p=quarantine; rua=mailto:dmarc@corp-target.local\"",
+        "interpretation": "The SPF policy specifies '~all' (SoftFail), meaning unauthorized senders are flagged but not hard-rejected. The DMARC policy is set to 'p=quarantine'."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Attempt Authorized DNS Zone Transfer (AXFR Audit)",
+        "command": "dig @10.10.20.2 corp-target.local axfr",
+        "explanation": "Attempts a full zone transfer using the AXFR query type to determine whether the nameserver improperly allows zone transfers to arbitrary clients.",
+        "expectedOutput": ";; Connection to 10.10.20.2#53: Transfer failed: REFUSED\n;; AXFR record query denied by ACL 'trusted-secondaries'",
+        "interpretation": "The nameserver securely returns REFUSED. An insecure server would have dumped all internal hostnames, IP allocations, and sensitive staging servers."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Attempt and Interpret DNS Zone Transfer (AXFR) Security",
+        "command": "dig @10.10.20.2 corp-target.local AXFR",
+        "explanation": "Attempts a full DNS zone transfer (AXFR) over TCP port 53. If improperly secured, AXFR dumps every host and internal IP in the entire domain hierarchy.",
+        "expectedOutput": ";; Connection to 10.10.20.2#53: Transfer failed: REFUSED\n;; AXFR record query denied by ACL trusted-secondaries",
+        "interpretation": "The zone transfer request was properly REFUSED by the DNS server. This confirms defensive hardening: zone transfers are restricted strictly to authorized secondary nameservers."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Connection timed out; no servers could be reached",
+        "cause": "DNS server IP is unreachable or firewall blocks UDP/TCP port 53.",
+        "solution": "Verify reachability with 'ping 10.10.20.2' and check local routing."
+      }
+    ],
+    "securityConcepts": "DNS records represent an organization's public directory. Attackers use DNS queries to enumerate mail servers, subdomains, cloud services, and email authentication defenses. Restricting zone transfers (AXFR) to trusted secondary IPs prevents wholesale reconnaissance.",
+    "defensiveRemediation": "Configure BIND/Named with 'allow-transfer { trusted_secondary_ips; };'. Enforce strict SPF with '-all' (HardFail) and DMARC with 'p=reject' to defeat domain spoofing.",
+    "checklist": [
+      "Queried NS and MX records for target domain",
+      "Audited TXT records for SPF and DMARC policies",
+      "Verified zone transfers (AXFR) are properly restricted (REFUSED)",
+      "Documented mail gateway IPs for subsequent assessment phases",
+      "Evaluated DNS Zone Transfer (AXFR) security controls"
+    ]
+  },
+  {
+    "id": "lab-03",
+    "moduleId": 3,
+    "moduleNumber": "03",
+    "title": "Network Scanning & Service Versioning",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Reconnaissance",
+    "learningObjectives": [
+      "Discover live hosts on a private CIDR subnet using ARP/ICMP ping sweeps",
+      "Execute TCP SYN stealth scans (-sS) against authorized target machines",
+      "Interrogate open listening ports for daemon version identification (-sV)",
+      "Analyze response banners and OS fingerprint signatures"
+    ],
+    "prerequisites": "Understanding of the TCP 3-way handshake (SYN, SYN/ACK, ACK) and flags.",
+    "requiredSoftware": "Nmap 7.90+, bash.",
+    "topology": {
+      "mode": "Isolated Training Subnet",
+      "scannerNode": "10.10.20.10",
+      "targetHost": "10.10.20.50 (Vulnerable Linux Target)",
+      "subnet": "10.10.20.0/24"
+    },
+    "setupInstructions": "Target host 10.10.20.50 has been provisioned with standard network services. Ensure your scan probes remain within the 10.10.20.0/24 subnet.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Host Discovery Sweep Across Lab Subnet",
+        "command": "nmap -sn 10.10.20.0/24",
+        "explanation": "Executes a ping sweep (-sn) across the /24 subnet without scanning ports, identifying live hosts through ARP requests on local links.",
+        "expectedOutput": "Nmap scan report for 10.10.20.1\nHost is up (0.00045s latency).\nNmap scan report for 10.10.20.10\nHost is up (0.00010s latency).\nNmap scan report for 10.10.20.50\nHost is up (0.00082s latency).\nNmap done: 256 IP addresses (3 hosts up) scanned in 1.42 seconds",
+        "interpretation": "Identifies three active machines: Gateway (10.10.20.1), Cadet node (10.10.20.10), and Target server (10.10.20.50)."
+      },
+      {
+        "stepNumber": 2,
+        "title": "TCP SYN Stealth Scan with Service Version Detection",
+        "command": "nmap -sS -sV -p 21,22,80,443,3306 10.10.20.50",
+        "explanation": "Performs a half-open TCP SYN scan (-sS) against designated ports and queries responding sockets for software banners (-sV).",
+        "expectedOutput": "PORT     STATE SERVICE VERSION\n21/tcp   open  ftp     vsftpd 2.3.4\n22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4\n80/tcp   open  http    Apache httpd 2.4.52 ((Ubuntu))\n443/tcp  open  ssl/http Apache httpd 2.4.52\n3306/tcp open  mysql   MySQL 8.0.35-0ubuntu0.22.04.1",
+        "interpretation": "Port 21 is running vsftpd 2.3.4 (notable for historic backdoor signatures), SSH on 22, Apache 2.4.52 on 80/443, and MySQL on 3306."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Aggressive OS and Script Scan against Selected Ports",
+        "command": "nmap -sC -O -p 80,443 10.10.20.50",
+        "explanation": "Runs default NSE scripts (-sC) to collect HTTP title and methods, plus TCP/IP stack fingerprinting (-O) to identify the operating system.",
+        "expectedOutput": "PORT    STATE SERVICE\n80/tcp  open  http\n|_http-title: HackRange Training Portal - Authorized Access Only\n|_http-server-header: Apache/2.4.52 (Ubuntu)\n443/tcp open  https\n| ssl-cert: Subject: commonName=hackrange.local\nDevice type: general purpose\nRunning: Linux 5.X\nOS CPE: cpe:/o:linux:linux_kernel:5",
+        "interpretation": "Reveals the web title, web server header, SSL commonName, and identifies the underlying kernel as Linux 5.X."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Interpret Comprehensive Scan Results and Synthesize Attack Surface Matrix",
+        "command": "cat << 'EOF' > target_surface_summary.txt\nPORT    STATE SERVICE VERSION\n21/tcp  open  ftp     vsftpd 2.3.4 (Vulnerable Backdoor CVE-2011-2523)\n22/tcp  open  ssh     OpenSSH 8.9p1 (Audit password auth)\n80/tcp  open  http    Apache 2.4.52 (Inspect security headers)\n445/tcp open  smb     Samba 4.15.13 (Check null sessions)\nEOF\ncat target_surface_summary.txt",
+        "explanation": "Synthesizes port scan findings into a structured attack surface inventory, linking listening ports directly to identified service versions and potential threat vectors.",
+        "expectedOutput": "PORT    STATE SERVICE VERSION\n21/tcp  open  ftp     vsftpd 2.3.4 (Vulnerable Backdoor CVE-2011-2523)\n22/tcp  open  ssh     OpenSSH 8.9p1 (Audit password auth)\n80/tcp  open  http    Apache 2.4.52 (Inspect security headers)\n445/tcp open  smb     Samba 4.15.13 (Check null sessions)",
+        "interpretation": "Correlating discovered services against known vulnerability databases is the essential precursor to the Exploitation and Vulnerability Analysis phases."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Note: Host seems down. If it is really up, but blocking our ping probes, try -Pn",
+        "cause": "Target firewall is dropping ICMP echo requests.",
+        "solution": "Append '-Pn' to bypass host discovery and scan ports directly."
+      }
+    ],
+    "securityConcepts": "Port scanning maps network services by observing TCP flag behavior. Open ports respond to SYN with SYN/ACK; closed ports respond with RST/ACK; filtered ports drop packets or return ICMP unreachable. Stealth SYN scans minimize log generation on unhardened services.",
+    "defensiveRemediation": "Deploy stateful firewalls to drop unsolicited incoming SYN probes on non-public ports. Implement network intrusion detection systems (NIDS) like Suricata with port-scan threshold detection.",
+    "checklist": [
+      "Completed CIDR host discovery sweep",
+      "Identified open TCP services and exact daemon versions",
+      "Inspected HTTP headers and TLS certificate metadata",
+      "Logged open ports in the engagement findings repository",
+      "Synthesized attack surface matrix correlating ports to services"
+    ]
+  },
+  {
+    "id": "lab-04",
+    "moduleId": 4,
+    "moduleNumber": "04",
+    "title": "Service Enumeration & Socket Inspection",
+    "difficulty": "Intermediate",
+    "estimatedTime": "40 mins",
+    "category": "Enumeration",
+    "learningObjectives": [
+      "Inspect listening TCP and UDP sockets with modern kernel utilities (ss)",
+      "Audit service process mappings and configuration bindings",
+      "Enumerate SMB shares and RPC endpoints using standard client commands",
+      "Document exposed services into an actionable attack tree"
+    ],
+    "prerequisites": "Understanding of TCP ports, daemon architectures, and socket states.",
+    "requiredSoftware": "ss, netstat, smbclient, rpcclient.",
+    "topology": {
+      "mode": "Host Socket & Service Audit",
+      "targetHost": "10.10.20.50",
+      "localNode": "10.10.20.10"
+    },
+    "setupInstructions": "Execute socket inspection on target 10.10.20.50 to audit daemon bindings and exposed network shares.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Identify Local Listening Services and Network Sockets",
+        "command": "ss -tulpn",
+        "explanation": "Executes 'ss -tulpn' to inspect all TCP and UDP listening sockets, identifying local bind addresses (0.0.0.0 vs 127.0.0.1) and process IDs.",
+        "expectedOutput": "Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:Port Process\ntcp   LISTEN 0      128    0.0.0.0:22          0.0.0.0:*     users:((\"sshd\",pid=842,fd=3))\ntcp   LISTEN 0      511    0.0.0.0:80          0.0.0.0:*     users:((\"apache2\",pid=1024,fd=4))\ntcp   LISTEN 0      128    127.0.0.1:3306      0.0.0.0:*     users:((\"mysqld\",pid=920,fd=21))\ntcp   LISTEN 0      128    0.0.0.0:445         0.0.0.0:*     users:((\"smbd\",pid=1102,fd=35))",
+        "interpretation": "Reveals OpenSSH (22), Apache (80), and Samba (445) are exposed to all interfaces (0.0.0.0), while MySQL (3306) is properly restricted to localhost (127.0.0.1)."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Inspect Service Configurations and Daemon Bindings",
+        "command": "cat /etc/nginx/nginx.conf 2>/dev/null | grep -E 'listen|server_name|access_log' || echo 'listen 80 default_server; server_name corp-target.local; access_log /var/log/nginx/access.log combined;'",
+        "explanation": "Examines daemon configuration files to verify port bindings, virtual host definitions, and security logging settings.",
+        "expectedOutput": "listen 80 default_server; server_name corp-target.local; access_log /var/log/nginx/access.log combined;",
+        "interpretation": "Confirms the HTTP service is bound to port 80 and logs client requests in standard Apache/Nginx combined format."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Enumerate SMB Shares and RPC Endpoints",
+        "command": "smbclient -L //10.10.20.50 -N; smbclient //10.10.20.50/public -N -c 'ls'",
+        "explanation": "Connects with an unauthenticated null session (-N) to enumerate visible SMB shares, then inspects the contents of the public share.",
+        "expectedOutput": "Sharename       Type      Comment\n---------       ----      -------\nprint$          Disk      Printer Drivers\npublic          Disk      Cadet Shared Training Workspace\nIPC$            IPC       IPC Service (Samba Server)\n\n  .                                   D        0  Sat Oct 17 11:20:00 2026\n  ..                                  D        0  Sat Oct 17 11:20:00 2026\n  confidential_policy_v2.pdf          A   104857  Sat Oct 17 11:22:00 2026",
+        "interpretation": "Identifies an unauthenticated share 'public' exposing 'confidential_policy_v2.pdf'. Information leakage via SMB is a frequent vector in internal corporate breaches."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Document Exposed Services and Attack Surface Inventory Matrix",
+        "command": "cat << 'EOF' > exposed_services_inventory.tsv\nPORT\tPROTO\tSERVICE\tDAEMON\tVERSION\tEXPOSURE\n22\tTCP\tSSH\tOpenSSH\t8.9p1\tInternal Mgmt\n80\tTCP\tHTTP\tApache\t2.4.52\tPublic Enclave\n445\tTCP\tSMB\tSamba\t4.15.13\tPublic Share\nEOF\ncat exposed_services_inventory.tsv",
+        "explanation": "Compiles discovered service endpoints into a structured inventory matrix for technical risk evaluation.",
+        "expectedOutput": "PORT\tPROTO\tSERVICE\tDAEMON\tVERSION\tEXPOSURE\n22\tTCP\tSSH\tOpenSSH\t8.9p1\tInternal Mgmt\n80\tTCP\tHTTP\tApache\t2.4.52\tPublic Enclave\n445\tTCP\tSMB\tSamba\t4.15.13\tPublic Share",
+        "interpretation": "Creates a structured asset record fulfilling CIS Control 2 (Inventory and Control of Software Assets)."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "NT_STATUS_ACCESS_DENIED or Logon failure",
+        "cause": "Guest and anonymous browsing has been disabled on the target Samba server.",
+        "solution": "Supply authorized lab credentials using '-U cadet%password'."
+      }
+    ],
+    "securityConcepts": "Enumeration transitions a pentest from general host discovery into detailed mapping of specific software daemons, shares, user accounts, and configuration files. Misconfigured access controls on file shares frequently yield administrative credentials.",
+    "defensiveRemediation": "Disable SMBv1 entirely. Restrict SMB shares by setting 'restrict anonymous = 2' and 'map to guest = Never' in smb.conf. Audit share ACLs to ensure sensitive backups are not stored in public shares.",
+    "checklist": [
+      "Audited active listening daemons and socket bindings with ss",
+      "Inspected daemon service configuration files",
+      "Enumerated SMB shares and public folders with null session",
+      "Documented exposed services inventory into technical matrix"
+    ]
+  },
+  {
+    "id": "lab-05",
+    "moduleId": 5,
+    "moduleNumber": "05",
+    "title": "Vulnerability Analysis & CVSS Prioritization",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Vulnerability Management",
+    "learningObjectives": [
+      "Correlate discovered software versions with the NIST National Vulnerability Database (NVD)",
+      "Calculate CVSS v3.1 Base, Temporal, and Environmental scores",
+      "Perform simulated vulnerability scanner triage and false-positive filtering",
+      "Formulate a risk-ranked remediation action plan"
+    ],
+    "prerequisites": "Familiarity with CVE IDs, CVSS metrics, and software versioning schemes.",
+    "requiredSoftware": "python3 / py, curl, jq (or simulated terminal).",
+    "topology": {
+      "mode": "Vulnerability Intelligence Analysis",
+      "analystNode": "10.10.20.10",
+      "targetService": "vsftpd 2.3.4 & Apache 2.4.52"
+    },
+    "setupInstructions": "Review the service discovery outputs from Lab 03 and query vulnerability references for vsftpd 2.3.4 and Apache 2.4.52.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Query CVE Database for Discovered vsftpd 2.3.4 Daemon",
+        "command": "curl -s \"https://cve.circl.lu/api/cve/CVE-2011-2523\" | jq '{id, cvss, summary}' || echo '{\"id\":\"CVE-2011-2523\",\"cvss\":9.8,\"summary\":\"vsftpd 2.3.4 contains a backdoor that opens a root shell on port 6200 when a username containing :) is supplied.\"}'",
+        "explanation": "Queries the CVE database for vulnerability details regarding the vsftpd 2.3.4 backdoor vulnerability.",
+        "expectedOutput": "{\n  \"id\": \"CVE-2011-2523\",\n  \"cvss\": 9.8,\n  \"summary\": \"vsftpd 2.3.4 contains a backdoor that opens a root shell on port 6200 when a username containing :) is supplied.\"\n}",
+        "interpretation": "Identifies a critical Remote Code Execution vulnerability (CVSS 9.8) with network attack vector (AV:N) and zero privileges required (PR:N)."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Calculate CVSS v3.1 Vector String and Severity Rating",
+        "command": "echo \"CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H\" | awk '{print \"Vector: \" $1 \" | Base Score: 9.8 (CRITICAL)\"}'",
+        "explanation": "Calculates the CVSS 3.1 Base Metrics: Network vector, Low complexity, No privileges required, No user interaction, Unchanged scope, High Confidentiality/Integrity/Availability impact.",
+        "expectedOutput": "Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H | Base Score: 9.8 (CRITICAL)",
+        "interpretation": "Confirms the finding qualifies as a Tier-1 CRITICAL emergency patch priority requiring immediate remediation."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Generate Actionable Remediation Specification",
+        "command": "echo -e \"[REMEDIATION PLAN]\\nTarget: 10.10.20.50:21\\nAction: Remove vsftpd 2.3.4 immediately. Deploy latest supported vsftpd (>=3.0.5) or migrate to SFTP (OpenSSH).\\nVerification: Confirm port 21 is closed or running hardened daemon with TLS enforced.\"",
+        "explanation": "Constructs the formal remediation advisory for systems administrators.",
+        "expectedOutput": "[REMEDIATION PLAN]\nTarget: 10.10.20.50:21\nAction: Remove vsftpd 2.3.4 immediately. Deploy latest supported vsftpd (>=3.0.5) or migrate to SFTP (OpenSSH).\nVerification: Confirm port 21 is closed or running hardened daemon with TLS enforced.",
+        "interpretation": "Provides the system owner with explicit replacement instructions and verification criteria."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Formulate Security Remediation Roadmap and Patching Advisory",
+        "command": "cat << 'EOF' > remediation_advisory.md\n# Vulnerability Remediation Advisory\n1. Immediate: Decommission or upgrade vsftpd 2.3.4 backdoor to vsftpd 3.0.5+.\n2. Short-term: Enforce SMB signing and disable anonymous guest access on Samba.\n3. Medium-term: Deploy automated vulnerability scanning and patch management lifecycle.\nEOF\ncat remediation_advisory.md",
+        "explanation": "Outlines a prioritized patch management timeline categorizing fixes by criticality (Immediate, Short-term, Medium-term).",
+        "expectedOutput": "# Vulnerability Remediation Advisory\n1. Immediate: Decommission or upgrade vsftpd 2.3.4 backdoor to vsftpd 3.0.5+.\n2. Short-term: Enforce SMB signing and disable anonymous guest access on Samba.\n3. Medium-term: Deploy automated vulnerability scanning and patch management lifecycle.",
+        "interpretation": "Penetration testers must deliver actionable remediation steps that system administrators can operationalize immediately."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "API rate limit reached on public CVE endpoints",
+        "cause": "External API request throttled.",
+        "solution": "The platform simulator provides immediate offline cached responses."
+      }
+    ],
+    "securityConcepts": "Vulnerability analysis is not simply running a scanner; it requires validating findings, evaluating exploitability in the local context, and scoring impact accurately using CVSS v3.1 to ensure critical risks are patched before adversaries can exploit them.",
+    "defensiveRemediation": "Implement continuous automated vulnerability scanning, subscribe to CISA KEV feeds, and establish a strict SLA for critical vulnerabilities (e.g., remediation within 72 hours of disclosure).",
+    "checklist": [
+      "Correlated vsftpd 2.3.4 with CVE-2011-2523",
+      "Calculated CVSS v3.1 vector string and 9.8 Critical rating",
+      "Documented exploit mechanics (backdoor port 6200)",
+      "Formulated remediation plan replacing obsolete FTP with SFTP",
+      "Formulated security remediation roadmap and patch advisory"
+    ]
+  },
+  {
+    "id": "lab-06",
+    "moduleId": 6,
+    "moduleNumber": "06",
+    "title": "System Hacking & Privilege Auditing",
+    "difficulty": "Intermediate",
+    "estimatedTime": "50 mins",
+    "category": "System Hacking",
+    "learningObjectives": [
+      "Enumerate local user accounts, groups, and shell configurations",
+      "Audit POSIX file permissions for sensitive system files (/etc/passwd, /etc/shadow)",
+      "Locate insecure SUID/SGID executable binaries",
+      "Review sudo privileges and establish least-privilege configurations"
+    ],
+    "prerequisites": "Understanding of Linux user identifiers (UID), group identifiers (GID), and permission bits (rwx).",
+    "requiredSoftware": "find, ls, id, sudo, bash.",
+    "topology": {
+      "mode": "Local Host Privilege Audit",
+      "targetHost": "10.10.20.50",
+      "testAccount": "cadet (UID 1001)"
+    },
+    "setupInstructions": "Log into the target node as unprivileged operator 'cadet' and conduct a thorough local privilege escalation audit.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Enumerate Current User Identity and Group Memberships",
+        "command": "id; whoami; cat /etc/passwd | grep -E ':(0|100[0-9]):'",
+        "explanation": "Prints current UID, GID, and supplementary groups. Filters /etc/passwd to show root (UID 0) and standard interactive user accounts (UID >= 1000).",
+        "expectedOutput": "uid=1001(cadet) gid=1001(cadet) groups=1001(cadet),27(sudo),100(users)\ncadet\nroot:x:0:0:root:/root:/bin/bash\ncadet:x:1001:1001:Cadet Trainee:/home/cadet:/bin/bash\noperator:x:1002:1002:Range Operator:/home/operator:/bin/bash",
+        "interpretation": "Confirms 'cadet' is an unprivileged user (UID 1001) but is currently a member of the 'sudo' group (GID 27)."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Audit SUID Executables Across the Filesystem",
+        "command": "find / -perm -4000 -user root -type f 2>/dev/null | grep -E '/(usr/bin|bin|usr/local)' | head -n 10",
+        "explanation": "Searches for root-owned files with the SUID bit set (mask -4000), discarding permission denied errors from /proc and /sys.",
+        "expectedOutput": "/usr/bin/passwd\n/usr/bin/sudo\n/usr/bin/newgrp\n/usr/bin/gpasswd\n/usr/bin/chfn\n/usr/bin/chsh\n/usr/bin/pkexec\n/usr/local/bin/custom_backup",
+        "interpretation": "Standard SUID binaries (passwd, sudo, pkexec) are expected, but '/usr/local/bin/custom_backup' is a non-standard custom binary that warrants reverse-engineering for privilege flaws."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Audit Sudo Privileges and NOPASSWD Directives",
+        "command": "sudo -l -U cadet 2>/dev/null || echo \"User cadet may run the following commands on this host: (ALL : ALL) NOPASSWD: /usr/bin/systemctl restart apache2\"",
+        "explanation": "Lists allowed commands for user 'cadet' in the sudoers configuration.",
+        "expectedOutput": "User cadet may run the following commands on this host:\n    (ALL : ALL) NOPASSWD: /usr/bin/systemctl restart apache2",
+        "interpretation": "Cadet can restart apache2 without entering a password. If the apache configuration or service unit is writable by cadet, this presents a privilege escalation vector."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Formulate Linux Host Hardening and Secure Configuration Recommendations",
+        "command": "cat << 'EOF' > linux_hardening_guide.sh\n# Linux Privilege Hardening Recommendations\n# 1. Strip SUID bit from non-essential binaries:\nchmod u-s /usr/local/bin/custom_backup\n# 2. Enforce strict sudoers rules with password requirement:\necho 'cadet ALL=(ALL) ALL' > /etc/sudoers.d/cadet\n# 3. Harden filesystem umask in /etc/profile:\numask 027\nEOF\ncat linux_hardening_guide.sh",
+        "explanation": "Generates a system hardening script addressing SUID privileges, least-privilege sudo configuration, and restrictive filesystem umasks.",
+        "expectedOutput": "# Linux Privilege Hardening Recommendations\n# 1. Strip SUID bit from non-essential binaries:\nchmod u-s /usr/local/bin/custom_backup\n# 2. Enforce strict sudoers rules with password requirement:\necho 'cadet ALL=(ALL) ALL' > /etc/sudoers.d/cadet\n# 3. Harden filesystem umask in /etc/profile:\numask 027",
+        "interpretation": "Remediating dangerous SUID permissions prevents local privilege escalation (LPE) even if an attacker secures a low-privilege foothold."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "find: command hangs or generates thousands of lines",
+        "cause": "Traversing mounted network shares or dynamic pseudo-filesystems (/proc, /sys).",
+        "solution": "Use '-xdev' flag to prevent find from traversing into mounted filesystems."
+      }
+    ],
+    "securityConcepts": "System hacking involves gaining access, escalating privileges, executing applications, and maintaining persistence. Privilege escalation occurs when an attacker exploits system misconfigurations (such as SUID binaries or overly permissive sudoers rules) to elevate from unprivileged user to root or SYSTEM.",
+    "defensiveRemediation": "Audit sudoers configurations regularly. Avoid wildcard NOPASSWD directives. Mount user-writable directories (/tmp, /home, /dev/shm) with the 'nosuid' and 'noexec' mount options to prevent unauthorized SUID binary execution.",
+    "checklist": [
+      "Audited user accounts and groups in /etc/passwd",
+      "Inspected filesystem for non-standard SUID root binaries",
+      "Discovered custom_backup SUID executable in /usr/local/bin",
+      "Audited sudo permissions and documented least-privilege recommendations",
+      "Formulated Linux privilege hardening and secure config advisory"
+    ]
+  },
+  {
+    "id": "lab-07",
+    "moduleId": 7,
+    "moduleNumber": "07",
+    "title": "Static Malware Analysis & Integrity Hashing",
+    "difficulty": "Beginner",
+    "estimatedTime": "35 mins",
+    "category": "Malware Analysis",
+    "learningObjectives": [
+      "Calculate cryptographic SHA-256 hashes to establish file integrity baselines",
+      "Identify authentic file formats using magic bytes inspection (file utility)",
+      "Extract embedded ASCII and Unicode strings to uncover URLs and function names",
+      "Verify antivirus detection pipelines using the standardized EICAR test string"
+    ],
+    "prerequisites": "Understanding of file headers, ASCII encoding, and cryptographic hashing.",
+    "requiredSoftware": "sha256sum, file, strings, bash.",
+    "topology": {
+      "mode": "Isolated Malware Sandbox (Quarantined)",
+      "sandboxPath": "/var/quarantine/samples/",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Work strictly within the isolated analysis sandbox. Do not execute suspicious files during static analysis.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Compute SHA-256 Hash and Inspect File Magic Header",
+        "command": "echo 'X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' > eicar.com; sha256sum eicar.com; file eicar.com",
+        "explanation": "Generates the standardized, harmless EICAR test string, calculates its SHA-256 digest, and checks its file format using 'file'.",
+        "expectedOutput": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f  eicar.com\neicar.com: EICAR virus test files",
+        "interpretation": "The SHA-256 digest matches the global known EICAR hash. Antivirus software immediately flags this hash as a positive detection test."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Detect Disguised Executable Using Magic Bytes Analysis",
+        "command": "printf '\\x7fELF\\x02\\x01\\x01\\x00' > invoice_report.pdf; file invoice_report.pdf",
+        "explanation": "Creates a simulated test file named invoice_report.pdf containing the Linux ELF executable magic byte sequence (\\x7fELF) rather than PDF headers (%PDF).",
+        "expectedOutput": "invoice_report.pdf: ELF 64-bit LSB executable, x86-64, version 1 (SYSV)",
+        "interpretation": "The 'file' command exposes that despite the .pdf extension, the payload is an ELF executable. Attackers frequently use double extensions to deceive users."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Extract Embedded Strings to Uncover C2 Endpoints",
+        "command": "echo -e 'Mozilla/5.0\\nhttp://c2-beacon.darknet.internal:8080/checkin\\nVirtualAlloc\\nWriteProcessMemory' > sample_dump.bin; strings -n 8 sample_dump.bin",
+        "explanation": "Extracts contiguous sequences of 8 or more printable characters from the sample binary dump.",
+        "expectedOutput": "Mozilla/5.0\nhttp://c2-beacon.darknet.internal:8080/checkin\nVirtualAlloc\nWriteProcessMemory",
+        "interpretation": "Reveals suspicious Windows API imports (VirtualAlloc, WriteProcessMemory used in process injection) and a command-and-control (C2) beacon URL."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Safe Antivirus Test-File Demonstrations (EICAR Standard Test String)",
+        "command": "echo -n 'X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' > eicar.com.txt; sha256sum eicar.com.txt",
+        "explanation": "Creates the industry-standard benign EICAR antivirus test file (68-byte ASCII) to verify antivirus detection without deploying real malicious code.",
+        "expectedOutput": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f  eicar.com.txt",
+        "interpretation": "The computed SHA-256 matches the universal standard EICAR test string hash. This demonstrates that security tools can be safely validated in testing environments without risk."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "strings command returns thousands of meaningless characters",
+        "cause": "Default minimum length is 4 characters, which captures binary noise.",
+        "solution": "Increase threshold with 'strings -n 10' or grep for specific patterns like 'http' or '.exe'."
+      }
+    ],
+    "securityConcepts": "Static analysis inspects malware components without executing the binary. By checking cryptographic hashes, magic bytes, PE headers, and embedded strings, analysts can extract indicators of compromise (IoCs) safely in an isolated environment.",
+    "defensiveRemediation": "Deploy endpoint detection and response (EDR) solutions that verify file headers regardless of file extensions. Block execution of binaries from user-writable directories (%AppData%, /tmp).",
+    "checklist": [
+      "Generated and verified EICAR standard antivirus test hash",
+      "Detected disguised ELF binary masked with .pdf extension",
+      "Extracted C2 beacon URL and suspicious API calls via strings",
+      "Cataloged SHA-256 IoCs into threat intelligence database",
+      "Validated safe antivirus test string (EICAR) hashing"
+    ]
+  },
+  {
+    "id": "lab-08",
+    "moduleId": 8,
+    "moduleNumber": "08",
+    "title": "Packet Sniffing & Protocol Dissection",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Network Defense",
+    "learningObjectives": [
+      "Capture network packets on local interfaces using tcpdump",
+      "Apply Berkeley Packet Filters (BPF) to isolate specific protocols",
+      "Dissect Ethernet II, IPv4, TCP, and application layer payload headers",
+      "Identify cleartext credential leakage across unencrypted protocols"
+    ],
+    "prerequisites": "Understanding of the OSI model, TCP/IP stack layers, and encapsulation.",
+    "requiredSoftware": "tcpdump, curl, bash.",
+    "topology": {
+      "mode": "Local Subnet Packet Capture",
+      "captureInterface": "lo / eth0",
+      "analystNode": "10.10.20.10",
+      "targetServer": "10.10.20.50"
+    },
+    "setupInstructions": "Start a live capture session in the terminal simulator and observe packet exchanges between the cadet workstation and local services.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Capture Loopback Traffic and Inspect ICMP Protocol Headers",
+        "command": "tcpdump -i lo -c 2 -nn -v 'icmp' & sleep 0.5; ping -c 1 127.0.0.1",
+        "explanation": "Binds tcpdump to the loopback interface (lo) with filter 'icmp' to capture ICMP echo requests and replies, inspecting IP TTL and checksum headers.",
+        "expectedOutput": "IP (tos 0x0, ttl 64, id 58921, offset 0, flags [DF], proto ICMP (1), length 84)\n    127.0.0.1 > 127.0.0.1: ICMP echo request, id 49102, seq 1, length 64\nIP (tos 0x0, ttl 64, id 58922, offset 0, flags [none], proto ICMP (1), length 84)\n    127.0.0.1 > 127.0.0.1: ICMP echo reply, id 49102, seq 1, length 64",
+        "interpretation": "Validates packet capture functionality on loopback and demonstrates ICMP protocol headers (Protocol 1, Type 8 Echo Request, Type 0 Echo Reply)."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Inspect DNS Query and Response Protocol Fields",
+        "command": "tcpdump -i lo -c 2 -nn -v 'udp port 53' 2>/dev/null || echo -e 'IP 10.10.20.10.49120 > 10.10.20.2.53: 12480+ A? corp-target.local. (35)\nIP 10.10.20.2.53 > 10.10.20.10.49120: 12480 1/0/0 A 10.10.20.50 (51)'",
+        "explanation": "Captures DNS UDP packet exchange on port 53, dissecting query ID, transaction flags, question section, and resource record answers.",
+        "expectedOutput": "IP 10.10.20.10.49120 > 10.10.20.2.53: 12480+ A? corp-target.local. (35)\nIP 10.10.20.2.53 > 10.10.20.10.49120: 12480 1/0/0 A 10.10.20.50 (51)",
+        "interpretation": "Confirms cleartext DNS resolution. Demonstrates how adversaries can snoop on DNS queries or forge responses in unencrypted network environments."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Dissect TCP 3-Way Handshake and Header Flags",
+        "command": "tcpdump -i eth0 -c 3 -nn 'tcp and port 80' & sleep 0.5; curl -s http://10.10.20.50/ > /dev/null",
+        "explanation": "Captures the classic SYN, SYN-ACK, ACK sequence establishing a TCP stream on HTTP port 80, showing sequence and acknowledgment numbers.",
+        "expectedOutput": "10.10.20.10.49210 > 10.10.20.50.80: Flags [S], seq 184920120, win 64240, length 0\n10.10.20.50.80 > 10.10.20.10.49210: Flags [S.], seq 389102450, ack 184920121, win 65160, length 0\n10.10.20.10.49210 > 10.10.20.50.80: Flags [.], ack 1, win 502, length 0",
+        "interpretation": "Verifies reliable, connection-oriented transport layer establishment. Identifying raw TCP flag bitmasks is critical for stateful firewall design and evasion analysis."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Inspect TLS Handshake and Application Layer Transport Security",
+        "command": "tcpdump -i eth0 -c 4 -nn 'tcp port 443' 2>/dev/null || echo -e '10.10.20.10.51200 > 10.10.20.50.443: Flags [P.], seq 1:518, ack 1, win 502: TLSv1.3 Client Hello (SNI: corp-target.local)\n10.10.20.50.443 > 10.10.20.10.51200: Flags [P.], seq 1:1420, ack 518: TLSv1.3 Server Hello, Change Cipher Spec, Encrypted Extensions'",
+        "explanation": "Captures TLS v1.3 handshake packets on port 443, demonstrating the Server Name Indication (SNI) and cryptographic cipher negotiation.",
+        "expectedOutput": "10.10.20.10.51200 > 10.10.20.50.443: Flags [P.], seq 1:518, ack 1, win 502: TLSv1.3 Client Hello (SNI: corp-target.local)\n10.10.20.50.443 > 10.10.20.10.51200: Flags [P.], seq 1:1420, ack 518: TLSv1.3 Server Hello, Change Cipher Spec, Encrypted Extensions",
+        "interpretation": "Unlike unencrypted HTTP, TLS encrypts application payloads, protecting confidential credentials from network sniffing."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "tcpdump: eth0: You don't have permission to capture on that device",
+        "cause": "Packet sniffing requires administrative (CAP_NET_RAW) privileges.",
+        "solution": "Execute with 'sudo tcpdump' or add user to the pcap group."
+      }
+    ],
+    "securityConcepts": "Network sniffing captures packets traversing network interfaces. On unswitched or ARP-poisoned networks, any eavesdropper can capture cleartext credentials, session cookies, and sensitive documents unless encrypted with TLS or IPsec.",
+    "defensiveRemediation": "Deprecate all cleartext administrative protocols (HTTP, Telnet, FTP, SNMPv1/v2). Mandate TLS 1.3, SSHv2, and SFTP. Implement Dynamic ARP Inspection (DAI) and 802.1X network access control.",
+    "checklist": [
+      "Captured loopback traffic and inspected ICMP protocol headers",
+      "Dissected DNS query and response protocol fields on port 53",
+      "Captured TCP 3-way handshake flags (SYN, SYN-ACK, ACK)",
+      "Inspected TLS handshake and cryptographic session negotiation"
+    ]
+  },
+  {
+    "id": "lab-09",
+    "moduleId": 9,
+    "moduleNumber": "09",
+    "title": "Social Engineering & Email Header Analysis",
+    "difficulty": "Beginner",
+    "estimatedTime": "35 mins",
+    "category": "Social Engineering",
+    "learningObjectives": [
+      "Parse RFC 5322 email headers to identify forged sender addresses",
+      "Trace the true originating IP through intermediate 'Received:' headers",
+      "Audit SPF, DKIM, and DMARC authentication verdicts",
+      "Design an enterprise phishing-awareness training simulation",
+      "Identify email spoofing indicators and header anomalies"
+    ],
+    "prerequisites": "Understanding of SMTP protocol operations and DNS authentication records.",
+    "requiredSoftware": "grep, awk, bash (or simulated terminal).",
+    "topology": {
+      "mode": "Email Forensic Inspection",
+      "emailPath": "/var/mail/quarantine/suspicious_invoice.eml",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Inspect the quarantined phishing email sample to determine sender legitimacy and psychological attack vectors.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Extract Visible Sender vs Actual Return-Path",
+        "command": "cat << 'EOF' > phishing_sample.eml\nReceived: from mail-relay.rogue-host.xyz (unknown [198.51.100.44])\n    by mx.corp-target.local with ESMTP id h84920;\n    Sat, 17 Oct 2026 09:14:00 +0000\nFrom: \"CEO Financial Alert\" <executive@corp-target.local>\nReturn-Path: <spoofed@rogue-host.xyz>\nReply-To: <attacker@external-stealth.cc>\nSubject: URGENT: Wire Transfer Authorization Required Within 1 Hour\nAuthentication-Results: mx.corp-target.local;\n    spf=softfail (sender IP is 198.51.100.44) smtp.mailfrom=rogue-host.xyz;\n    dmarc=fail (p=none) header.from=corp-target.local\n\nPlease approve the attached payroll update immediately to avoid penalties.\nEOF\ngrep -E '^(From|Return-Path|Reply-To|Subject):' phishing_sample.eml",
+        "explanation": "Creates a simulated phishing email file and extracts the key header lines to contrast the displayed sender against the underlying return address.",
+        "expectedOutput": "From: \"CEO Financial Alert\" <executive@corp-target.local>\nReturn-Path: <spoofed@rogue-host.xyz>\nReply-To: <attacker@external-stealth.cc>\nSubject: URGENT: Wire Transfer Authorization Required Within 1 Hour",
+        "interpretation": "The visible 'From:' claims to be executive@corp-target.local, but the Return-Path and Reply-To point to rogue external domains (rogue-host.xyz, external-stealth.cc)."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Audit Authentication-Results Header for SPF/DMARC Failures",
+        "command": "grep -A 2 'Authentication-Results:' phishing_sample.eml",
+        "explanation": "Extracts the mail server's cryptographic and policy authentication verdict.",
+        "expectedOutput": "Authentication-Results: mx.corp-target.local;\n    spf=softfail (sender IP is 198.51.100.44) smtp.mailfrom=rogue-host.xyz;\n    dmarc=fail (p=none) header.from=corp-target.local",
+        "interpretation": "SPF returned 'softfail' and DMARC returned 'fail'. However, because DMARC policy is set to 'p=none', the receiving server delivered the fraudulent email anyway!"
+      },
+      {
+        "stepNumber": 3,
+        "title": "Identify Psychological Triggers and Formulate Awareness Training",
+        "command": "echo -e \"[PHISHING ANALYSIS]\\nTriggers: Urgency ('Within 1 Hour'), Authority ('CEO Financial Alert'), Fear ('avoid penalties').\\nRemediation: Upgrade DMARC policy from 'p=none' to 'p=reject' across DNS to instruct mail servers to drop forged messages automatically.\"",
+        "explanation": "Documents the psychological persuasion vectors and technical DNS remediation.",
+        "expectedOutput": "[PHISHING ANALYSIS]\nTriggers: Urgency ('Within 1 Hour'), Authority ('CEO Financial Alert'), Fear ('avoid penalties').\nRemediation: Upgrade DMARC policy from 'p=none' to 'p=reject' across DNS to instruct mail servers to drop forged messages automatically.",
+        "interpretation": "Provides both technical configuration fixes (DMARC p=reject) and human awareness guidelines for finance personnel."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Build Enterprise Phishing-Awareness Assessment and Curriculum",
+        "command": "cat << 'EOF' > awareness_curriculum.md\n# Enterprise Phishing Awareness Curriculum\n1. Baseline Assessment: Conduct simulated benign spear-phishing campaigns to benchmark employee susceptibility.\n2. Technical Hardening: Enforce DMARC p=reject in DNS; enable external email sender warning banners.\n3. Reporting Mechanisms: Provide a 1-click 'Report Phish' button for Microsoft 365 / Google Workspace.\n4. Positive Reinforcement: Reward employees who identify and report malicious lures within 15 minutes.\nEOF\ncat awareness_curriculum.md",
+        "explanation": "Outlines an enterprise anti-phishing defense program combining email security technology (DMARC) with human behavioral training.",
+        "expectedOutput": "# Enterprise Phishing Awareness Curriculum\n1. Baseline Assessment: Conduct simulated benign spear-phishing campaigns to benchmark employee susceptibility.\n2. Technical Hardening: Enforce DMARC p=reject in DNS; enable external email sender warning banners.\n3. Reporting Mechanisms: Provide a 1-click 'Report Phish' button for Microsoft 365 / Google Workspace.\n4. Positive Reinforcement: Reward employees who identify and report malicious lures within 15 minutes.",
+        "interpretation": "Technical defenses (SPF, DKIM, DMARC) must be paired with user awareness training to establish defense-in-depth against social engineering."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Missing Received headers",
+        "cause": "Some webmail clients strip internal Received headers upon export.",
+        "solution": "Always download the original raw RFC 5322 .eml format."
+      }
+    ],
+    "securityConcepts": "Social engineering targets the human element through manipulation, authority, urgency, and fear. Business Email Compromise (BEC) and spear phishing exploit loose SPF/DMARC policies to impersonate corporate executives and authorize fraudulent transactions.",
+    "defensiveRemediation": "Enforce strict DMARC policies ('p=reject'). Deploy incoming email banner tags warning users of external origins. Conduct quarterly simulated phishing assessments with interactive training for repeat clickers.",
+    "checklist": [
+      "Extracted visible From vs actual Return-Path and Reply-To addresses",
+      "Identified forged origin IP (198.51.100.44) in Received header",
+      "Audited SPF softfail and DMARC fail authentication results",
+      "Documented technical requirement to elevate DMARC policy to p=reject",
+      "Built enterprise phishing awareness curriculum and defense blueprint"
+    ]
+  },
+  {
+    "id": "lab-10",
+    "moduleId": 10,
+    "moduleNumber": "10",
+    "title": "Denial-of-Service Defense & Rate Limiting",
+    "difficulty": "Intermediate",
+    "estimatedTime": "40 mins",
+    "category": "Network Defense",
+    "learningObjectives": [
+      "Establish legitimate HTTP request throughput baselines without disruptive flooding",
+      "Monitor operating system socket state transitions (SYN_RECV, ESTABLISHED)",
+      "Configure Apache mod_reqtimeout to thwart slow-header attacks",
+      "Deploy defensive iptables connection rate-limiting rules",
+      "Observe operating system CPU, memory, and socket resource usage"
+    ],
+    "prerequisites": "Understanding of TCP state machine and web server concurrency limits.",
+    "requiredSoftware": "curl, ss, iptables, bash.",
+    "topology": {
+      "mode": "Defensive Concurrency Monitoring",
+      "targetHost": "10.10.20.50 (Apache Web Server)",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "This lab focuses on defensive monitoring and rate-limiting configuration. Do not generate high-volume disruptive traffic.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Establish Baseline HTTP Response Latency",
+        "command": "for i in {1..3}; do curl -o /dev/null -s -w \"Request $i: Connect: %{time_connect}s | Total: %{time_total}s | Code: %{http_code}\\n\" http://10.10.20.50/; sleep 0.2; done",
+        "explanation": "Executes 3 sequential HTTP requests to establish baseline connection latency and verify healthy 200 OK responses.",
+        "expectedOutput": "Request 1: Connect: 0.0012s | Total: 0.0048s | Code: 200\nRequest 2: Connect: 0.0011s | Total: 0.0045s | Code: 200\nRequest 3: Connect: 0.0010s | Total: 0.0044s | Code: 200",
+        "interpretation": "Baseline latency is ~4.5 milliseconds, confirming normal operating conditions."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Monitor Active Web Connection Sockets by State",
+        "command": "ss -tan state established '( dport = :80 or sport = :80 )' | wc -l; ss -tan state syn-recv | wc -l",
+        "explanation": "Counts established connections and half-open SYN_RECV connections on port 80 to detect connection pool saturation.",
+        "expectedOutput": "4\n0",
+        "interpretation": "Only 4 active connections exist and 0 SYN_RECV sockets, confirming no SYN flood or Slowloris attack is currently underway."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Implement Defensive IPTables Connection Rate Limiting",
+        "command": "echo \"iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -m limit --limit 50/minute --limit-burst 100 -j ACCEPT; iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -j DROP\"",
+        "explanation": "Defines an iptables rule permitting up to 50 new connections per minute with a burst allowance of 100, dropping excessive connection requests.",
+        "expectedOutput": "iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -m limit --limit 50/minute --limit-burst 100 -j ACCEPT; iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW -j DROP",
+        "interpretation": "Prevents rapid connection flooding from exhausting Apache worker processes while allowing legitimate user traffic."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Study Defensive Rate Limiting and Nginx/IPTables Mitigation",
+        "command": "cat << 'EOF' > rate_limit.conf\n# Nginx Rate Limiting Directive (Thwart DoS Floods)\nlimit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;\n\nserver {\n    location /api/ {\n        limit_req zone=api_limit burst=20 nodelay;\n    }\n}\nEOF\ncat rate_limit.conf",
+        "explanation": "Constructs an Nginx rate-limiting configuration using the leaky bucket algorithm to throttle abusive clients without impacting legitimate traffic.",
+        "expectedOutput": "# Nginx Rate Limiting Directive (Thwart DoS Floods)\nlimit_req_zone $binary_remote_addr zone=api_limit:10m rate=10r/s;\n\nserver {\n    location /api/ {\n        limit_req zone=api_limit burst=20 nodelay;\n    }\n}",
+        "interpretation": "Implementing application-level rate limiting prevents volumetric and application-layer DoS attacks from exhausting web server worker threads."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "iptables: Permission denied",
+        "cause": "Modifying packet filtering tables requires root/CAP_NET_ADMIN privileges.",
+        "solution": "Execute with sudo or test in the simulated terminal sandbox."
+      }
+    ],
+    "securityConcepts": "Denial-of-Service attacks aim to make systems unavailable to legitimate users. Attacks range from high-volume UDP/ICMP amplification floods to application-layer exhaustion attacks (like Slowloris) that consume connection tables with minimal bandwidth.",
+    "defensiveRemediation": "Enable Linux kernel SYN cookies ('sysctl -w net.ipv4.tcp_syncookies=1'). Configure Apache mod_reqtimeout and deploy reverse proxies (Cloudflare, AWS CloudFront, HAProxy) with DDoS mitigation capabilities.",
+    "checklist": [
+      "Measured baseline HTTP connection latency (<5ms)",
+      "Monitored TCP socket states (SYN_RECV vs ESTABLISHED)",
+      "Formulated Apache mod_reqtimeout configuration",
+      "Defined iptables rate-limiting rules for port 80",
+      "Configured application rate limiting directives to thwart DoS floods"
+    ]
+  },
+  {
+    "id": "lab-11",
+    "moduleId": 11,
+    "moduleNumber": "11",
+    "title": "Session Security & Cookie Flag Auditing",
+    "difficulty": "Intermediate",
+    "estimatedTime": "35 mins",
+    "category": "Web Security",
+    "learningObjectives": [
+      "Inspect browser session cookie attributes in HTTP Set-Cookie headers",
+      "Evaluate the protection offered by HttpOnly, Secure, and SameSite flags",
+      "Analyze session fixation vulnerabilities during authentication state changes",
+      "Demonstrate secure server-side session regeneration and invalidation"
+    ],
+    "prerequisites": "Understanding of HTTP statelessness, cookies, and web authentication.",
+    "requiredSoftware": "curl, bash.",
+    "topology": {
+      "mode": "Web Application Authentication Audit",
+      "targetUrl": "http://10.10.20.50/api/session",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Simulate authentication exchanges and analyze cookie attributes returned by the web application.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Audit HTTP Set-Cookie Headers for Insecure Session Attributes",
+        "command": "curl -s -I -X POST http://10.10.20.50/api/login -d 'user=cadet&pass=pass' | grep -i 'set-cookie'",
+        "explanation": "Submits a simulated login request and inspects the Set-Cookie response header for required security flags.",
+        "expectedOutput": "Set-Cookie: PHPSESSID=d9284fa9012abcf84920; path=/; HttpOnly; SameSite=Strict",
+        "interpretation": "The cookie includes 'HttpOnly' (blocks JavaScript theft) and 'SameSite=Strict' (blocks CSRF). However, the 'Secure' flag is missing because the connection is over HTTP rather than HTTPS."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Demonstrate Session Invalidation and Logout Workflow",
+        "command": "curl -s -I -H 'Cookie: PHPSESSID=d9284fa9012abcf84920' http://10.10.20.50/api/logout | grep -i 'set-cookie'",
+        "explanation": "Sends a logout request with the active session token to verify whether the server explicitly overwrites and expires the cookie.",
+        "expectedOutput": "Set-Cookie: PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/; HttpOnly",
+        "interpretation": "The server properly sets Max-Age=0 and an epoch expiration date, invalidating the cookie on the client side."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Verify Server-Side Session Deletion",
+        "command": "curl -s -H 'Cookie: PHPSESSID=d9284fa9012abcf84920' http://10.10.20.50/api/dashboard",
+        "explanation": "Attempts to reuse the old session token to access protected dashboard data.",
+        "expectedOutput": "{\"error\":\"Unauthorized\",\"message\":\"Session has expired or was terminated. Please re-authenticate.\"}",
+        "interpretation": "Returns 401 Unauthorized, confirming the session ID was purged from server-side memory/redis store, preventing session replay."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Formulate Session Management Security and Cookie Hardening Guidelines",
+        "command": "cat << 'EOF' > session_hardening.md\n# Web Application Session Hardening Guidelines\n1. Set 'HttpOnly' flag: Blocks JavaScript access to document.cookie, neutralizing XSS session theft.\n2. Set 'Secure' flag: Enforces cookie transmission over encrypted HTTPS channels exclusively.\n3. Set 'SameSite=Strict' or 'Lax': Defends against Cross-Site Request Forgery (CSRF) attacks.\n4. Enforce Session Invalidation: Destroy session tokens on both server and client during logout.\n5. Idle Timeout: Terminate idle sessions after 15 minutes of inactivity.\nEOF\ncat session_hardening.md",
+        "explanation": "Establishes institutional guidelines for session token generation, lifecycle management, cookie flag enforcement, and secure invalidation.",
+        "expectedOutput": "# Web Application Session Hardening Guidelines\n1. Set 'HttpOnly' flag: Blocks JavaScript access to document.cookie, neutralizing XSS session theft.\n2. Set 'Secure' flag: Enforces cookie transmission over encrypted HTTPS channels exclusively.\n3. Set 'SameSite=Strict' or 'Lax': Defends against Cross-Site Request Forgery (CSRF) attacks.\n4. Enforce Session Invalidation: Destroy session tokens on both server and client during logout.\n5. Idle Timeout: Terminate idle sessions after 15 minutes of inactivity.",
+        "interpretation": "Enforcing HttpOnly, Secure, and SameSite flags is a non-negotiable security baseline for web applications in production."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "No Set-Cookie header returned",
+        "cause": "Request was rejected prior to session issuance (e.g. invalid endpoint).",
+        "solution": "Check endpoint spelling and confirm web daemon is running."
+      }
+    ],
+    "securityConcepts": "HTTP is stateless; applications use session cookies to maintain authenticated states. If cookies lack HttpOnly, Cross-Site Scripting (XSS) can exfiltrate tokens. If they lack Secure, network sniffers can intercept them. If they lack SameSite, Cross-Site Request Forgery (CSRF) can exploit them.",
+    "defensiveRemediation": "Always set 'Set-Cookie: ID=...; Secure; HttpOnly; SameSite=Strict'. Regenerate session identifiers immediately upon login (e.g. session_regenerate_id(true) in PHP) to eliminate session fixation.",
+    "checklist": [
+      "Audited Set-Cookie response headers for security flags",
+      "Verified HttpOnly and SameSite=Strict attributes",
+      "Documented missing 'Secure' flag requiring TLS migration",
+      "Verified server-side session purge upon user logout",
+      "Documented session token lifecycle and cookie defense guidelines"
+    ]
+  },
+  {
+    "id": "lab-12",
+    "moduleId": 12,
+    "moduleNumber": "12",
+    "title": "Firewall Rule Auditing & IDS Alert Inspection",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Network Defense",
+    "learningObjectives": [
+      "Inspect local firewall rules using iptables and ufw commands",
+      "Analyze simulated Suricata / Snort Intrusion Detection alerts",
+      "Correlate attack signatures with MITRE ATT&CK techniques",
+      "Configure defensive drop rules to mitigate unauthorized reconnaissance"
+    ],
+    "prerequisites": "Familiarity with network layers, packet filtering, and intrusion detection concepts.",
+    "requiredSoftware": "iptables, ufw, bash.",
+    "topology": {
+      "mode": "Perimeter IDS & Firewall Node",
+      "firewallNode": "10.10.20.1",
+      "targetNode": "10.10.20.50"
+    },
+    "setupInstructions": "Inspect the active packet filtering rules on the target host and examine simulated NIDS alerts.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Audit Active Firewall Filter Table Rules",
+        "command": "iptables -L INPUT -v -n --line-numbers",
+        "explanation": "Lists all rules in the INPUT chain of the filter table with packet counters (-v), numeric IP display (-n), and line numbers.",
+        "expectedOutput": "Chain INPUT (policy DROP 142 packets, 8520 bytes)\nnum  pkts bytes target     prot opt in     out     source       destination         \n1    1042 84920 ACCEPT     all  --  lo     *       0.0.0.0/0    0.0.0.0/0           \n2    2490  182K ACCEPT     all  --  *      *       0.0.0.0/0    0.0.0.0/0   ctstate RELATED,ESTABLISHED\n3     180 10800 ACCEPT     tcp  --  eth0   *       10.10.20.0/24 0.0.0.0/0   tcp dpt:22\n4     820 49200 ACCEPT     tcp  --  eth0   *       0.0.0.0/0    0.0.0.0/0   tcp dpt:80",
+        "interpretation": "The default policy is DROP. Loopback and established traffic are accepted. Port 22 is restricted to subnet 10.10.20.0/24, while port 80 is open to all."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Inspect Suricata NIDS Alert Log File",
+        "command": "cat << 'EOF' > fast.log\n10/17/2026-10:14:02.102910 [**] [1:2001219:19] ET SCAN Potential Nmap SYN Scan [**] [Classification: Attempted Information Leak] [Priority: 2] {TCP} 10.10.20.10:49210 -> 10.10.20.50:80\n10/17/2026-10:14:15.892011 [**] [1:2009282:4] ET WEB_SERVER SQL Injection Attempt [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 10.10.20.10:49212 -> 10.10.20.50:80\nEOF\ncat fast.log | grep -E 'Priority: 1'",
+        "explanation": "Simulates inspecting the Suricata /var/log/suricata/fast.log file, filtering for Priority 1 (High/Critical) security alerts.",
+        "expectedOutput": "10/17/2026-10:14:15.892011 [**] [1:2009282:4] ET WEB_SERVER SQL Injection Attempt [**] [Classification: Web Application Attack] [Priority: 1] {TCP} 10.10.20.10:49212 -> 10.10.20.50:80",
+        "interpretation": "The NIDS detected an active SQL injection attack from 10.10.20.10 targeting port 80, flagged with Priority 1."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Deploy Defensive Drop Rule in Response to Alert",
+        "command": "echo \"iptables -I INPUT 3 -s 10.10.20.10 -p tcp --dport 80 -m string --string 'UNION SELECT' --algo bm -j DROP\"",
+        "explanation": "Constructs an iptables string-matching rule to drop inbound HTTP packets containing the SQLi string 'UNION SELECT'.",
+        "expectedOutput": "iptables -I INPUT 3 -s 10.10.20.10 -p tcp --dport 80 -m string --string 'UNION SELECT' --algo bm -j DROP",
+        "interpretation": "Inserts an immediate inline defense rule to block the specific exploit payload at Layer 3/4 before reaching the web daemon."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Explain Defensive Detection Architecture and Honeypot Decoys",
+        "command": "cat << 'EOF' > honeypot_detection_blueprint.md\n# Defensive Detection & Honeypot Architecture\n1. Network Decoys: Deploy low-interaction honeypots (e.g. Cowrie SSH, Dionaea) on unused IPs.\n2. High-Fidelity Alerting: Any traffic to an unassigned IP in 10.10.20.0/24 immediately flags internal lateral movement.\n3. SIEM Correlation: Ingest firewall drop logs and IDS alerts into central SIEM (Wazuh/ELK).\nEOF\ncat honeypot_detection_blueprint.md",
+        "explanation": "Details the architecture for deploying honeypot decoy nodes inside corporate subnets to detect unauthorized network reconnaissance early.",
+        "expectedOutput": "# Defensive Detection & Honeypot Architecture\n1. Network Decoys: Deploy low-interaction honeypots (e.g. Cowrie SSH, Dionaea) on unused IPs.\n2. High-Fidelity Alerting: Any traffic to an unassigned IP in 10.10.20.0/24 immediately flags internal lateral movement.\n3. SIEM Correlation: Ingest firewall drop logs and IDS alerts into central SIEM (Wazuh/ELK).",
+        "interpretation": "Honeypots have zero production value, meaning any inbound connection is guaranteed to be hostile or anomalous, yielding zero false positives."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "iptables: Index of insertion too big",
+        "cause": "Specified line number exceeds current rule count.",
+        "solution": "Use 'iptables -A INPUT ...' to append to the end of the chain."
+      }
+    ],
+    "securityConcepts": "Intrusion Detection Systems (IDS) inspect network traffic against signature databases and behavioral anomalies. Intrusion Prevention Systems (IPS) actively drop offending packets. Evasion techniques include packet fragmentation, timing delays, and encoding, which defenders counter with deep packet inspection and protocol normalization.",
+    "defensiveRemediation": "Keep NIDS rulesets (Emerging Threats, Snort VRT) updated automatically. Integrate NIDS with automated firewall response scripts (Fail2ban, Suricata inline IPS mode) to automatically ban repeat offenders.",
+    "checklist": [
+      "Audited iptables INPUT filter table and default DROP policy",
+      "Parsed Suricata fast.log for Priority 1 security incidents",
+      "Correlated SQL injection alert with source IP 10.10.20.10",
+      "Formulated defensive string-matching drop rule",
+      "Engineered honeypot decoy and defensive detection architecture"
+    ]
+  },
+  {
+    "id": "lab-13",
+    "moduleId": 13,
+    "moduleNumber": "13",
+    "title": "Web Server Hardening & Banner Reduction",
+    "difficulty": "Intermediate",
+    "estimatedTime": "35 mins",
+    "category": "Web Security",
+    "learningObjectives": [
+      "Inspect HTTP response headers for excessive server banner disclosure",
+      "Configure Apache ServerTokens and ServerSignature directives",
+      "Disable directory browsing (Options -Indexes) to prevent information leaks",
+      "Audit TLS cipher suites and enforce HTTP Strict Transport Security (HSTS)"
+    ],
+    "prerequisites": "Understanding of Apache configuration files (apache2.conf, security.conf).",
+    "requiredSoftware": "curl, grep, bash.",
+    "topology": {
+      "mode": "Web Server Configuration Audit",
+      "webServer": "10.10.20.50 (Apache/2.4.52)",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Audit the web server headers before and after applying hardening directives.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Audit Initial Verbose Server Response Headers",
+        "command": "curl -s -I http://10.10.20.50/ | grep -E '^(Server|X-Powered-By):'",
+        "explanation": "Sends a HEAD request to extract the Server and X-Powered-By response headers.",
+        "expectedOutput": "Server: Apache/2.4.52 (Ubuntu) OpenSSL/3.0.2 mod_wsgi/4.9.0 Python/3.10\nX-Powered-By: PHP/8.1.2",
+        "interpretation": "Severely verbose! Discloses exact Apache minor release, underlying OS (Ubuntu), OpenSSL version, Python WSGI module, and PHP version, helping an attacker target specific exploits."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Formulate Hardened Apache Security Directives",
+        "command": "cat << 'EOF'\n# Hardened /etc/apache2/conf-available/security.conf\nServerTokens Prod\nServerSignature Off\nTraceEnable Off\nHeader unset X-Powered-By\nHeader always set X-Content-Type-Options \"nosniff\"\nHeader always set X-Frame-Options \"DENY\"\nEOF",
+        "explanation": "Constructs the hardened configuration directives: ServerTokens Prod limits banner to 'Apache'; ServerSignature Off disables error page footers; TraceEnable Off prevents XST attacks; security headers are added.",
+        "expectedOutput": "# Hardened /etc/apache2/conf-available/security.conf\nServerTokens Prod\nServerSignature Off\nTraceEnable Off\nHeader unset X-Powered-By\nHeader always set X-Content-Type-Options \"nosniff\"\nHeader always set X-Frame-Options \"DENY\"",
+        "interpretation": "Eliminates OS and module enumeration while enforcing protective clickjacking and MIME-sniffing headers."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Verify Hardened Server Response Header",
+        "command": "echo -e \"HTTP/1.1 200 OK\\nServer: Apache\\nX-Content-Type-Options: nosniff\\nX-Frame-Options: DENY\\nContent-Type: text/html\" | grep -E '^(Server|X-Content|X-Frame):'",
+        "explanation": "Simulates querying the hardened web server to verify that the banner is successfully obfuscated.",
+        "expectedOutput": "Server: Apache\nX-Content-Type-Options: nosniff\nX-Frame-Options: DENY",
+        "interpretation": "The server now reports only 'Apache' without version numbers or module signatures, dramatically reducing passive footprinting."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Formulate Web Server Hardening Baseline Directives",
+        "command": "cat << 'EOF' > security_headers.conf\n# Production Web Server Hardening Directive\nServerTokens Prod\nServerSignature Off\nHeader always set X-Content-Type-Options 'nosniff'\nHeader always set X-Frame-Options 'SAMEORIGIN'\nHeader always set Content-Security-Policy \"default-src 'self';\"\nHeader always set Strict-Transport-Security 'max-age=31536000; includeSubDomains'\nEOF\ncat security_headers.conf",
+        "explanation": "Creates a production-ready HTTP server configuration snippet suppressing version banners and injecting modern defense-in-depth security headers.",
+        "expectedOutput": "# Production Web Server Hardening Directive\nServerTokens Prod\nServerSignature Off\nHeader always set X-Content-Type-Options 'nosniff'\nHeader always set X-Frame-Options 'SAMEORIGIN'\nHeader always set Content-Security-Policy \"default-src 'self';\"\nHeader always set Strict-Transport-Security 'max-age=31536000; includeSubDomains'",
+        "interpretation": "Hiding software versions impedes opportunistic automated exploitation while headers prevent MIME-sniffing, clickjacking, and XSS."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Header directives cause Apache configuration syntax error",
+        "cause": "The Apache 'headers' module is not enabled.",
+        "solution": "Run 'sudo a2enmod headers' and reload Apache."
+      }
+    ],
+    "securityConcepts": "Web server hardening involves reducing the exposed attack surface. By stripping version banners, disabling HTTP TRACE/TRACK methods, turning off directory listings, and injecting modern defense headers, organizations make opportunistic automated exploitation significantly more difficult.",
+    "defensiveRemediation": "Set 'ServerTokens Prod' and 'ServerSignature Off'. Disable directory listing globally with '<Directory /var/www/> Options -Indexes </Directory>'. Enforce HSTS ('Strict-Transport-Security: max-age=31536000; includeSubDomains').",
+    "checklist": [
+      "Audited initial verbose headers disclosing Apache/Ubuntu/PHP versions",
+      "Configured ServerTokens Prod and ServerSignature Off",
+      "Formulated X-Frame-Options and X-Content-Type-Options headers",
+      "Verified hardened response strips all operating system details",
+      "Synthesized web server security header hardening directives"
+    ]
+  },
+  {
+    "id": "lab-14",
+    "moduleId": 14,
+    "moduleNumber": "14",
+    "title": "Web Application Security & OWASP Top 10",
+    "difficulty": "Intermediate",
+    "estimatedTime": "50 mins",
+    "category": "Web Security",
+    "learningObjectives": [
+      "Inspect HTTP request and response cycles using browser tools and curl",
+      "Identify common OWASP Top 10 vulnerabilities (Broken Access Control, Injection)",
+      "Execute simulated passive vulnerability analysis using ZAP methodology",
+      "Recommend Content Security Policy (CSP) and input validation defenses"
+    ],
+    "prerequisites": "Understanding of HTTP methods (GET, POST), status codes, and HTML form handling.",
+    "requiredSoftware": "curl, jq, bash.",
+    "topology": {
+      "mode": "Isolated Training Application (OWASP Juice Shop Mock)",
+      "targetUrl": "http://10.10.20.50:3000 (Juice Shop Enclave)",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Interact with the isolated web training portal running on port 3000 to identify Broken Access Control and injection flaws.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Probe for Broken Object Level Authorization (IDOR)",
+        "command": "curl -s http://10.10.20.50:3000/api/users/1; echo ''; curl -s http://10.10.20.50:3000/api/users/2",
+        "explanation": "Queries the REST API for user ID 1 and user ID 2 without presenting authentication credentials.",
+        "expectedOutput": "{\"id\":1,\"username\":\"admin\",\"email\":\"admin@juice-sh.op\",\"role\":\"admin\",\"totpSecret\":\"JBSWY3DPEHPK3PXP\"}\n{\"id\":2,\"username\":\"cadet\",\"email\":\"cadet@juice-sh.op\",\"role\":\"customer\"}",
+        "interpretation": "Critical Broken Access Control (OWASP A01:2021). Any unauthenticated user can dump sensitive account details including the administrator's TOTP 2FA secret."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Audit HTTP Response for Missing Content Security Policy",
+        "command": "curl -s -I http://10.10.20.50:3000/ | grep -i 'content-security-policy' || echo '[VULNERABILITY] Content-Security-Policy header is MISSING!'",
+        "explanation": "Checks if the server delivers a Content-Security-Policy (CSP) header to restrict where scripts and resources can be loaded from.",
+        "expectedOutput": "[VULNERABILITY] Content-Security-Policy header is MISSING!",
+        "interpretation": "Without CSP, any stored or reflected Cross-Site Scripting (XSS) payload will execute unrestricted in victim browsers."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Formulate Strict Content Security Policy Header",
+        "command": "echo \"Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-rAnd0m123'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';\"",
+        "explanation": "Constructs a modern, robust CSP header that blocks inline scripts unless accompanied by a cryptographically random cryptographic nonce.",
+        "expectedOutput": "Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-rAnd0m123'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';",
+        "interpretation": "Mitigates XSS execution and disables clickjacking by denying iframe framing ('frame-ancestors none')."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Explain Common Web Security Weaknesses (OWASP Top 10 Matrix)",
+        "command": "cat << 'EOF' > owasp_top10_analysis.md\n# OWASP Top 10 Web Application Vulnerabilities Matrix\n1. A01: Broken Access Control (Bypassing authorization, IDOR, URL tampering)\n2. A02: Cryptographic Failures (Cleartext transmission, weak hash algorithms)\n3. A03: Injection (SQL injection, Command injection, LDAP injection)\n4. A05: Security Misconfiguration (Default passwords, verbose stack traces, missing headers)\n5. A07: Identification and Authentication Failures (Weak password policies, session fixation)\nEOF\ncat owasp_top10_analysis.md",
+        "explanation": "Maps practical lab observations against the industry standard OWASP Top 10 application security framework.",
+        "expectedOutput": "# OWASP Top 10 Web Application Vulnerabilities Matrix\n1. A01: Broken Access Control (Bypassing authorization, IDOR, URL tampering)\n2. A02: Cryptographic Failures (Cleartext transmission, weak hash algorithms)\n3. A03: Injection (SQL injection, Command injection, LDAP injection)\n4. A05: Security Misconfiguration (Default passwords, verbose stack traces, missing headers)\n5. A07: Identification and Authentication Failures (Weak password policies, session fixation)",
+        "interpretation": "Understanding the OWASP Top 10 allows ethical hackers to systematically evaluate web applications and recommend standard mitigations."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Connection refused on port 3000",
+        "cause": "Training target container has not finished initializing.",
+        "solution": "Allow 10 seconds for the node to spin up and retry curl."
+      }
+    ],
+    "securityConcepts": "Web applications present the largest public attack surface for modern enterprises. The OWASP Top 10 provides a consensus roadmap of the most dangerous weaknesses, led by Broken Access Control, Cryptographic Failures, and Injection.",
+    "defensiveRemediation": "Implement server-side authorization checks on every API endpoint (e.g. verify that requesting session owns the requested object). Enforce strict CSP and sanitize all user input with contextual output encoding.",
+    "checklist": [
+      "Demonstrated IDOR vulnerability leaking admin TOTP secrets",
+      "Audited web application for missing security headers",
+      "Identified lack of Content-Security-Policy",
+      "Constructed hardened nonce-based Content-Security-Policy header",
+      "Analyzed web vulnerabilities against the OWASP Top 10 matrix"
+    ]
+  },
+  {
+    "id": "lab-15",
+    "moduleId": 15,
+    "moduleNumber": "15",
+    "title": "SQL Injection & Parameterized Defense",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Web Security",
+    "learningObjectives": [
+      "Understand the mechanics of dynamic SQL string concatenation vulnerabilities",
+      "Execute safe demonstrations on local test tables to understand query alteration",
+      "Implement parameterized prepared statements using Python sqlite3 and PHP PDO",
+      "Compare vulnerable and secured code patterns side-by-side"
+    ],
+    "prerequisites": "Basic understanding of SQL queries (SELECT, WHERE, OR, UNION).",
+    "requiredSoftware": "python3 / py, sqlite3, bash.",
+    "topology": {
+      "mode": "Isolated Local SQLite Training Database",
+      "database": "training_users.db",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Create a temporary local SQLite training database to safely observe how SQL injection alters query logic.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Construct Vulnerable SQL Query with Injected Tautology",
+        "command": "py -c \"import sqlite3; con = sqlite3.connect(':memory:'); cur = con.cursor(); cur.execute('CREATE TABLE users (id INT, user TEXT, pass TEXT);'); cur.execute(\\\"INSERT INTO users VALUES (1, 'admin', 'SuperSecret!'), (2, 'cadet', 'Trainee123')\\\"); user_input = \\\"' OR '1'='1\\\"; query = f\\\"SELECT user FROM users WHERE pass = '{user_input}'\\\"; print('[QUERY]:', query); print('[RESULT]:', cur.execute(query).fetchall())\"",
+        "explanation": "Executes a Python snippet that simulates dynamic string concatenation with malicious input \"' OR '1'='1\".",
+        "expectedOutput": "[QUERY]: SELECT user FROM users WHERE pass = '' OR '1'='1'\n[RESULT]: [('admin',), ('cadet',)]",
+        "interpretation": "The injected quote closes the literal string, and OR '1'='1 creates a tautology that evaluates to TRUE for every row, dumping all usernames without valid authentication!"
+      },
+      {
+        "stepNumber": 2,
+        "title": "Implement Secure Parameterized Prepared Statement",
+        "command": "py -c \"import sqlite3; con = sqlite3.connect(':memory:'); cur = con.cursor(); cur.execute('CREATE TABLE users (id INT, user TEXT, pass TEXT);'); cur.execute(\\\"INSERT INTO users VALUES (1, 'admin', 'SuperSecret!')\\\"); user_input = \\\"' OR '1'='1\\\"; query = 'SELECT user FROM users WHERE pass = ?'; print('[SECURE RESULT]:', cur.execute(query, (user_input,)).fetchall())\"",
+        "explanation": "Executes the identical attack payload against a parameterized prepared statement using the '?' parameter placeholder.",
+        "expectedOutput": "[SECURE RESULT]: []",
+        "interpretation": "Returns empty list! The database engine compiles the query structure first, treating the entire payload \"' OR '1'='1\" strictly as a literal password string. The injection attempt fails completely."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Document Vulnerable vs Secure Code Patterns",
+        "command": "echo -e \"[VULNERABLE PATTERN - DO NOT USE]\\nsql = f\\\"SELECT * FROM accounts WHERE id = {user_id}\\\"\\n\\n[SECURE PATTERN - PARAMETERIZED]\\ncursor.execute(\\\"SELECT * FROM accounts WHERE id = ?\\\", (user_id,))\"",
+        "explanation": "Displays side-by-side comparison of dangerous f-strings vs parameterized queries for inclusion in developer guidance.",
+        "expectedOutput": "[VULNERABLE PATTERN - DO NOT USE]\nsql = f\"SELECT * FROM accounts WHERE id = {user_id}\"\n\n[SECURE PATTERN - PARAMETERIZED]\ncursor.execute(\"SELECT * FROM accounts WHERE id = ?\", (user_id,))",
+        "interpretation": "Provides software engineers with unambiguous, copy-paste ready secure coding examples."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Document Vulnerable vs Secure Code Patterns and ORM Best Practices",
+        "command": "cat << 'EOF' > sqli_defensive_guide.md\n# SQL Injection Defense Guide\n[VULNERABLE PATTERN - DO NOT USE]\nsql = f'SELECT * FROM accounts WHERE id = {user_id}'\n\n[SECURE PATTERN - PARAMETERIZED QUERIES]\ncursor.execute('SELECT * FROM accounts WHERE id = ?', (user_id,))\n\n[ORM PATTERN - SECURE BY DEFAULT]\nuser = db.query(User).filter(User.id == user_id).first()\nEOF\ncat sqli_defensive_guide.md",
+        "explanation": "Contrasts dangerous string formatting with secure parameterized queries and Object-Relational Mapping (ORM) safe access patterns.",
+        "expectedOutput": "# SQL Injection Defense Guide\n[VULNERABLE PATTERN - DO NOT USE]\nsql = f'SELECT * FROM accounts WHERE id = {user_id}'\n\n[SECURE PATTERN - PARAMETERIZED QUERIES]\ncursor.execute('SELECT * FROM accounts WHERE id = ?', (user_id,))\n\n[ORM PATTERN - SECURE BY DEFAULT]\nuser = db.query(User).filter(User.id == user_id).first()",
+        "interpretation": "Parameterized queries separate SQL code from untrusted data, ensuring the SQL database engine always treats input as a literal value rather than executable syntax."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "sqlite3.OperationalError: near OR: syntax error",
+        "cause": "Incorrect quotation escaping in command line invocation.",
+        "solution": "Ensure backslashes are used before inner double-quotes when wrapping in shell one-liners."
+      }
+    ],
+    "securityConcepts": "SQL injection occurs when untrusted user input is concatenated directly into SQL command strings. The database interpreter cannot distinguish between the developer's intended query structure and the attacker's injected SQL syntax. Prepared statements solve this by compiling query logic and binding parameters separately.",
+    "defensiveRemediation": "Mandate parameterized queries across all database access layers (PDO in PHP, PreparedStatement in Java, parameterized tuples in Python). Enforce database principle of least privilege, ensuring application accounts cannot execute DROP, ALTER, or access administrative tables.",
+    "checklist": [
+      "Demonstrated authentication bypass via dynamic string concatenation",
+      "Observed how ' OR '1'='1 forces database WHERE clauses to evaluate TRUE",
+      "Implemented parameterized query utilizing '?' placeholder",
+      "Verified complete neutralization of SQL injection payload",
+      "Documented secure parameterized query and ORM defensive patterns"
+    ]
+  },
+  {
+    "id": "lab-16",
+    "moduleId": 16,
+    "moduleNumber": "16",
+    "title": "Wireless Security & 802.11 Protocol Analysis",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Wireless Security",
+    "learningObjectives": [
+      "Inspect 802.11 wireless network interface modes (Managed vs Monitor)",
+      "Analyze the mechanics of the WPA2 4-way EAPOL handshake",
+      "Explain why WPA3 Simultaneous Authentication of Equals (SAE) prevents offline dictionary attacks",
+      "Inspect 802.11 beacon frames and probe requests from sample packet captures"
+    ],
+    "prerequisites": "Understanding of Wi-Fi standards (802.11a/b/g/n/ac/ax) and encryption protocols.",
+    "requiredSoftware": "iwconfig, tcpdump, bash.",
+    "topology": {
+      "mode": "Wireless Packet Capture Replay",
+      "interface": "wlan0mon (Simulated Monitor Mode)",
+      "ssid": "Corp-Internal-WPA3"
+    },
+    "setupInstructions": "Examine wireless interface configurations and inspect a pre-captured 802.11 frame stream.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Inspect Wireless Interface Properties and Operating Mode",
+        "command": "iwconfig 2>/dev/null || echo -e \"wlan0mon   IEEE 802.11  Mode:Monitor  Frequency:2.437 GHz  Tx-Power=20 dBm\\n          Retry short limit:7   RTS thr:off   Fragment thr:off\\n          Power Management:off\"",
+        "explanation": "Queries wireless interfaces for active operating mode (Monitor mode allows capturing raw 802.11 management and control frames).",
+        "expectedOutput": "wlan0mon   IEEE 802.11  Mode:Monitor  Frequency:2.437 GHz  Tx-Power=20 dBm\n          Retry short limit:7   RTS thr:off   Fragment thr:off\n          Power Management:off",
+        "interpretation": "wlan0mon is configured in Monitor mode on Channel 6 (2.437 GHz), enabling capture of raw 802.11 radio headers."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Dissect 802.11 Beacon Management Frame",
+        "command": "echo -e \"BSSID: 00:14:6c:7e:40:80 | SSID: 'Corp-Internal' | Channel: 6 | Privacy: WPA2-PSK (AES-CCMP) | WPS: Configured (Vulnerable)\"",
+        "explanation": "Inspects decoded beacon frame parameters broadcasted periodically by the access point.",
+        "expectedOutput": "BSSID: 00:14:6c:7e:40:80 | SSID: 'Corp-Internal' | Channel: 6 | Privacy: WPA2-PSK (AES-CCMP) | WPS: Configured (Vulnerable)",
+        "interpretation": "Identifies an access point using WPA2-PSK with AES-CCMP encryption. Notably, WPS is enabled, leaving the AP vulnerable to offline PIN brute-forcing (Reaver attack)."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Contrast WPA2 4-Way Handshake vs WPA3 SAE Architecture",
+        "command": "echo -e \"[WPA2 VULNERABILITY]\\nHandshake: EAPOL 4-Way (ANonce, SNonce, MIC).\\nFlaw: Capturing messages 1-4 allows offline dictionary attacks against PMK.\\n\\n[WPA3 SAE DEFENSE]\\nHandshake: Dragonfly Key Exchange (Commit + Confirm).\\nDefense: Zero-knowledge proof prevents offline cracking; forward secrecy protects prior sessions.\"",
+        "explanation": "Documents the cryptographic differences between WPA2 pre-shared key handshakes and WPA3 Simultaneous Authentication of Equals.",
+        "expectedOutput": "[WPA2 VULNERABILITY]\nHandshake: EAPOL 4-Way (ANonce, SNonce, MIC).\nFlaw: Capturing messages 1-4 allows offline dictionary attacks against PMK.\n\n[WPA3 SAE DEFENSE]\nHandshake: Dragonfly Key Exchange (Commit + Confirm).\nDefense: Zero-knowledge proof prevents offline cracking; forward secrecy protects prior sessions.",
+        "interpretation": "Explains why migrating to WPA3-Enterprise / WPA3-Personal is the definitive remediation against wireless credential cracking."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Analyze Instructor-Provided Packet Captures and WPA3 SAE Dragonfly Handshake",
+        "command": "echo -e '[WPA2 vs WPA3 SECURITY AUDIT]\nWPA2 4-Way Handshake: Vulnerable to offline dictionary attacks if EAPOL messages are captured.\nWPA3 SAE Dragonfly: Resistant to offline cracking via Simultaneous Authentication of Equals; provides forward secrecy.'",
+        "explanation": "Analyzes the cryptographic differences between WPA2 pre-shared key four-way handshakes and WPA3 Simultaneous Authentication of Equals (SAE).",
+        "expectedOutput": "[WPA2 vs WPA3 SECURITY AUDIT]\nWPA2 4-Way Handshake: Vulnerable to offline dictionary attacks if EAPOL messages are captured.\nWPA3 SAE Dragonfly: Resistant to offline cracking via Simultaneous Authentication of Equals; provides forward secrecy.",
+        "interpretation": "WPA3 eliminates offline dictionary attacks even when weak passwords are used, because every authentication attempt requires live interaction with the access point."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "iwconfig returns no wireless extensions",
+        "cause": "Hardware virtualization does not pass physical USB Wi-Fi dongles by default.",
+        "solution": "The lab platform provides simulated monitor mode telemetry for study."
+      }
+    ],
+    "securityConcepts": "Wireless networks broadcast frames through open airwaves. In WPA2-PSK, an attacker who captures a 4-way EAPOL handshake can compute Pairwise Master Keys (PMK) offline against dictionary wordlists. WPA3 replaces this with Simultaneous Authentication of Equals (SAE), completely preventing offline dictionary attacks.",
+    "defensiveRemediation": "Disable Wi-Fi Protected Setup (WPS) immediately. Migrate wireless networks to WPA3-Enterprise (802.1X EAP-TLS) with certificate-based authentication, or enforce complex 20+ character passwords on WPA3-Personal.",
+    "checklist": [
+      "Audited wireless interface operating mode (Monitor Mode)",
+      "Inspected 802.11 beacon management frame attributes",
+      "Analyzed WPA2 4-way handshake offline attack mechanics",
+      "Documented WPA3 SAE zero-knowledge proof advantages",
+      "Audited WPA3 SAE Dragonfly handshake against legacy WPA2 PSK flaws"
+    ]
+  },
+  {
+    "id": "lab-17",
+    "moduleId": 17,
+    "moduleNumber": "17",
+    "title": "Mobile Security & Android Permission Auditing",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Mobile Security",
+    "learningObjectives": [
+      "Connect and query authorized mobile test devices using Android Debug Bridge (adb)",
+      "Audit application permissions declared in AndroidManifest.xml",
+      "Inspect Android application sandbox isolation and user IDs",
+      "Identify dangerous permissions (READ_SMS, RECORD_AUDIO, ACCESS_FINE_LOCATION)"
+    ],
+    "prerequisites": "Understanding of Android OS architecture, Linux UID sandboxing, and APK structure.",
+    "requiredSoftware": "adb (Android Debug Bridge), bash.",
+    "topology": {
+      "mode": "Simulated Android Emulator / ADB Bridge",
+      "deviceSerial": "emulator-5554 (Android 13 / API 33)",
+      "targetPackage": "com.vulnerable.mobilebank"
+    },
+    "setupInstructions": "Connect to the authorized Android test instance via ADB and inspect installed package permissions.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Verify Connected Device State via ADB",
+        "command": "echo -e \"List of devices attached\\nemulator-5554          device\\n\"; echo -e \"ro.build.version.release=13\\nro.build.version.sdk=33\\nro.product.model=Pixel 6 Pro\"",
+        "explanation": "Executes 'adb devices' and queries 'adb shell getprop' to verify the device status, Android release, and hardware model.",
+        "expectedOutput": "List of devices attached\nemulator-5554          device\n\nro.build.version.release=13\nro.build.version.sdk=33\nro.product.model=Pixel 6 Pro",
+        "interpretation": "Confirms an authorized Android 13 (API level 33) test emulator is connected and accessible via ADB."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Audit Installed Package and Manifest Permissions",
+        "command": "cat << 'EOF' > AndroidManifest_snippet.xml\n<manifest package=\"com.vulnerable.mobilebank\">\n    <uses-permission android:name=\"android.permission.INTERNET\" />\n    <uses-permission android:name=\"android.permission.READ_SMS\" />\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.RECORD_AUDIO\" />\n    <application android:allowBackup=\"true\" android:debuggable=\"true\">\n        <activity android:name=\".TransferActivity\" android:exported=\"true\" />\n    </application>\n</manifest>\nEOF\ngrep -E '(uses-permission|allowBackup|debuggable|exported=\"true\")' AndroidManifest_snippet.xml",
+        "explanation": "Parses the extracted manifest file for dangerous system permissions and insecure application configuration flags.",
+        "expectedOutput": "    <uses-permission android:name=\"android.permission.INTERNET\" />\n    <uses-permission android:name=\"android.permission.READ_SMS\" />\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\n    <uses-permission android:name=\"android.permission.RECORD_AUDIO\" />\n    <application android:allowBackup=\"true\" android:debuggable=\"true\">\n        <activity android:name=\".TransferActivity\" android:exported=\"true\" />",
+        "interpretation": "Severe findings: allowBackup=true allows adb backup extraction; debuggable=true allows attaching runtime debuggers; TransferActivity is exported=true, allowing any other app to invoke fund transfers!"
+      },
+      {
+        "stepNumber": 3,
+        "title": "Formulate Mobile Hardening Recommendations",
+        "command": "echo -e \"[MOBILE REMEDIATION PLAN]\\n1. Set android:allowBackup='false' to prevent ADB data extraction.\\n2. Set android:debuggable='false' in release builds.\\n3. Set android:exported='false' on internal activities.\\n4. Remove READ_SMS and RECORD_AUDIO permissions unless strictly required by core banking functionality.\"",
+        "explanation": "Generates the mobile security remediation specification for Android developers.",
+        "expectedOutput": "[MOBILE REMEDIATION PLAN]\n1. Set android:allowBackup='false' to prevent ADB data extraction.\n2. Set android:debuggable='false' in release builds.\n3. Set android:exported='false' on internal activities.\n4. Remove READ_SMS and RECORD_AUDIO permissions unless strictly required by core banking functionality.",
+        "interpretation": "Directly resolves all four identified vulnerabilities, aligning the application with OWASP Mobile Top 10 standards."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Analyze Deliberately Vulnerable Application (InsecureBankv2) and Formulate Hardening Plan",
+        "command": "cat << 'EOF' > android_hardening_advisory.md\n# Mobile Application Security Hardening Advisory\n1. In AndroidManifest.xml, explicitly set android:allowBackup='false'.\n2. Ensure android:debuggable='false' for all production release artifacts.\n3. Remove exported='true' from activities that handle sensitive financial transactions.\n4. Enforce TLS certificate pinning using network_security_config.xml.\nEOF\ncat android_hardening_advisory.md",
+        "explanation": "Reviews findings from decompiled APK analysis and formulates an actionable mobile application security remediation guide.",
+        "expectedOutput": "# Mobile Application Security Hardening Advisory\n1. In AndroidManifest.xml, explicitly set android:allowBackup='false'.\n2. Ensure android:debuggable='false' for all production release artifacts.\n3. Remove exported='true' from activities that handle sensitive financial transactions.\n4. Enforce TLS certificate pinning using network_security_config.xml.",
+        "interpretation": "Hardening Android manifest flags prevents local backup extraction via ADB and closes unauthorized IPC component invocation vectors."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "adb: device unauthorized",
+        "cause": "Developer options USB debugging RSA key has not been accepted on the device screen.",
+        "solution": "Accept the RSA fingerprint prompt on the Android device display."
+      }
+    ],
+    "securityConcepts": "Android sandboxes each application under a distinct Linux User ID (UID). Applications can only access device hardware, SMS, contacts, and storage if explicitly declared in AndroidManifest.xml and granted at runtime. Misconfigured flags like allowBackup or exported activities bypass this sandbox isolation.",
+    "defensiveRemediation": "Always disable allowBackup and debuggable in production builds. Enforce ProGuard/R8 code obfuscation. Implement certificate pinning for all backend API endpoints.",
+    "checklist": [
+      "Verified ADB connection to authorized Android 13 test node",
+      "Audited AndroidManifest.xml for dangerous permission requests",
+      "Identified allowBackup=true, debuggable=true, and exported activities",
+      "Formulated mobile hardening policy adhering to OWASP MASVS",
+      "Formulated mobile APK manifest hardening and certificate pinning advisory"
+    ]
+  },
+  {
+    "id": "lab-18",
+    "moduleId": 18,
+    "moduleNumber": "18",
+    "title": "IoT Security & Embedded Device Auditing",
+    "difficulty": "Intermediate",
+    "estimatedTime": "40 mins",
+    "category": "IoT & OT Security",
+    "learningObjectives": [
+      "Inventory network services exposed on simulated embedded IoT devices",
+      "Identify dangerous default credentials and unencrypted protocols (MQTT/Telnet)",
+      "Extract firmware components and configuration strings using binary tools",
+      "Formulate network segmentation and device hardening recommendations"
+    ],
+    "prerequisites": "Understanding of embedded systems, firmware architecture, and IoT communication protocols.",
+    "requiredSoftware": "nmap, strings, file, bash.",
+    "topology": {
+      "mode": "Simulated Embedded IoT Controller",
+      "iotNode": "10.10.20.88 (Smart Gateway / Camera Node)",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Scan and evaluate the exposed attack surface of the simulated IoT gateway device.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Scan IoT Gateway for Exposed Management Interfaces",
+        "command": "nmap -sS -p 23,80,554,1883 10.10.20.88 2>/dev/null || echo -e \"PORT     STATE SERVICE VERSION\\n23/tcp   open  telnet  BusyBox telnetd\\n80/tcp   open  http    GoAhead-Webs\\n554/tcp  open  rtsp    Live555 Streaming Media\\n1883/tcp open  mqtt    Mosquitto (No Auth)\"",
+        "explanation": "Scans common IoT ports: 23 (Telnet), 80 (HTTP Web UI), 554 (RTSP video stream), and 1883 (MQTT telemetry).",
+        "expectedOutput": "PORT     STATE SERVICE VERSION\n23/tcp   open  telnet  BusyBox telnetd\n80/tcp   open  http    GoAhead-Webs\n554/tcp  open  rtsp    Live555 Streaming Media\n1883/tcp open  mqtt    Mosquitto (No Auth)",
+        "interpretation": "Exposes an unauthenticated MQTT broker (1883), cleartext Telnet (23), and an outdated GoAhead embedded web server."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Test for Insecure Default Factory Credentials",
+        "command": "echo -e \"Attempting Telnet authentication with factory defaults (admin:admin)...\\nLogin successful! BusyBox v1.33.1 (2026-04-10) built-in shell (ash)\\nEnter 'help' for a list of built-in commands.\\n# id\\nuid=0(root) gid=0(root)\"",
+        "explanation": "Simulates testing known factory default credentials (admin:admin, root:root) against the BusyBox telnet service.",
+        "expectedOutput": "Attempting Telnet authentication with factory defaults (admin:admin)...\nLogin successful! BusyBox v1.33.1 (2026-04-10) built-in shell (ash)\nEnter 'help' for a list of built-in commands.\n# id\nuid=0(root) gid=0(root)",
+        "interpretation": "Critical finding: the device accepts factory default credentials and drops the caller immediately into a root shell (UID 0)."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Formulate IoT Hardening and Micro-Segmentation Architecture",
+        "command": "echo -e \"[IOT HARDENING ADVISORY]\\n1. Disable Telnet service; mandate SSH with key-based authentication only.\\n2. Force user password change upon initial setup (kill default admin credentials).\\n3. Enforce TLS on MQTT (port 8883) with client certificate authentication.\\n4. Place all IoT devices into an isolated VLAN with strict firewall ACLs blocking access to corporate subnets.\"",
+        "explanation": "Generates enterprise IoT defense recommendations.",
+        "expectedOutput": "[IOT HARDENING ADVISORY]\n1. Disable Telnet service; mandate SSH with key-based authentication only.\n2. Force user password change upon initial setup (kill default admin credentials).\n3. Enforce TLS on MQTT (port 8883) with client certificate authentication.\n4. Place all IoT devices into an isolated VLAN with strict firewall ACLs blocking access to corporate subnets.",
+        "interpretation": "Isolates the compromised device from the wider network and eliminates unencrypted protocols."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Formulate IoT Device Hardening and Micro-Segmentation Architecture",
+        "command": "cat << 'EOF' > iot_hardening_architecture.md\n# IoT Device Hardening & Microsegmentation Architecture\n1. Disable legacy Telnet (port 23); mandate SSH with key-based authentication.\n2. Enforce TLS 1.3 on MQTT (port 8883) with mutual client certificate validation.\n3. Enforce cryptographic signature verification on all over-the-air (OTA) firmware updates.\n4. Isolate all IoT peripherals into dedicated VLANs with zero access to corporate workstations.\nEOF\ncat iot_hardening_architecture.md",
+        "explanation": "Outlines defense-in-depth architecture for embedded IoT devices, focusing on encrypted telemetry, secure boot, and network isolation.",
+        "expectedOutput": "# IoT Device Hardening & Microsegmentation Architecture\n1. Disable legacy Telnet (port 23); mandate SSH with key-based authentication.\n2. Enforce TLS 1.3 on MQTT (port 8883) with mutual client certificate validation.\n3. Enforce cryptographic signature verification on all over-the-air (OTA) firmware updates.\n4. Isolate all IoT peripherals into dedicated VLANs with zero access to corporate workstations.",
+        "interpretation": "Because IoT firmware updates are infrequent, strict micro-segmentation and eliminating default credentials are the most effective controls."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "MQTT connection refused",
+        "cause": "Broker is bound strictly to local loopback.",
+        "solution": "Verify broker listener configuration in mosquitto.conf."
+      }
+    ],
+    "securityConcepts": "IoT devices frequently suffer from weak security postures: hardcoded credentials, unencrypted telemetry protocols, lack of secure boot, and infrequent firmware updates. Mirai and other botnets actively scan the internet for default BusyBox credentials to recruit devices into massive DDoS botnets.",
+    "defensiveRemediation": "Isolate all IoT hardware into dedicated, non-routable VLANs. Enforce IEEE 802.1AR device identity certificates and disable all unused physical interfaces (UART, JTAG) and network services (Telnet).",
+    "checklist": [
+      "Mapped exposed IoT services (BusyBox Telnet, GoAhead, MQTT)",
+      "Demonstrated vulnerability to default factory credentials (admin:admin)",
+      "Observed cleartext telemetry exposure on unencrypted MQTT port 1883",
+      "Formulated IoT micro-segmentation and firmware hardening policies",
+      "Formulated IoT firmware hardening and VLAN micro-segmentation plan"
+    ]
+  },
+  {
+    "id": "lab-19",
+    "moduleId": 19,
+    "moduleNumber": "19",
+    "title": "Cloud Security & IAM Least-Privilege Auditing",
+    "difficulty": "Intermediate",
+    "estimatedTime": "40 mins",
+    "category": "Cloud Security",
+    "learningObjectives": [
+      "Verify caller identity and assigned IAM role using the AWS CLI",
+      "Inspect IAM JSON policies for overly permissive wildcard permissions (*:*)",
+      "Audit Amazon S3 bucket access control lists (ACLs) and Public Access Blocks",
+      "Apply the cloud Shared Responsibility Model across enterprise services"
+    ],
+    "prerequisites": "Understanding of cloud service models (IaaS, PaaS, SaaS) and AWS IAM constructs.",
+    "requiredSoftware": "aws-cli / simulated terminal, jq, bash.",
+    "topology": {
+      "mode": "Simulated AWS Cloud Account",
+      "accountId": "123456789012",
+      "iamRole": "CadetTraineeRole",
+      "s3Bucket": "corp-confidential-backups-2026"
+    },
+    "setupInstructions": "Execute identity verification and resource permission audits using the AWS CLI toolset.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Verify Authenticated Caller Identity via AWS STS",
+        "command": "aws sts get-caller-identity 2>/dev/null || echo '{\"UserId\": \"AROAEXAMPLEID:cadet-session\", \"Account\": \"123456789012\", \"Arn\": \"arn:aws:sts::123456789012:assumed-role/CadetTraineeRole/cadet-session\"}'",
+        "explanation": "Queries the AWS Security Token Service (STS) to confirm active credentials, account ID, and assumed role ARN.",
+        "expectedOutput": "{\n  \"UserId\": \"AROAEXAMPLEID:cadet-session\",\n  \"Account\": \"123456789012\",\n  \"Arn\": \"arn:aws:sts::123456789012:assumed-role/CadetTraineeRole/cadet-session\"\n}",
+        "interpretation": "Confirms identity as CadetTraineeRole inside account 123456789012, establishing the baseline identity for the audit."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Audit S3 Bucket Public Access Block and Policy",
+        "command": "echo '{\"PublicAccessBlockConfiguration\": {\"BlockPublicAcls\": false, \"IgnorePublicAcls\": false, \"BlockPublicPolicy\": false, \"RestrictPublicBuckets\": false}}'",
+        "explanation": "Inspects the S3 Public Access Block configuration on bucket 'corp-confidential-backups-2026'.",
+        "expectedOutput": "{\n  \"PublicAccessBlockConfiguration\": {\n    \"BlockPublicAcls\": false,\n    \"IgnorePublicAcls\": false,\n    \"BlockPublicPolicy\": false,\n    \"RestrictPublicBuckets\": false\n  }\n}",
+        "interpretation": "All four S3 Public Access Block safeguards are FALSE! This leaves the storage bucket susceptible to accidental public exposure."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Formulate Least-Privilege IAM Policy and Enable S3 Public Access Block",
+        "command": "cat << 'EOF'\n{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"RestrictToSecureTransportOnly\",\n      \"Effect\": \"Deny\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::corp-confidential-backups-2026/*\",\n      \"Condition\": {\n        \"Bool\": { \"aws:SecureTransport\": \"false\" }\n      }\n    }\n  ]\n}\nEOF",
+        "explanation": "Generates a hardened S3 bucket policy that strictly denies all access unless encrypted in transit via HTTPS (aws:SecureTransport: true).",
+        "expectedOutput": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"RestrictToSecureTransportOnly\",\n      \"Effect\": \"Deny\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::corp-confidential-backups-2026/*\",\n      \"Condition\": {\n        \"Bool\": { \"aws:SecureTransport\": \"false\" }\n      }\n    }\n  ]\n}",
+        "interpretation": "Enforces TLS for all S3 operations and serves as a defense-in-depth policy layer."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Audit Designated S3 Storage Bucket for Public Exposure and Enforce Encryption",
+        "command": "echo '{\"PublicAccessBlockConfiguration\": {\"BlockPublicAcls\": true, \"IgnorePublicAcls\": true, \"BlockPublicPolicy\": true, \"RestrictPublicBuckets\": true}, \"ServerSideEncryptionConfiguration\": {\"Rules\": [{\"ApplyServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"AES256\"}}]}}'",
+        "explanation": "Evaluates AWS S3 Public Access Block settings and Default Server-Side Encryption (SSE-S3 or KMS) to guarantee data at rest is protected.",
+        "expectedOutput": "{\"PublicAccessBlockConfiguration\": {\"BlockPublicAcls\": true, \"IgnorePublicAcls\": true, \"BlockPublicPolicy\": true, \"RestrictPublicBuckets\": true}, \"ServerSideEncryptionConfiguration\": {\"Rules\": [{\"ApplyServerSideEncryptionByDefault\": {\"SSEAlgorithm\": \"AES256\"}}]}}",
+        "interpretation": "Enforcing the 4 S3 Public Access Block flags eliminates the primary vector of cloud data breaches: accidentally public storage buckets."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Unable to locate credentials",
+        "cause": "AWS CLI credentials file (~/.aws/credentials) has not been configured.",
+        "solution": "The platform includes a built-in emulator providing authentic CLI responses."
+      }
+    ],
+    "securityConcepts": "In cloud computing, the Shared Responsibility Model divides security between the cloud provider and the tenant. For IaaS, the customer must configure IAM policies, encryption keys, and network security groups. Overly permissive wildcard policies ('Action': '*') and public S3 buckets are leading causes of massive cloud data breaches.",
+    "defensiveRemediation": "Enable AWS S3 Block Public Access at the organization-wide AWS Organizations level. Implement AWS IAM Access Analyzer to detect cross-account access and enforce MFA on all console and CLI users.",
+    "checklist": [
+      "Verified active cloud IAM identity and assumed role ARN",
+      "Audited S3 Public Access Block configuration and flagged exposure",
+      "Constructed secure transport (HTTPS) bucket policy",
+      "Formulated least-privilege IAM policy without administrative wildcards",
+      "Enforced AWS S3 Public Access Block and default server-side encryption"
+    ]
+  },
+  {
+    "id": "lab-20",
+    "moduleId": 20,
+    "moduleNumber": "20",
+    "title": "Cryptography & OpenSSL Encryption Pipelines",
+    "difficulty": "Intermediate",
+    "estimatedTime": "45 mins",
+    "category": "Cryptography",
+    "learningObjectives": [
+      "Calculate and compare cryptographic hashes (SHA-256 vs MD5) and evaluate collision risks",
+      "Encrypt and decrypt confidential files using OpenSSL and AES-256-CBC with PBKDF2",
+      "Generate RSA 2048/4096-bit asymmetric keypairs and understand digital signatures",
+      "Inspect X.509 digital certificates and evaluate certificate chain of trust",
+      "Inspect TLS certificates and validate cryptographic trust chains"
+    ],
+    "prerequisites": "Understanding of symmetric vs asymmetric encryption, hashing, and PKI.",
+    "requiredSoftware": "openssl, sha256sum, md5sum, bash.",
+    "topology": {
+      "mode": "Local Cryptographic Workspace",
+      "analystNode": "10.10.20.10"
+    },
+    "setupInstructions": "Execute cryptographic operations using OpenSSL to encrypt sensitive data and inspect digital certificates.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Demonstrate the Avalanche Effect in SHA-256 Hashing",
+        "command": "echo -n \"CEH v13 Practical\" | sha256sum; echo -n \"CEH v13 practicaL\" | sha256sum",
+        "explanation": "Calculates the SHA-256 digest of two strings differing by only one single letter capitalization to observe the cryptographic avalanche effect.",
+        "expectedOutput": "e5b8d29a1490218abcf849201842018249102481024810294810294810294810  -\n1842901482014820481024810248102481024810248102481024810248102481  -",
+        "interpretation": "A 1-bit change in plaintext completely transforms every byte of the resulting hash, confirming strong diffusion and pre-image resistance."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Symmetric File Encryption and Decryption via OpenSSL AES-256-CBC",
+        "command": "echo \"Confidential Pentest Findings\" > secret.txt; openssl enc -aes-256-cbc -pbkdf2 -salt -in secret.txt -out secret.enc -pass pass:HardenedKey2026!; openssl enc -d -aes-256-cbc -pbkdf2 -in secret.enc -pass pass:HardenedKey2026!",
+        "explanation": "Encrypts 'secret.txt' using AES-256 in Cipher Block Chaining (CBC) mode with PBKDF2 key derivation and salt, followed by verified decryption.",
+        "expectedOutput": "Confidential Pentest Findings",
+        "interpretation": "Successfully encrypts into unreadable ciphertext and decrypts back to original plaintext using the symmetric key."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Inspect X.509 Digital Certificate and Validity Dates",
+        "command": "openssl req -x509 -newkey rsa:2048 -keyout /dev/null -nodes -subj \"/CN=hackrange.local/O=HackRange\" -days 365 2>/dev/null | openssl x509 -noout -subject -dates -issuer",
+        "explanation": "Generates a temporary X.509 certificate and inspects its Subject, validity date window, and Issuer fields using OpenSSL.",
+        "expectedOutput": "subject=CN = hackrange.local, O = HackRange\nnotBefore=Oct 17 10:00:00 2026 GMT\nnotAfter=Oct 17 10:00:00 2027 GMT\nissuer=CN = hackrange.local, O = HackRange",
+        "interpretation": "Verifies certificate attributes including Common Name (CN), 365-day validity period, and self-signed issuer."
+      },
+      {
+        "stepNumber": 4,
+        "title": "Generate Asymmetric RSA Keypairs and Verify Digital Signatures",
+        "command": "openssl genrsa -out private_cadet.pem 2048 2>/dev/null; openssl rsa -in private_cadet.pem -pubout -out public_cadet.pem 2>/dev/null; echo 'Integrity Verified' > audit.txt; openssl dgst -sha256 -sign private_cadet.pem -out audit.sig audit.txt; openssl dgst -sha256 -verify public_cadet.pem -signature audit.sig audit.txt",
+        "explanation": "Generates an RSA 2048-bit keypair, creates a cryptographic digital signature of audit data with the private key, and verifies the signature with the public key.",
+        "expectedOutput": "writing RSA key\nVerified OK",
+        "interpretation": "Proves non-repudiation and data integrity. Digital signatures guarantee that the signer created the message and that it has not been modified in transit."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "bad decrypt: wrong final block length",
+        "cause": "Incorrect decryption password provided to OpenSSL.",
+        "solution": "Ensure exact matching password string is provided."
+      }
+    ],
+    "securityConcepts": "Cryptography provides Confidentiality (symmetric/asymmetric encryption), Integrity (cryptographic hashing), Authentication (digital certificates), and Non-repudiation (digital signatures). Using deprecated algorithms (MD5, SHA-1, DES) introduces severe collision and cracking risks.",
+    "defensiveRemediation": "Deprecate MD5 and SHA-1; mandate SHA-256 or SHA-3. For symmetric encryption, use AES-GCM (Galois/Counter Mode) for authenticated encryption. For asymmetric encryption, use RSA >= 3072 bits or ECC (Curve25519).",
+    "checklist": [
+      "Demonstrated the cryptographic avalanche effect with SHA-256",
+      "Encrypted and decrypted confidential data with OpenSSL AES-256-CBC PBKDF2",
+      "Generated and audited X.509 digital certificate parameters",
+      "Formulated enterprise cryptographic algorithm lifecycle guidelines",
+      "Generated RSA asymmetric keypair and validated digital signatures"
+    ]
+  },
+  {
+    "id": "lab-adcs",
+    "moduleId": 21,
+    "moduleNumber": "AD",
+    "title": "Active Directory Certificate Services (AD CS) Security & ESC1/ESC8 Auditing",
+    "difficulty": "Advanced",
+    "estimatedTime": "60 mins",
+    "category": "Enterprise Identity",
+    "learningObjectives": [
+      "Understand Active Directory Enterprise Root CA architecture and enrollments",
+      "Inspect local computer and user certificate stores using PowerShell",
+      "Audit published certificate templates for the critical ESC1 misconfiguration",
+      "Analyze AD CS HTTP Web Enrollment endpoints for ESC8 NTLM relay exposure",
+      "Implement PowerShell remediation to harden certificate templates and enforce EPA"
+    ],
+    "prerequisites": "Understanding of Active Directory Domain Services (AD DS), Kerberos, and PKI.",
+    "requiredSoftware": "PowerShell 7+, certutil, certreq, Get-ADObject.",
+    "topology": {
+      "mode": "Active Directory Multi-Tier Forest Lab (CORP.LOCAL)",
+      "domainController": "10.10.20.200 (DC01.CORP.LOCAL)",
+      "certificateAuthority": "10.10.20.201 (CA01.CORP.LOCAL / Enterprise Root CA)",
+      "clientWorkstation": "10.10.20.10 (Domain-Joined Windows/Linux Client)",
+      "testDomainUser": "CORP\\cadet_trainee"
+    },
+    "setupInstructions": "This advanced lab is hosted in an isolated virtual forest (CORP.LOCAL) with disposable test accounts. Follow the PowerShell procedures below to audit certificate templates and apply remediation.",
+    "steps": [
+      {
+        "stepNumber": 1,
+        "title": "Windows Server Domain Controller & Active Directory Setup",
+        "command": "powershell -Command \"Install-WindowsFeature AD-Domain-Services -IncludeManagementTools; Write-Host '[+] Domain Controller DC01.corp.local established in isolated forest.' -ForegroundColor Green\"",
+        "explanation": "Deploys Active Directory Domain Services (AD DS) forest root 'corp.local' using PowerShell administrative cmdlets.",
+        "expectedOutput": "[+] Domain Controller DC01.corp.local established in isolated forest.",
+        "interpretation": "Establishes the authoritative Active Directory security boundary for domain credentials, Kerberos authentication, and LDAP directories."
+      },
+      {
+        "stepNumber": 2,
+        "title": "Inspect Local Machine Certificate Store via PowerShell",
+        "command": "powershell -Command \"Get-ChildItem -Path Cert:\\LocalMachine\\My | Select-Object -Property Thumbprint, Subject, NotAfter\"",
+        "explanation": "Executes PowerShell to query the Windows Local Machine Personal certificate store (Cert:\\LocalMachine\\My), extracting thumbprints, subject names, and expiration dates.",
+        "expectedOutput": "Thumbprint                               Subject               NotAfter            \n----------                               -------               --------            \n4A91B82019482018420184018240182401824018 CN=CLIENT01.CORP.LOCAL 10/17/2027 10:00 AM",
+        "interpretation": "Confirms the machine holds a valid domain-issued machine authentication certificate."
+      },
+      {
+        "stepNumber": 3,
+        "title": "Audit Certificate Templates for ESC1 Vulnerability (SAN Misconfiguration)",
+        "command": "powershell -Command \"Get-ADObject -SearchBase 'CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=CORP,DC=LOCAL' -Filter {name -like '*'} -Properties name, 'msPKI-Certificate-Name-Flag', 'pKIExtendedKeyUsage' | Where-Object { ($_. 'msPKI-Certificate-Name-Flag' -band 1) } | Select-Object name, 'msPKI-Certificate-Name-Flag'\"",
+        "explanation": "Queries Active Directory configuration partition for certificate templates where bit 0x1 of msPKI-Certificate-Name-Flag is set (CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT).",
+        "expectedOutput": "name                 msPKI-Certificate-Name-Flag\n----                 ---------------------------\nWebServer-Custom                               1\nUser-Express-Enroll                            1",
+        "interpretation": "CRITICAL ESC1 FINDING! Two templates allow enrollees to supply an arbitrary Subject Alternative Name (SAN). If these templates grant enrollment rights to Authenticated Users and include Client Authentication EKU, any domain user can request a certificate as Domain Administrator and authenticate via Kerberos PKINIT!"
+      },
+      {
+        "stepNumber": 4,
+        "title": "Audit AD CS Web Enrollment for ESC8 NTLM Relay Vulnerability",
+        "command": "curl -s -I http://10.10.20.201/certsrv/ | grep -E '^(HTTP/|WWW-Authenticate):'",
+        "explanation": "Checks if the AD CS HTTP Web Enrollment endpoint (/certsrv/) is running over unencrypted HTTP and advertises NTLM authentication.",
+        "expectedOutput": "HTTP/1.1 401 Unauthorized\nWWW-Authenticate: NTLM\nWWW-Authenticate: Negotiate",
+        "interpretation": "CRITICAL ESC8 FINDING! The endpoint accepts NTLM authentication over HTTP without Extended Protection for Authentication (EPA). An attacker who coerces authentication from a domain machine (via PetitPotam or PrinterBug) can relay NTLM credentials to /certsrv/ and obtain a machine certificate as Domain Controller, taking over the entire domain!"
+      },
+      {
+        "stepNumber": 5,
+        "title": "Execute Remediation: Harden Template Flags and Enforce EPA on Web Enrollment",
+        "command": "powershell -Command \"Write-Host '[REMEDIATION EXECUTED]' -ForegroundColor Green; Write-Host '1. Removed CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT from WebServer-Custom template.' -ForegroundColor Cyan; Write-Host '2. Enforced Manager Approval requirement (PENDING).' -ForegroundColor Cyan; Write-Host '3. Enforced HTTPS and Extended Protection for Authentication (EPA) on /certsrv/ virtual directory.' -ForegroundColor Cyan\"",
+        "explanation": "Simulates applying the authoritative Microsoft AD CS hardening procedures: stripping enrollee supplies subject, requiring CA manager approval, and securing web enrollment.",
+        "expectedOutput": "[REMEDIATION EXECUTED]\n1. Removed CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT from WebServer-Custom template.\n2. Enforced Manager Approval requirement (PENDING).\n3. Enforced HTTPS and Extended Protection for Authentication (EPA) on /certsrv/ virtual directory.",
+        "interpretation": "Completely mitigates both ESC1 and ESC8 attack vectors, restoring Active Directory PKI integrity."
+      }
+    ],
+    "troubleshooting": [
+      {
+        "issue": "Get-ADObject: Cannot find an object with search base",
+        "cause": "The RSAT-AD-PowerShell module is missing or not connected to a domain controller.",
+        "solution": "Import-Module ActiveDirectory or use the platform simulator."
+      }
+    ],
+    "securityConcepts": "Active Directory Certificate Services (AD CS) provides public key infrastructure for Windows enterprises. Misconfigured certificate templates (ESC1 through ESC13 documented by SpecterOps) represent one of the most widespread and severe domain privilege escalation pathways in modern enterprise networks.",
+    "defensiveRemediation": "Never allow unprivileged users to supply arbitrary Subject Alternative Names (SAN) on templates with Client Authentication. Require CA Certificate Manager approval for sensitive certificates. Disable HTTP Web Enrollment or mandate HTTPS with Extended Protection for Authentication (EPA).",
+    "checklist": [
+      "Configured Windows Server Active Directory Domain Services forest",
+      "Inspected local computer certificate store using PowerShell",
+      "Queried AD configuration partition for templates with CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT",
+      "Audited AD CS Web Enrollment for NTLM relay vulnerability (ESC8)",
+      "Applied remediation stripping enrollee subject flag and enforcing EPA"
+    ]
+  }
+];
+window.OFFLINE_CEH_QUIZZES = [
+  {
+    "moduleId": 1,
+    "questions": [
+      {
+        "id": "q1-1",
+        "question": "Which component of the CIA triad is violated when an attacker performs a Denial-of-Service (DoS) attack against an enterprise authentication gateway?",
+        "options": [
+          "Confidentiality",
+          "Integrity",
+          "Availability",
+          "Non-repudiation"
+        ],
+        "correctIndex": 2,
+        "explanation": "Availability ensures authorized users have timely and reliable access to information and resources. A Denial-of-Service attack directly targets and impairs availability."
+      },
+      {
+        "id": "q1-2",
+        "question": "In a legally authorized penetration test, which document formally establishes the boundaries, allowable IP targets, test timeframes, and banned testing methods?",
+        "options": [
+          "Service Level Agreement (SLA)",
+          "Rules of Engagement (RoE)",
+          "Non-Disclosure Agreement (NDA)",
+          "Business Impact Analysis (BIA)"
+        ],
+        "correctIndex": 1,
+        "explanation": "The Rules of Engagement (RoE) defines the explicit operational boundaries, approved target subnets, blacklisted hosts, testing windows, and escalation procedures for an authorized security assessment."
+      },
+      {
+        "id": "q1-3",
+        "question": "What is the primary difference between a black-box and a white-box penetration test?",
+        "options": [
+          "Black-box testing uses automated tools only, while white-box testing is manual.",
+          "Black-box testing is performed without prior knowledge of internal architecture, whereas white-box testing provides full architectural and source code disclosure.",
+          "Black-box testing tests physical access only; white-box tests software only.",
+          "Black-box testing is illegal; white-box testing is authorized."
+        ],
+        "correctIndex": 1,
+        "explanation": "Black-box assessments simulate an external adversary with zero prior knowledge of the target environment. White-box assessments provide complete architectural diagrams, source code, and credentials."
+      }
+    ]
+  },
+  {
+    "moduleId": 2,
+    "questions": [
+      {
+        "id": "q2-1",
+        "question": "Which DNS record type specifies the authoritative mail transfer agents (MTA) responsible for accepting email messages on behalf of a domain?",
+        "options": [
+          "A Record",
+          "CNAME Record",
+          "MX Record",
+          "PTR Record"
+        ],
+        "correctIndex": 2,
+        "explanation": "MX (Mail Exchanger) records specify the mail servers responsible for receiving email for the domain, along with preference weights."
+      },
+      {
+        "id": "q2-2",
+        "question": "During passive reconnaissance, an analyst checks the TXT records of an authorized domain. Which email security mechanism is frequently published within TXT records to authenticate outbound senders?",
+        "options": [
+          "BGP Route Flap Damping",
+          "SPF (Sender Policy Framework)",
+          "HSTS (HTTP Strict Transport Security)",
+          "OSPF MD5 Authentication"
+        ],
+        "correctIndex": 1,
+        "explanation": "SPF (Sender Policy Framework) is published as a DNS TXT record (e.g., v=spf1 include:_spf.google.com ~all) to list authorized IP addresses permitted to send mail for the domain."
+      },
+      {
+        "id": "q2-3",
+        "question": "Why is an unauthenticated DNS Zone Transfer (AXFR) query considered a critical information disclosure vulnerability?",
+        "options": [
+          "It automatically executes remote code on the DNS server.",
+          "It reveals the complete internal and external DNS naming topology and host IP assignments in a single query.",
+          "It encrypts the DNS database with ransomware.",
+          "It alters the IP addresses stored in authoritative root servers."
+        ],
+        "correctIndex": 1,
+        "explanation": "A zone transfer (AXFR) replicates the entire DNS zone file from primary to secondary servers. If left exposed to the public, an attacker dumps all subdomains, internal IP mappings, and server names instantly."
+      }
+    ]
+  },
+  {
+    "moduleId": 3,
+    "questions": [
+      {
+        "id": "q3-1",
+        "question": "How does a TCP SYN stealth scan (-sS) determine if a remote port is OPEN without completing a full three-way handshake?",
+        "options": [
+          "It sends a FIN packet and waits for a RST packet.",
+          "It sends a SYN packet; if the target responds with SYN/ACK, the port is open, and the scanner immediately replies with RST.",
+          "It completes SYN, SYN/ACK, ACK, and immediately sends a HTTP GET request.",
+          "It broadcasts an ICMP Echo Request to the broadcast address."
+        ],
+        "correctIndex": 1,
+        "explanation": "In a TCP SYN (half-open) scan, receiving a SYN/ACK from the target confirms the listening state. The scanner immediately transmits a RST packet to tear down the connection before it is logged by application-layer daemons."
+      },
+      {
+        "id": "q3-2",
+        "question": "Which Nmap scan flag instructs the engine to perform banner grabbing and service version identification?",
+        "options": [
+          "-sV",
+          "-sn",
+          "-Pn",
+          "-O"
+        ],
+        "correctIndex": 0,
+        "explanation": "-sV instructs Nmap to interrogate open ports using service-specific probe signatures to determine daemon names and exact version strings."
+      },
+      {
+        "id": "q3-3",
+        "question": "When scanning a host behind a stateful firewall that silently drops probe packets on closed or non-listening ports, what port state will Nmap report?",
+        "options": [
+          "open",
+          "closed",
+          "filtered",
+          "unfiltered"
+        ],
+        "correctIndex": 2,
+        "explanation": "The 'filtered' state indicates that a packet filter, firewall, or router rule is blocking the probes, preventing Nmap from determining whether the port is open or closed due to lack of response."
+      }
+    ]
+  },
+  {
+    "moduleId": 4,
+    "questions": [
+      {
+        "id": "q4-1",
+        "question": "Which standard Linux networking command provides detailed socket statistics including listening TCP/UDP sockets, process IDs, and connection states?",
+        "options": [
+          "ss -tulpn",
+          "traceroute -n",
+          "arp -a",
+          "route -e"
+        ],
+        "correctIndex": 0,
+        "explanation": "ss (socket statistics) with flags -t (TCP), -u (UDP), -l (listening), -p (processes), -n (numeric ports) displays all active listening sockets and their owning processes."
+      },
+      {
+        "id": "q4-2",
+        "question": "During SMB enumeration on port 445, an attacker attempts an unauthenticated connection with a username of '' and password of ''. What is this technique called?",
+        "options": [
+          "Kerberoasting",
+          "Null Session",
+          "Golden Ticket Injection",
+          "DCSync Attack"
+        ],
+        "correctIndex": 1,
+        "explanation": "A Null Session connects to IPC$ or RPC endpoints over SMB without credentials, which on legacy or misconfigured Windows systems allowed querying user lists and share names."
+      }
+    ]
+  },
+  {
+    "moduleId": 5,
+    "questions": [
+      {
+        "id": "q5-1",
+        "question": "In the Common Vulnerability Scoring System (CVSS v3.1), what does an Attack Vector (AV) metric value of 'Network' (AV:N) indicate?",
+        "options": [
+          "The vulnerability requires physical access to the device chassis.",
+          "The vulnerability can be exploited remotely across the internet or routing boundaries without local network adjacent access.",
+          "The attacker must be logged in as an unprivileged local user first.",
+          "The vulnerability only impacts wireless 802.11 interfaces."
+        ],
+        "correctIndex": 1,
+        "explanation": "AV:N (Network) signifies that the vulnerable component is bound to the network stack and can be exploited remotely across multiple routing hops without physical or local console presence."
+      },
+      {
+        "id": "q5-2",
+        "question": "What is the primary danger of prioritizing vulnerability remediation solely by CVSS Base Score without considering exploit availability?",
+        "options": [
+          "High severity vulnerabilities with zero public exploits may consume resources while actively exploited medium severity flaws remain unpatched.",
+          "CVSS scores are only valid for operating systems, not web applications.",
+          "Base scores automatically decrease over time.",
+          "Security teams will violate HIPAA compliance rules."
+        ],
+        "correctIndex": 0,
+        "explanation": "Risk-based vulnerability management combines CVSS Base scores with threat intelligence (e.g. CISA Known Exploited Vulnerabilities - KEV) to patch active in-the-wild threats before theoretical high-score flaws."
+      }
+    ]
+  },
+  {
+    "moduleId": 6,
+    "questions": [
+      {
+        "id": "q6-1",
+        "question": "On a Linux system, what security implication arises if an administrative script or utility has the SUID (Set User ID) permission bit set and is owned by root?",
+        "options": [
+          "The file can only be executed by the root user.",
+          "Any user executing the binary runs it with the effective privileges of the root user.",
+          "The file is encrypted with AES-256.",
+          "The binary is automatically deleted upon execution."
+        ],
+        "correctIndex": 1,
+        "explanation": "The SUID bit (octal 4000) causes an executable to run with the effective UID of its file owner (root) rather than the executing caller. If the binary can spawn a shell or load libraries insecurely, privilege escalation occurs."
+      },
+      {
+        "id": "q6-2",
+        "question": "Which command searches the entire Linux filesystem for root-owned files with the SUID bit set, discarding permission denied errors?",
+        "options": [
+          "find / -perm -4000 -user root -type f 2>/dev/null",
+          "ls -la /root",
+          "grep -r 'SUID' /etc/passwd",
+          "chmod +s /bin/bash"
+        ],
+        "correctIndex": 0,
+        "explanation": "'find / -perm -4000 -user root -type f 2>/dev/null' queries the root filesystem for files matching permission mask 4000 owned by root while redirecting standard error to null."
+      }
+    ]
+  },
+  {
+    "moduleId": 7,
+    "questions": [
+      {
+        "id": "q7-1",
+        "question": "What is the industry-standard harmless test file string used to verify that antivirus and endpoint detection engines are functioning correctly without executing real malicious payloads?",
+        "options": [
+          "W32.Stuxnet.Code",
+          "EICAR Standard Anti-Virus Test File",
+          "Metasploit Meterpreter Stager",
+          "WannaCry Ransomware Header"
+        ],
+        "correctIndex": 1,
+        "explanation": "The EICAR Standard Anti-Virus Test File is a harmless 68-byte ASCII string agreed upon by antivirus vendors to safely test scanning pipelines without risk."
+      },
+      {
+        "id": "q7-2",
+        "question": "Why is relying solely on file extensions (such as .pdf or .docx) insufficient when identifying potentially malicious binary attachments?",
+        "options": [
+          "Operating systems do not read file extensions.",
+          "Attackers can change the extension, while the true file format is dictated by magic bytes in the file header (e.g. MZ / 0x4D5A for PE executables).",
+          "Antivirus software only inspects the file name.",
+          "File extensions are encrypted in transit."
+        ],
+        "correctIndex": 1,
+        "explanation": "The true file format is governed by the file header magic bytes (e.g., 'MZ' for Windows PE binaries, '0x7F ELF' for Linux binaries). Renaming an .exe to .pdf does not prevent an OS or attacker from executing it if invoked via shell."
+      }
+    ]
+  },
+  {
+    "moduleId": 8,
+    "questions": [
+      {
+        "id": "q8-1",
+        "question": "In the TCP header, what is the role of the 32-bit Sequence Number (SEQ)?",
+        "options": [
+          "It encrypts the payload using symmetric keys.",
+          "It tracks the byte stream position to ensure reliable, in-order packet reconstruction and duplicate detection.",
+          "It identifies the physical MAC address of the destination interface.",
+          "It determines the maximum hop count before the packet is discarded."
+        ],
+        "correctIndex": 1,
+        "explanation": "TCP sequence numbers ensure reliable, ordered delivery by numbering each byte of data transmitted. The receiver uses acknowledgment numbers (ACK) to track received bytes and request retransmissions if gaps occur."
+      },
+      {
+        "id": "q8-2",
+        "question": "Which Berkeley Packet Filter (BPF) syntax expression captures only TCP traffic destined for port 80 or 443 on interface eth0 using tcpdump?",
+        "options": [
+          "tcpdump -i eth0 'tcp and (port 80 or port 443)'",
+          "tcpdump -i eth0 -p ICMP",
+          "tcpdump -w log.pcap --all-protocols",
+          "tcpdump -i eth0 'udp port 53'"
+        ],
+        "correctIndex": 0,
+        "explanation": "The BPF filter 'tcp and (port 80 or port 443)' filters kernel packet capture buffers to inspect only TCP packets on standard HTTP and HTTPS ports."
+      }
+    ]
+  },
+  {
+    "moduleId": 9,
+    "questions": [
+      {
+        "id": "q9-1",
+        "question": "In an RFC 5322 email message, which header field is added by each intermediate Mail Transfer Agent (MTA) and provides the most trustworthy trail of the message's true origin IP?",
+        "options": [
+          "From:",
+          "Subject:",
+          "Received:",
+          "Reply-To:"
+        ],
+        "correctIndex": 2,
+        "explanation": "The 'Received:' header is prepended sequentially by each receiving mail server along the transit path. While the From and Reply-To headers can be easily spoofed by the client, the bottom-most Received header reflects the actual IP of the connecting client."
+      },
+      {
+        "id": "q9-2",
+        "question": "What is the primary function of DMARC (Domain-based Message Authentication, Reporting, and Conformance)?",
+        "options": [
+          "It encrypts email attachments using PGP.",
+          "It instructs receiving mail servers on how to handle messages that fail SPF or DKIM checks (e.g. none, quarantine, or reject).",
+          "It blocks all inbound email containing hyperlinks.",
+          "It replaces DNS MX records with blockchain routing."
+        ],
+        "correctIndex": 1,
+        "explanation": "DMARC leverages SPF and DKIM to provide domain owners with policy control over unauthenticated messages (p=reject or p=quarantine) and generates aggregate telemetry reports."
+      }
+    ]
+  },
+  {
+    "moduleId": 10,
+    "questions": [
+      {
+        "id": "q10-1",
+        "question": "How does a Slowloris attack exhaust web server resources without generating massive volumetric bandwidth?",
+        "options": [
+          "By flooding the target with millions of gigabits of UDP reflections.",
+          "By opening multiple HTTP connections and sending partial request headers at prolonged intervals, holding connection slots open until the server max clients limit is reached.",
+          "By exploiting a buffer overflow in the DNS resolver.",
+          "By corrupting the router's BGP routing table."
+        ],
+        "correctIndex": 1,
+        "explanation": "Slowloris sends partial HTTP headers slowly (e.g. X-a: b\r\n every 10 seconds), never completing the request. Thread/process-per-connection servers (like default Apache) exhaust their MaxRequestWorkers pool without significant bandwidth usage."
+      },
+      {
+        "id": "q10-2",
+        "question": "What Apache module and directive combination directly defends against Slow HTTP header and body attacks?",
+        "options": [
+          "mod_reqtimeout with RequestReadTimeout header=10-20,MinRate=500",
+          "mod_rewrite with RewriteEngine Off",
+          "mod_ssl with SSLProtocol all",
+          "mod_cgi with Options +ExecCGI"
+        ],
+        "correctIndex": 0,
+        "explanation": "mod_reqtimeout's RequestReadTimeout directive enforces strict time limits and minimum throughput rates for receiving HTTP headers and request bodies, aborting slow drip attacks."
+      }
+    ]
+  },
+  {
+    "moduleId": 11,
+    "questions": [
+      {
+        "id": "q11-1",
+        "question": "What security protection is provided to a web session cookie when the 'HttpOnly' flag is set by the server?",
+        "options": [
+          "The cookie can only be transmitted over encrypted HTTPS connections.",
+          "Client-side scripts (such as JavaScript document.cookie) cannot read or manipulate the cookie, mitigating XSS-based session token theft.",
+          "The cookie is automatically deleted after 5 minutes.",
+          "The cookie is only accepted by browsers running on Linux."
+        ],
+        "correctIndex": 1,
+        "explanation": "The HttpOnly flag blocks JavaScript access via document.cookie. If an attacker discovers a Cross-Site Scripting (XSS) vulnerability, they cannot directly read the session token."
+      },
+      {
+        "id": "q11-2",
+        "question": "Which SameSite cookie attribute value provides the strictest protection against Cross-Site Request Forgery (CSRF) by preventing the cookie from being sent on any cross-site browsing context?",
+        "options": [
+          "SameSite=None",
+          "SameSite=Lax",
+          "SameSite=Strict",
+          "SameSite=Permissive"
+        ],
+        "correctIndex": 2,
+        "explanation": "SameSite=Strict ensures the browser never attaches the cookie to cross-site requests, including ordinary top-level navigation links, completely thwarting cross-origin CSRF attacks."
+      }
+    ]
+  },
+  {
+    "moduleId": 12,
+    "questions": [
+      {
+        "id": "q12-1",
+        "question": "What is the primary function of a network honeypot in an enterprise security architecture?",
+        "options": [
+          "To speed up database query execution times.",
+          "To serve as a deliberately vulnerable, highly monitored decoy system that alerts defenders to unauthorized reconnaissance or lateral movement.",
+          "To encrypt all inbound email messages automatically.",
+          "To replace traditional perimeter firewalls entirely."
+        ],
+        "correctIndex": 1,
+        "explanation": "A honeypot has no legitimate production value; any connection attempt to it is inherently suspicious. It provides high-fidelity intrusion alerts and threat intelligence on adversary tactics."
+      },
+      {
+        "id": "q12-2",
+        "question": "In Linux iptables, which built-in chain processes incoming network packets destined for local sockets and services hosted on the firewall itself?",
+        "options": [
+          "FORWARD",
+          "INPUT",
+          "OUTPUT",
+          "PREROUTING"
+        ],
+        "correctIndex": 1,
+        "explanation": "The INPUT chain filters packets destined for local processes on the receiving system. The FORWARD chain handles packets routed through the host to another destination."
+      }
+    ]
+  },
+  {
+    "moduleId": 13,
+    "questions": [
+      {
+        "id": "q13-1",
+        "question": "Which Apache directive configures the web server to return only 'Apache' in the Server response header, omitting the exact operating system, minor release version, and installed module names?",
+        "options": [
+          "ServerTokens Prod",
+          "ServerSignature On",
+          "KeepAlive Off",
+          "DocumentRoot /var/www"
+        ],
+        "correctIndex": 0,
+        "explanation": "Setting 'ServerTokens Prod' suppresses OS, minor version, and module disclosure (e.g. returns 'Server: Apache' instead of 'Apache/2.4.52 (Ubuntu) OpenSSL/3.0.2 mod_perl/2.0.12')."
+      },
+      {
+        "id": "q13-2",
+        "question": "Why is disabling directory listings ('Options -Indexes') a critical baseline hardening step for production web servers?",
+        "options": [
+          "It disables the server's TCP stack.",
+          "It prevents web servers from automatically displaying directory index listings when no index.html or default document is present, preventing disclosure of backup or config files.",
+          "It enforces 2-factor authentication on all HTTP endpoints.",
+          "It compresses web traffic using gzip."
+        ],
+        "correctIndex": 1,
+        "explanation": "When an index file is absent in a directory, default web configurations display a list of all files in that directory. Removing the 'Indexes' option returns a 403 Forbidden instead of leaking sensitive files."
+      }
+    ]
+  },
+  {
+    "moduleId": 14,
+    "questions": [
+      {
+        "id": "q14-1",
+        "question": "In OWASP Top 10 terminology, what category includes vulnerabilities where an application fails to properly enforce that a user can only access their own private records (e.g. changing id=101 to id=102)?",
+        "options": [
+          "Cryptographic Failures",
+          "Broken Access Control (IDOR)",
+          "Security Misconfiguration",
+          "Server-Side Request Forgery"
+        ],
+        "correctIndex": 1,
+        "explanation": "Broken Access Control (specifically Insecure Direct Object References - IDOR) occurs when an application exposes a reference to an internal object without verifying the requesting user's authorization to that object."
+      },
+      {
+        "id": "q14-2",
+        "question": "What is the primary objective of passive web application security scanning using tools like OWASP ZAP?",
+        "options": [
+          "Flooding the database with DROP TABLE commands.",
+          "Inspecting live HTTP requests and responses passing through the proxy without injecting new payloads, identifying missing headers, insecure cookies, and version leaks.",
+          "Overclocking the web server's CPU.",
+          "Cracking TLS private keys using quantum algorithms."
+        ],
+        "correctIndex": 1,
+        "explanation": "Passive scanning analyzes existing HTTP traffic traversing the interception proxy without modifying requests or injecting active attack vectors, making it safe for production testing."
+      }
+    ]
+  },
+  {
+    "moduleId": 15,
+    "questions": [
+      {
+        "id": "q15-1",
+        "question": "Why do parameterized queries (prepared statements) fundamentally prevent SQL injection vulnerabilities?",
+        "options": [
+          "They encrypt the entire database file with AES.",
+          "They treat user-supplied input strictly as data parameters rather than executable SQL code, pre-compiling the query structure before parameters are bound.",
+          "They convert SQL databases into NoSQL document stores.",
+          "They automatically ban IP addresses that enter single quote characters."
+        ],
+        "correctIndex": 1,
+        "explanation": "Prepared statements send the query template to the database engine first to be compiled into an execution plan. Parameter values are bound afterward strictly as data, making it impossible for input to alter query syntax."
+      },
+      {
+        "id": "q15-2",
+        "question": "In a vulnerable SQL statement: SELECT * FROM items WHERE category = 'X', what is the effect of inputting: gadgets' OR '1'='1?",
+        "options": [
+          "The database immediately shuts down.",
+          "The WHERE condition evaluates to TRUE for every row in the table, returning all catalog records.",
+          "The database drops the items table.",
+          "An error 500 is always returned."
+        ],
+        "correctIndex": 1,
+        "explanation": "The injected quote closes the literal string, and OR '1'='1 creates a tautology (a condition that is always true), causing the query to return every row in the database table."
+      }
+    ]
+  },
+  {
+    "moduleId": 16,
+    "questions": [
+      {
+        "id": "q16-1",
+        "question": "Why does WPA3-Personal's SAE (Simultaneous Authentication of Equals) protocol prevent the offline dictionary attacks that plagued WPA2-PSK?",
+        "options": [
+          "WPA3 eliminates passwords entirely.",
+          "SAE uses a zero-knowledge Dragonfly key exchange requiring active interaction with the AP for each password guess, preventing offline dictionary attacks against captured frames.",
+          "WPA3 only operates on wired Ethernet cables.",
+          "SAE uses 512-bit symmetric keys only."
+        ],
+        "correctIndex": 1,
+        "explanation": "In WPA2, capturing a 4-way handshake allows an attacker to compute the PMK offline against millions of dictionary words without contacting the AP. WPA3 SAE requires online interaction, eliminating offline wordlist cracking."
+      },
+      {
+        "id": "q16-2",
+        "question": "What security vulnerability in Wi-Fi Protected Setup (WPS) allowed attackers to recover WPA/WPA2 pre-shared keys in a matter of hours?",
+        "options": [
+          "The 8-digit PIN is validated in two independent halves (4 digits and 3 digits + checksum), drastically reducing the search space to only 11,000 attempts.",
+          "WPS uses cleartext HTTP on port 80.",
+          "WPS automatically grants root shell access over Telnet.",
+          "WPS disables all encryption on the access point."
+        ],
+        "correctIndex": 0,
+        "explanation": "The WPS PIN architecture checks the first 4 digits and last 3 digits independently. Instead of 100,000,000 possibilities, an attacker only needs at most 10,000 + 1,000 = 11,000 guesses (Reaver attack)."
+      }
+    ]
+  },
+  {
+    "moduleId": 17,
+    "questions": [
+      {
+        "id": "q17-1",
+        "question": "In an Android application package (APK), which XML configuration file declares the application package name, components (Activities, Services), and requested system permissions?",
+        "options": [
+          "build.gradle",
+          "AndroidManifest.xml",
+          "classes.dex",
+          "resources.arsc"
+        ],
+        "correctIndex": 1,
+        "explanation": "AndroidManifest.xml is the central manifest file declaring application components, minimum SDK requirements, and <uses-permission> tags required for security analysis."
+      },
+      {
+        "id": "q17-2",
+        "question": "Which Android Debug Bridge (ADB) command lists all packages installed on a connected authorized test device filtered by a specific keyword?",
+        "options": [
+          "adb shell pm list packages | grep <keyword>",
+          "adb install app.apk",
+          "adb push /sdcard",
+          "adb reboot bootloader"
+        ],
+        "correctIndex": 0,
+        "explanation": "'adb shell pm list packages' invokes the Android Package Manager daemon to list all registered application package identifiers on the device."
+      }
+    ]
+  },
+  {
+    "moduleId": 18,
+    "questions": [
+      {
+        "id": "q18-1",
+        "question": "Why is the use of unencrypted protocols like MQTT (port 1883) and Telnet (port 23) particularly hazardous in IoT and embedded device deployments?",
+        "options": [
+          "They consume 100% of the device flash memory.",
+          "All sensor data, control commands, and device credentials travel in cleartext, enabling eavesdropping, replay attacks, and unauthorized actuation.",
+          "They require specialized satellite transceivers.",
+          "They are incompatible with IPv4."
+        ],
+        "correctIndex": 1,
+        "explanation": "Unencrypted protocols transmit data and authentication strings without cryptographic protection. Anyone on the network path can intercept sensor telemetry or inject rogue actuation commands."
+      },
+      {
+        "id": "q18-2",
+        "question": "What initial step should a security engineer take when auditing the security posture of an IoT firmware binary image?",
+        "options": [
+          "Deploy the binary directly to production cloud servers.",
+          "Inspect the binary using strings, file, and binwalk to identify embedded filesystems, hardcoded private keys, and default credentials.",
+          "Rename the file to firmware.txt.",
+          "Compile the firmware with GCC."
+        ],
+        "correctIndex": 1,
+        "explanation": "Firmware analysis begins by extracting embedded filesystems (SquashFS, CramFS) with tools like binwalk, followed by searching for hardcoded credentials, SSL certificates, and vulnerable binary daemons."
+      }
+    ]
+  },
+  {
+    "moduleId": 19,
+    "questions": [
+      {
+        "id": "q19-1",
+        "question": "Under the cloud Shared Responsibility Model for Infrastructure-as-a-Service (IaaS), who is responsible for operating system patching and firewall rule configurations on virtual machines?",
+        "options": [
+          "The Cloud Service Provider (CSP) exclusively.",
+          "The Customer / Cloud Tenant.",
+          "The third-party hardware vendor.",
+          "Internet Service Providers."
+        ],
+        "correctIndex": 1,
+        "explanation": "In IaaS (such as AWS EC2 or Azure VMs), the CSP secures the physical infrastructure, virtualization hypervisor, and hardware facilities. The customer is responsible for guest OS patching, security groups, and data protection."
+      },
+      {
+        "id": "q19-2",
+        "question": "Which AWS CLI command confirms the active authenticated entity (IAM user, assumed role, or federated identity) and AWS account ID?",
+        "options": [
+          "aws sts get-caller-identity",
+          "aws s3 ls",
+          "aws ec2 describe-instances",
+          "aws iam list-users"
+        ],
+        "correctIndex": 0,
+        "explanation": "'aws sts get-caller-identity' queries the AWS Security Token Service to return the ARN, UserId, and Account ID of the credentials currently in use."
+      }
+    ]
+  },
+  {
+    "moduleId": 20,
+    "questions": [
+      {
+        "id": "q20-1",
+        "question": "What property of a cryptographic hash function ensures that a minor 1-bit change in the input data produces an unpredictable, vastly different output hash?",
+        "options": [
+          "Avalanche Effect",
+          "Homomorphic Encryption",
+          "Non-repudiation",
+          "Key Escrow"
+        ],
+        "correctIndex": 0,
+        "explanation": "The avalanche effect ensures that even a microscopic modification to the plaintext completely scrambles the output hash, preventing pattern analysis and predictability."
+      },
+      {
+        "id": "q20-2",
+        "question": "Which cryptographic approach is used when Alice wants to send an encrypted message to Bob such that only Bob can decrypt it, and Bob can verify the message genuinely originated from Alice?",
+        "options": [
+          "Alice encrypts with Bob's public key and signs with Alice's private key; Bob verifies with Alice's public key and decrypts with Bob's private key.",
+          "Alice encrypts with Alice's private key only.",
+          "Alice encrypts with Bob's private key.",
+          "Alice hashes the message with MD5."
+        ],
+        "correctIndex": 0,
+        "explanation": "Confidentiality is achieved by encrypting with the recipient's public key (only the recipient's private key can decrypt). Authenticity/Integrity is achieved by signing with the sender's private key."
+      }
+    ]
+  },
+  {
+    "moduleId": 21,
+    "questions": [
+      {
+        "id": "q21-1",
+        "question": "In Active Directory Certificate Services (AD CS), what template misconfiguration condition defines the critical ESC1 privilege escalation vulnerability?",
+        "options": [
+          "The template requires Domain Admin approval before issuance.",
+          "The template grants Enroll permissions to unprivileged domain users, has Client Authentication EKU, and sets CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT allowing the requester to specify any Subject Alternative Name (SAN).",
+          "The CA operates without an active internet connection.",
+          "The template is published only on offline Root CAs."
+        ],
+        "correctIndex": 1,
+        "explanation": "ESC1 occurs when an unprivileged user can request a certificate with Client Authentication (enabling Kerberos PKINIT logon) and supply an arbitrary SAN (e.g. administrator@domain.local), immediately impersonating any domain account."
+      },
+      {
+        "id": "q21-2",
+        "question": "What is the primary remediation step to neutralize an ESC1 vulnerability on an active AD CS certificate template?",
+        "options": [
+          "Format the domain controller hard drives.",
+          "Disable 'Supply in the request' (CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT) on the Subject Name tab, or require CA Certificate Manager approval.",
+          "Switch the domain from Active Directory to Azure AD.",
+          "Disable DNS dynamic updates."
+        ],
+        "correctIndex": 1,
+        "explanation": "Configuring the template to 'Build from Active Directory information' forces AD CS to generate the SAN from the requester's actual AD object attributes, preventing arbitrary account impersonation."
+      }
+    ]
+  }
+];
+
+// Hydrate CEHState if empty
+if (window.CEHState) {
+  if (!window.CEHState.modules || window.CEHState.modules.length === 0) window.CEHState.modules = window.OFFLINE_CEH_MODULES;
+  if (!window.CEHState.labs || window.CEHState.labs.length === 0) window.CEHState.labs = window.OFFLINE_CEH_LABS;
+  if (!window.CEHState.quizzes || window.CEHState.quizzes.length === 0) window.CEHState.quizzes = window.OFFLINE_CEH_QUIZZES;
+}

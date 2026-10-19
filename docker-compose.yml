@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  hackrange-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hackrange-web
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    labels:
+      org.opencontainers.image.title: "HackRange & CEH v13 Training Enclave"
+      org.opencontainers.image.description: "Integrated cyber warfare and Certified Ethical Hacker learning platform"
+
+  ceh-api:
+    image: python:3.11-alpine
+    container_name: ceh-api-service
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: python ceh_server.py 8000
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    labels:
+      org.opencontainers.image.title: "CEH v13 SQLite REST API Backend"
+      org.opencontainers.image.description: "SQLite persistence engine for CEH lab tracking and knowledge quizzes"

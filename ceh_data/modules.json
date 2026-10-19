@@ -1,0 +1,360 @@
+[
+  {
+    "id": 1,
+    "number": "01",
+    "title": "Introduction to Ethical Hacking",
+    "shortTitle": "Ethical Hacking Fundamentals",
+    "domain": "Information Security and Ethical Hacking Overview",
+    "examWeight": "6%",
+    "icon": "shield-check",
+    "description": "Foundations of ethical hacking, legal boundaries, authorization frameworks, CIA triad, threat modeling, and baseline environment recording.",
+    "learningObjectives": [
+      "Understand the difference between ethical hacking, penetration testing, and malicious exploitation",
+      "Record baseline hardware and operating system telemetry safely",
+      "Inspect network interface configurations and IP routing tables",
+      "Create standardized, audit-ready technical lab reports"
+    ],
+    "labId": "lab-01"
+  },
+  {
+    "id": 2,
+    "number": "02",
+    "title": "Footprinting and Reconnaissance",
+    "shortTitle": "Reconnaissance",
+    "domain": "Reconnaissance Techniques",
+    "examWeight": "7%",
+    "icon": "globe",
+    "description": "Passive and active reconnaissance methods: DNS record enumeration (A, MX, NS, TXT), WHOIS registrar queries, and DNS response interpretation.",
+    "learningObjectives": [
+      "Query authoritative name servers using dig and nslookup",
+      "Inspect WHOIS database records for authorized domains",
+      "Extract and interpret DNS resource records (A, MX, NS, TXT)",
+      "Map attack surfaces without triggering intrusion detection alerts"
+    ],
+    "labId": "lab-02"
+  },
+  {
+    "id": 3,
+    "number": "03",
+    "title": "Scanning Networks",
+    "shortTitle": "Network Scanning",
+    "domain": "Reconnaissance Techniques",
+    "examWeight": "8%",
+    "icon": "radar",
+    "description": "Network scanning methodologies: ICMP host discovery, TCP SYN stealth scanning (-sS), TCP Connect scanning (-sT), service version detection (-sV), and OS fingerprinting.",
+    "learningObjectives": [
+      "Perform CIDR subnet host discovery in private lab networks",
+      "Differentiate between TCP SYN (half-open) and full TCP 3-way handshake scans",
+      "Identify open services and banner versions using Nmap",
+      "Interpret TCP RST/ACK and SYN/ACK probe responses"
+    ],
+    "labId": "lab-03"
+  },
+  {
+    "id": 4,
+    "number": "04",
+    "title": "Enumeration",
+    "shortTitle": "Enumeration",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "7%",
+    "icon": "list-tree",
+    "description": "Active interrogation of listening services: netstat, ss, SMB/NetBIOS null sessions, RPC endpoints, and SNMP management information base (MIB) trees.",
+    "learningObjectives": [
+      "Inspect active network sockets and daemon configurations with ss and netstat",
+      "Query NetBIOS shares and SMB dialects safely",
+      "Enumerate local users and shares using standard administrative tools",
+      "Document exposed services to construct an attack tree"
+    ],
+    "labId": "lab-04"
+  },
+  {
+    "id": 5,
+    "number": "05",
+    "title": "Vulnerability Analysis",
+    "shortTitle": "Vulnerability Analysis",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "6%",
+    "icon": "bug",
+    "description": "Vulnerability assessment life cycle: CVE lookups, CVSS v3.1 scoring metrics, automated scanner output review, false-positive triage, and remediation prioritization.",
+    "learningObjectives": [
+      "Extract running service software versions and correlate with CVE databases",
+      "Calculate CVSS v3.1 Base, Temporal, and Environmental scores",
+      "Differentiate between true vulnerabilities and benign configuration warnings",
+      "Construct actionable remediation plans for sysadmins"
+    ],
+    "labId": "lab-05"
+  },
+  {
+    "id": 6,
+    "number": "06",
+    "title": "System Hacking",
+    "shortTitle": "System Hacking",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "12%",
+    "icon": "terminal",
+    "description": "System privilege analysis: local user and group enumeration, POSIX file permissions, SUID/SGID binary auditing, sudo rules, and hardening principles.",
+    "learningObjectives": [
+      "Enumerate users, groups, and membership via passwd and group files",
+      "Locate insecure SUID/SGID executable binaries using find",
+      "Audit sudo privileges without altering system binaries",
+      "Formulate principle of least privilege (PoLP) defense policies"
+    ],
+    "labId": "lab-06"
+  },
+  {
+    "id": 7,
+    "number": "07",
+    "title": "Malware Threats",
+    "shortTitle": "Malware Analysis",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "6%",
+    "icon": "skull",
+    "description": "Static malware inspection: SHA-256 cryptographic hashing, file header magic bytes, ASCII/Unicode string extraction, and safe EICAR test-file verification.",
+    "learningObjectives": [
+      "Compute cryptographic SHA-256 hashes to verify file integrity",
+      "Inspect file magic headers to detect disguised extensions",
+      "Extract readable strings to identify hardcoded URLs and suspicious APIs",
+      "Demonstrate antivirus detection pipelines using the harmless EICAR test string"
+    ],
+    "labId": "lab-07"
+  },
+  {
+    "id": 8,
+    "number": "08",
+    "title": "Sniffing",
+    "shortTitle": "Network Sniffing",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "7%",
+    "icon": "activity",
+    "description": "Packet capture and protocol analysis: capturing loopback and subnet traffic with tcpdump, inspecting DNS, TCP, ICMP, and TLS headers, and detecting unencrypted cleartext data.",
+    "learningObjectives": [
+      "Capture packets on network interfaces using tcpdump with BPF filters",
+      "Dissect Ethernet II, IPv4, TCP, and UDP protocol header fields",
+      "Explain the risks of cleartext protocols (Telnet, HTTP, FTP)",
+      "Evaluate network-level encryption mitigations (IPsec, TLS 1.3)"
+    ],
+    "labId": "lab-08"
+  },
+  {
+    "id": 9,
+    "number": "09",
+    "title": "Social Engineering",
+    "shortTitle": "Social Engineering",
+    "domain": "System Hacking Phases and Attack Techniques",
+    "examWeight": "6%",
+    "icon": "mail",
+    "description": "Analysis of human-centric attack vectors: inspecting RFC 5322 email headers, verifying SPF, DKIM, and DMARC authentication records, and building awareness assessments.",
+    "learningObjectives": [
+      "Parse raw RFC 5322 email headers for forged Return-Path and Received lines",
+      "Inspect SPF (Sender Policy Framework) and DMARC DNS policies",
+      "Identify social engineering psychological triggers (urgency, authority)",
+      "Design an enterprise phishing-awareness training matrix"
+    ],
+    "labId": "lab-09"
+  },
+  {
+    "id": 10,
+    "number": "10",
+    "title": "Denial-of-Service",
+    "shortTitle": "Denial-of-Service",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "5%",
+    "icon": "zap-off",
+    "description": "Understanding resource exhaustion attacks: establishing performance baselines, observing connection slot consumption, and deploying rate-limiting defenses with iptables and web servers.",
+    "learningObjectives": [
+      "Benchmark normal HTTP request throughput using curl and baseline metrics",
+      "Observe operating system socket state transitions (SYN_RECV, ESTABLISHED)",
+      "Configure web server connection timeouts and rate limits",
+      "Implement defensive kernel SYN cookies (tcp_syncookies)"
+    ],
+    "labId": "lab-10"
+  },
+  {
+    "id": 11,
+    "number": "11",
+    "title": "Session Hijacking",
+    "shortTitle": "Session Hijacking",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "6%",
+    "icon": "key-round",
+    "description": "State management and session security: inspecting browser cookie flags (HttpOnly, Secure, SameSite), session fixation vectors, and secure server-side session invalidation.",
+    "learningObjectives": [
+      "Analyze HTTP Set-Cookie response headers for security flags",
+      "Explain how HttpOnly prevents cross-site scripting cookie exfiltration",
+      "Demonstrate session fixation vulnerabilities and session regeneration",
+      "Implement safe server-side session termination workflows"
+    ],
+    "labId": "lab-11"
+  },
+  {
+    "id": 12,
+    "number": "12",
+    "title": "Evading IDS, Firewalls, and Honeypots",
+    "shortTitle": "IDS, Firewalls, & Honeypots",
+    "domain": "Network and Perimeter Hacking",
+    "examWeight": "6%",
+    "icon": "flame",
+    "description": "Perimeter defense auditing: inspecting local firewall rule tables (iptables/ufw), analyzing Suricata NIDS alerts, understanding packet fragmentation, and detecting honeypots.",
+    "learningObjectives": [
+      "List and interpret packet filtering rules in iptables and ufw",
+      "Analyze simulated intrusion detection system (IDS) alert signatures",
+      "Explain perimeter evasion concepts (fragmentation, timing, decoy IP scanning)",
+      "Configure defensive drop rules to block unauthorized telemetry"
+    ],
+    "labId": "lab-12"
+  },
+  {
+    "id": 13,
+    "number": "13",
+    "title": "Hacking Web Servers",
+    "shortTitle": "Web Server Security",
+    "domain": "Web Application Hacking",
+    "examWeight": "6%",
+    "icon": "server",
+    "description": "Web server infrastructure security: banner grabbing, reducing ServerTokens disclosure, disabling directory browsing (Options -Indexes), and configuring modern TLS ciphers.",
+    "learningObjectives": [
+      "Audit HTTP response headers for unnecessary software version banners",
+      "Configure Apache ServerTokens and ServerSignature for minimal disclosure",
+      "Disable directory indexing to prevent sensitive file leakage",
+      "Enforce modern TLS protocols and secure cipher suites"
+    ],
+    "labId": "lab-13"
+  },
+  {
+    "id": 14,
+    "number": "14",
+    "title": "Hacking Web Applications",
+    "shortTitle": "Web Application Security",
+    "domain": "Web Application Hacking",
+    "examWeight": "10%",
+    "icon": "globe-2",
+    "description": "OWASP Top 10 vulnerabilities: testing against local training targets, HTTP request/response tampering, passive vulnerability scanning, and remediation architectures.",
+    "learningObjectives": [
+      "Inspect HTTP GET and POST request parameters in browser dev tools",
+      "Identify common OWASP Top 10 weaknesses (Broken Access Control, Injection)",
+      "Perform simulated passive vulnerability scanning using ZAP methodology",
+      "Apply Content Security Policy (CSP) and input sanitization defenses"
+    ],
+    "labId": "lab-14"
+  },
+  {
+    "id": 15,
+    "number": "15",
+    "title": "SQL Injection",
+    "shortTitle": "SQL Injection",
+    "domain": "Web Application Hacking",
+    "examWeight": "7%",
+    "icon": "database",
+    "description": "Mechanics of SQL injection: understanding dynamic query concatenation vulnerabilities, executing safe demonstrations on local test tables, and implementing parameterized queries.",
+    "learningObjectives": [
+      "Contrast vulnerable dynamic string queries with prepared statements",
+      "Explain how ' OR 1=1 -- alters relational database logic",
+      "Implement parameterized queries using Python sqlite3 / PHP PDO",
+      "Enforce database account least-privilege principles"
+    ],
+    "labId": "lab-15"
+  },
+  {
+    "id": 16,
+    "number": "16",
+    "title": "Hacking Wireless Networks",
+    "shortTitle": "Wireless Security",
+    "domain": "Wireless Network Hacking",
+    "examWeight": "5%",
+    "icon": "wifi",
+    "description": "802.11 wireless security auditing: inspecting wireless interfaces (iwconfig/airmon-ng), analyzing WPA2 4-way handshake vs WPA3 SAE Dragonfly, and evaluating WPS vulnerabilities.",
+    "learningObjectives": [
+      "Inspect 802.11 network interface modes (Managed vs Monitor)",
+      "Explain the 4-way EAPOL handshake in WPA2-PSK",
+      "Analyze why WPA3 SAE (Simultaneous Authentication of Equals) prevents offline attacks",
+      "Inspect 802.11 beacon and probe request frames from packet captures"
+    ],
+    "labId": "lab-16"
+  },
+  {
+    "id": 17,
+    "number": "17",
+    "title": "Hacking Mobile Platforms",
+    "shortTitle": "Mobile Security",
+    "domain": "Mobile, IoT, and OT Hacking",
+    "examWeight": "5%",
+    "icon": "smartphone",
+    "description": "Mobile application security: inspecting devices with Android Debug Bridge (adb), reviewing installed packages and permissions in AndroidManifest.xml, and static APK auditing.",
+    "learningObjectives": [
+      "Connect and query authorized mobile test devices using adb",
+      "Audit Android application permissions for over-privileged access",
+      "Inspect Android sandbox architecture and user identifier separation",
+      "Recommend mobile application hardening and obfuscation techniques"
+    ],
+    "labId": "lab-17"
+  },
+  {
+    "id": 18,
+    "number": "18",
+    "title": "Hacking IoT Platforms",
+    "shortTitle": "IoT Security",
+    "domain": "Mobile, IoT, and OT Hacking",
+    "examWeight": "5%",
+    "icon": "cpu",
+    "description": "Internet of Things attack surfaces: inventorying services on simulated IoT devices, identifying insecure default credentials, inspecting MQTT/Telnet telemetry, and firmware security.",
+    "learningObjectives": [
+      "Map exposed network services on simulated embedded devices",
+      "Analyze the risk of unencrypted IoT protocols (MQTT, Telnet)",
+      "Extract readable strings and credentials from firmware binaries",
+      "Implement network segmentation and isolation for IoT devices"
+    ],
+    "labId": "lab-18"
+  },
+  {
+    "id": 19,
+    "number": "19",
+    "title": "Cloud Computing",
+    "shortTitle": "Cloud Security",
+    "domain": "Cloud Computing",
+    "examWeight": "6%",
+    "icon": "cloud",
+    "description": "Cloud infrastructure and IAM security: verifying cloud identities with AWS CLI (sts get-caller-identity), auditing S3 bucket permissions, and evaluating IAM least-privilege policies.",
+    "learningObjectives": [
+      "Verify caller identity and assigned IAM role using the AWS CLI",
+      "Audit S3 bucket ACLs and public access block configurations",
+      "Inspect IAM JSON policies for overly permissive wildcards (*:*)",
+      "Apply the cloud Shared Responsibility Model across IaaS, PaaS, and SaaS"
+    ],
+    "labId": "lab-19"
+  },
+  {
+    "id": 20,
+    "number": "20",
+    "title": "Cryptography",
+    "shortTitle": "Cryptography",
+    "domain": "Cryptography",
+    "examWeight": "6%",
+    "icon": "lock",
+    "description": "Cryptographic algorithms and implementations: SHA-256 vs MD5 hash collisions, OpenSSL AES-256-CBC file encryption/decryption, RSA keypair generation, and X.509 certificate inspection.",
+    "learningObjectives": [
+      "Calculate cryptographic hashes (SHA-256, SHA-3) and evaluate collision resistance",
+      "Encrypt and decrypt files using OpenSSL and AES-256-CBC with PBKDF2",
+      "Generate RSA 4096-bit private and public keypairs",
+      "Inspect X.509 digital certificates and verify certificate chain of trust"
+    ],
+    "labId": "lab-20"
+  },
+  {
+    "id": 21,
+    "number": "AD",
+    "title": "Active Directory & AD CS Master Lab",
+    "shortTitle": "Active Directory & AD CS",
+    "domain": "Enterprise Identity & Certificate Security",
+    "examWeight": "Advanced Specialization",
+    "icon": "network",
+    "description": "Comprehensive Active Directory Certificate Services (AD CS) auditing: domain controller setup, CA hierarchy, certificate template permission auditing, ESC1 SAN misconfiguration detection, ESC8 NTLM relay mitigation, and PowerShell remediation.",
+    "learningObjectives": [
+      "Understand Active Directory Enterprise Root CA architecture and enrollments",
+      "Inspect local and machine certificate stores with PowerShell",
+      "Audit certificate templates for ESC1 (CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT + Client Auth)",
+      "Audit AD CS HTTP Web Enrollment endpoints for ESC8 NTLM relay exposure",
+      "Implement PowerShell remediation: remove enrollee subject flags, require manager approval, enforce Extended Protection for Authentication (EPA)"
+    ],
+    "labId": "lab-adcs"
+  }
+]

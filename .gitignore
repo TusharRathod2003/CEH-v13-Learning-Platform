@@ -1,0 +1,16 @@
+# Database & sqlite local storage
+*.db
+*.sqlite3
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary logs & rendered test dumps
+*.log
+rendered_*.html
+
+# OS metadata
+.DS_Store
+Thumbs.db

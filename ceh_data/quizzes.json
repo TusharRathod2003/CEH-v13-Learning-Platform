@@ -1,0 +1,649 @@
+{
+  "quizzes": [
+    {
+      "moduleId": 1,
+      "questions": [
+        {
+          "id": "q1-1",
+          "question": "Which component of the CIA triad is violated when an attacker performs a Denial-of-Service (DoS) attack against an enterprise authentication gateway?",
+          "options": [
+            "Confidentiality",
+            "Integrity",
+            "Availability",
+            "Non-repudiation"
+          ],
+          "correctIndex": 2,
+          "explanation": "Availability ensures authorized users have timely and reliable access to information and resources. A Denial-of-Service attack directly targets and impairs availability."
+        },
+        {
+          "id": "q1-2",
+          "question": "In a legally authorized penetration test, which document formally establishes the boundaries, allowable IP targets, test timeframes, and banned testing methods?",
+          "options": [
+            "Service Level Agreement (SLA)",
+            "Rules of Engagement (RoE)",
+            "Non-Disclosure Agreement (NDA)",
+            "Business Impact Analysis (BIA)"
+          ],
+          "correctIndex": 1,
+          "explanation": "The Rules of Engagement (RoE) defines the explicit operational boundaries, approved target subnets, blacklisted hosts, testing windows, and escalation procedures for an authorized security assessment."
+        },
+        {
+          "id": "q1-3",
+          "question": "What is the primary difference between a black-box and a white-box penetration test?",
+          "options": [
+            "Black-box testing uses automated tools only, while white-box testing is manual.",
+            "Black-box testing is performed without prior knowledge of internal architecture, whereas white-box testing provides full architectural and source code disclosure.",
+            "Black-box testing tests physical access only; white-box tests software only.",
+            "Black-box testing is illegal; white-box testing is authorized."
+          ],
+          "correctIndex": 1,
+          "explanation": "Black-box assessments simulate an external adversary with zero prior knowledge of the target environment. White-box assessments provide complete architectural diagrams, source code, and credentials."
+        }
+      ]
+    },
+    {
+      "moduleId": 2,
+      "questions": [
+        {
+          "id": "q2-1",
+          "question": "Which DNS record type specifies the authoritative mail transfer agents (MTA) responsible for accepting email messages on behalf of a domain?",
+          "options": [
+            "A Record",
+            "CNAME Record",
+            "MX Record",
+            "PTR Record"
+          ],
+          "correctIndex": 2,
+          "explanation": "MX (Mail Exchanger) records specify the mail servers responsible for receiving email for the domain, along with preference weights."
+        },
+        {
+          "id": "q2-2",
+          "question": "During passive reconnaissance, an analyst checks the TXT records of an authorized domain. Which email security mechanism is frequently published within TXT records to authenticate outbound senders?",
+          "options": [
+            "BGP Route Flap Damping",
+            "SPF (Sender Policy Framework)",
+            "HSTS (HTTP Strict Transport Security)",
+            "OSPF MD5 Authentication"
+          ],
+          "correctIndex": 1,
+          "explanation": "SPF (Sender Policy Framework) is published as a DNS TXT record (e.g., v=spf1 include:_spf.google.com ~all) to list authorized IP addresses permitted to send mail for the domain."
+        },
+        {
+          "id": "q2-3",
+          "question": "Why is an unauthenticated DNS Zone Transfer (AXFR) query considered a critical information disclosure vulnerability?",
+          "options": [
+            "It automatically executes remote code on the DNS server.",
+            "It reveals the complete internal and external DNS naming topology and host IP assignments in a single query.",
+            "It encrypts the DNS database with ransomware.",
+            "It alters the IP addresses stored in authoritative root servers."
+          ],
+          "correctIndex": 1,
+          "explanation": "A zone transfer (AXFR) replicates the entire DNS zone file from primary to secondary servers. If left exposed to the public, an attacker dumps all subdomains, internal IP mappings, and server names instantly."
+        }
+      ]
+    },
+    {
+      "moduleId": 3,
+      "questions": [
+        {
+          "id": "q3-1",
+          "question": "How does a TCP SYN stealth scan (-sS) determine if a remote port is OPEN without completing a full three-way handshake?",
+          "options": [
+            "It sends a FIN packet and waits for a RST packet.",
+            "It sends a SYN packet; if the target responds with SYN/ACK, the port is open, and the scanner immediately replies with RST.",
+            "It completes SYN, SYN/ACK, ACK, and immediately sends a HTTP GET request.",
+            "It broadcasts an ICMP Echo Request to the broadcast address."
+          ],
+          "correctIndex": 1,
+          "explanation": "In a TCP SYN (half-open) scan, receiving a SYN/ACK from the target confirms the listening state. The scanner immediately transmits a RST packet to tear down the connection before it is logged by application-layer daemons."
+        },
+        {
+          "id": "q3-2",
+          "question": "Which Nmap scan flag instructs the engine to perform banner grabbing and service version identification?",
+          "options": [
+            "-sV",
+            "-sn",
+            "-Pn",
+            "-O"
+          ],
+          "correctIndex": 0,
+          "explanation": "-sV instructs Nmap to interrogate open ports using service-specific probe signatures to determine daemon names and exact version strings."
+        },
+        {
+          "id": "q3-3",
+          "question": "When scanning a host behind a stateful firewall that silently drops probe packets on closed or non-listening ports, what port state will Nmap report?",
+          "options": [
+            "open",
+            "closed",
+            "filtered",
+            "unfiltered"
+          ],
+          "correctIndex": 2,
+          "explanation": "The 'filtered' state indicates that a packet filter, firewall, or router rule is blocking the probes, preventing Nmap from determining whether the port is open or closed due to lack of response."
+        }
+      ]
+    },
+    {
+      "moduleId": 4,
+      "questions": [
+        {
+          "id": "q4-1",
+          "question": "Which standard Linux networking command provides detailed socket statistics including listening TCP/UDP sockets, process IDs, and connection states?",
+          "options": [
+            "ss -tulpn",
+            "traceroute -n",
+            "arp -a",
+            "route -e"
+          ],
+          "correctIndex": 0,
+          "explanation": "ss (socket statistics) with flags -t (TCP), -u (UDP), -l (listening), -p (processes), -n (numeric ports) displays all active listening sockets and their owning processes."
+        },
+        {
+          "id": "q4-2",
+          "question": "During SMB enumeration on port 445, an attacker attempts an unauthenticated connection with a username of '' and password of ''. What is this technique called?",
+          "options": [
+            "Kerberoasting",
+            "Null Session",
+            "Golden Ticket Injection",
+            "DCSync Attack"
+          ],
+          "correctIndex": 1,
+          "explanation": "A Null Session connects to IPC$ or RPC endpoints over SMB without credentials, which on legacy or misconfigured Windows systems allowed querying user lists and share names."
+        }
+      ]
+    },
+    {
+      "moduleId": 5,
+      "questions": [
+        {
+          "id": "q5-1",
+          "question": "In the Common Vulnerability Scoring System (CVSS v3.1), what does an Attack Vector (AV) metric value of 'Network' (AV:N) indicate?",
+          "options": [
+            "The vulnerability requires physical access to the device chassis.",
+            "The vulnerability can be exploited remotely across the internet or routing boundaries without local network adjacent access.",
+            "The attacker must be logged in as an unprivileged local user first.",
+            "The vulnerability only impacts wireless 802.11 interfaces."
+          ],
+          "correctIndex": 1,
+          "explanation": "AV:N (Network) signifies that the vulnerable component is bound to the network stack and can be exploited remotely across multiple routing hops without physical or local console presence."
+        },
+        {
+          "id": "q5-2",
+          "question": "What is the primary danger of prioritizing vulnerability remediation solely by CVSS Base Score without considering exploit availability?",
+          "options": [
+            "High severity vulnerabilities with zero public exploits may consume resources while actively exploited medium severity flaws remain unpatched.",
+            "CVSS scores are only valid for operating systems, not web applications.",
+            "Base scores automatically decrease over time.",
+            "Security teams will violate HIPAA compliance rules."
+          ],
+          "correctIndex": 0,
+          "explanation": "Risk-based vulnerability management combines CVSS Base scores with threat intelligence (e.g. CISA Known Exploited Vulnerabilities - KEV) to patch active in-the-wild threats before theoretical high-score flaws."
+        }
+      ]
+    },
+    {
+      "moduleId": 6,
+      "questions": [
+        {
+          "id": "q6-1",
+          "question": "On a Linux system, what security implication arises if an administrative script or utility has the SUID (Set User ID) permission bit set and is owned by root?",
+          "options": [
+            "The file can only be executed by the root user.",
+            "Any user executing the binary runs it with the effective privileges of the root user.",
+            "The file is encrypted with AES-256.",
+            "The binary is automatically deleted upon execution."
+          ],
+          "correctIndex": 1,
+          "explanation": "The SUID bit (octal 4000) causes an executable to run with the effective UID of its file owner (root) rather than the executing caller. If the binary can spawn a shell or load libraries insecurely, privilege escalation occurs."
+        },
+        {
+          "id": "q6-2",
+          "question": "Which command searches the entire Linux filesystem for root-owned files with the SUID bit set, discarding permission denied errors?",
+          "options": [
+            "find / -perm -4000 -user root -type f 2>/dev/null",
+            "ls -la /root",
+            "grep -r 'SUID' /etc/passwd",
+            "chmod +s /bin/bash"
+          ],
+          "correctIndex": 0,
+          "explanation": "'find / -perm -4000 -user root -type f 2>/dev/null' queries the root filesystem for files matching permission mask 4000 owned by root while redirecting standard error to null."
+        }
+      ]
+    },
+    {
+      "moduleId": 7,
+      "questions": [
+        {
+          "id": "q7-1",
+          "question": "What is the industry-standard harmless test file string used to verify that antivirus and endpoint detection engines are functioning correctly without executing real malicious payloads?",
+          "options": [
+            "W32.Stuxnet.Code",
+            "EICAR Standard Anti-Virus Test File",
+            "Metasploit Meterpreter Stager",
+            "WannaCry Ransomware Header"
+          ],
+          "correctIndex": 1,
+          "explanation": "The EICAR Standard Anti-Virus Test File is a harmless 68-byte ASCII string agreed upon by antivirus vendors to safely test scanning pipelines without risk."
+        },
+        {
+          "id": "q7-2",
+          "question": "Why is relying solely on file extensions (such as .pdf or .docx) insufficient when identifying potentially malicious binary attachments?",
+          "options": [
+            "Operating systems do not read file extensions.",
+            "Attackers can change the extension, while the true file format is dictated by magic bytes in the file header (e.g. MZ / 0x4D5A for PE executables).",
+            "Antivirus software only inspects the file name.",
+            "File extensions are encrypted in transit."
+          ],
+          "correctIndex": 1,
+          "explanation": "The true file format is governed by the file header magic bytes (e.g., 'MZ' for Windows PE binaries, '0x7F ELF' for Linux binaries). Renaming an .exe to .pdf does not prevent an OS or attacker from executing it if invoked via shell."
+        }
+      ]
+    },
+    {
+      "moduleId": 8,
+      "questions": [
+        {
+          "id": "q8-1",
+          "question": "In the TCP header, what is the role of the 32-bit Sequence Number (SEQ)?",
+          "options": [
+            "It encrypts the payload using symmetric keys.",
+            "It tracks the byte stream position to ensure reliable, in-order packet reconstruction and duplicate detection.",
+            "It identifies the physical MAC address of the destination interface.",
+            "It determines the maximum hop count before the packet is discarded."
+          ],
+          "correctIndex": 1,
+          "explanation": "TCP sequence numbers ensure reliable, ordered delivery by numbering each byte of data transmitted. The receiver uses acknowledgment numbers (ACK) to track received bytes and request retransmissions if gaps occur."
+        },
+        {
+          "id": "q8-2",
+          "question": "Which Berkeley Packet Filter (BPF) syntax expression captures only TCP traffic destined for port 80 or 443 on interface eth0 using tcpdump?",
+          "options": [
+            "tcpdump -i eth0 'tcp and (port 80 or port 443)'",
+            "tcpdump -i eth0 -p ICMP",
+            "tcpdump -w log.pcap --all-protocols",
+            "tcpdump -i eth0 'udp port 53'"
+          ],
+          "correctIndex": 0,
+          "explanation": "The BPF filter 'tcp and (port 80 or port 443)' filters kernel packet capture buffers to inspect only TCP packets on standard HTTP and HTTPS ports."
+        }
+      ]
+    },
+    {
+      "moduleId": 9,
+      "questions": [
+        {
+          "id": "q9-1",
+          "question": "In an RFC 5322 email message, which header field is added by each intermediate Mail Transfer Agent (MTA) and provides the most trustworthy trail of the message's true origin IP?",
+          "options": [
+            "From:",
+            "Subject:",
+            "Received:",
+            "Reply-To:"
+          ],
+          "correctIndex": 2,
+          "explanation": "The 'Received:' header is prepended sequentially by each receiving mail server along the transit path. While the From and Reply-To headers can be easily spoofed by the client, the bottom-most Received header reflects the actual IP of the connecting client."
+        },
+        {
+          "id": "q9-2",
+          "question": "What is the primary function of DMARC (Domain-based Message Authentication, Reporting, and Conformance)?",
+          "options": [
+            "It encrypts email attachments using PGP.",
+            "It instructs receiving mail servers on how to handle messages that fail SPF or DKIM checks (e.g. none, quarantine, or reject).",
+            "It blocks all inbound email containing hyperlinks.",
+            "It replaces DNS MX records with blockchain routing."
+          ],
+          "correctIndex": 1,
+          "explanation": "DMARC leverages SPF and DKIM to provide domain owners with policy control over unauthenticated messages (p=reject or p=quarantine) and generates aggregate telemetry reports."
+        }
+      ]
+    },
+    {
+      "moduleId": 10,
+      "questions": [
+        {
+          "id": "q10-1",
+          "question": "How does a Slowloris attack exhaust web server resources without generating massive volumetric bandwidth?",
+          "options": [
+            "By flooding the target with millions of gigabits of UDP reflections.",
+            "By opening multiple HTTP connections and sending partial request headers at prolonged intervals, holding connection slots open until the server max clients limit is reached.",
+            "By exploiting a buffer overflow in the DNS resolver.",
+            "By corrupting the router's BGP routing table."
+          ],
+          "correctIndex": 1,
+          "explanation": "Slowloris sends partial HTTP headers slowly (e.g. X-a: b\r\n every 10 seconds), never completing the request. Thread/process-per-connection servers (like default Apache) exhaust their MaxRequestWorkers pool without significant bandwidth usage."
+        },
+        {
+          "id": "q10-2",
+          "question": "What Apache module and directive combination directly defends against Slow HTTP header and body attacks?",
+          "options": [
+            "mod_reqtimeout with RequestReadTimeout header=10-20,MinRate=500",
+            "mod_rewrite with RewriteEngine Off",
+            "mod_ssl with SSLProtocol all",
+            "mod_cgi with Options +ExecCGI"
+          ],
+          "correctIndex": 0,
+          "explanation": "mod_reqtimeout's RequestReadTimeout directive enforces strict time limits and minimum throughput rates for receiving HTTP headers and request bodies, aborting slow drip attacks."
+        }
+      ]
+    },
+    {
+      "moduleId": 11,
+      "questions": [
+        {
+          "id": "q11-1",
+          "question": "What security protection is provided to a web session cookie when the 'HttpOnly' flag is set by the server?",
+          "options": [
+            "The cookie can only be transmitted over encrypted HTTPS connections.",
+            "Client-side scripts (such as JavaScript document.cookie) cannot read or manipulate the cookie, mitigating XSS-based session token theft.",
+            "The cookie is automatically deleted after 5 minutes.",
+            "The cookie is only accepted by browsers running on Linux."
+          ],
+          "correctIndex": 1,
+          "explanation": "The HttpOnly flag blocks JavaScript access via document.cookie. If an attacker discovers a Cross-Site Scripting (XSS) vulnerability, they cannot directly read the session token."
+        },
+        {
+          "id": "q11-2",
+          "question": "Which SameSite cookie attribute value provides the strictest protection against Cross-Site Request Forgery (CSRF) by preventing the cookie from being sent on any cross-site browsing context?",
+          "options": [
+            "SameSite=None",
+            "SameSite=Lax",
+            "SameSite=Strict",
+            "SameSite=Permissive"
+          ],
+          "correctIndex": 2,
+          "explanation": "SameSite=Strict ensures the browser never attaches the cookie to cross-site requests, including ordinary top-level navigation links, completely thwarting cross-origin CSRF attacks."
+        }
+      ]
+    },
+    {
+      "moduleId": 12,
+      "questions": [
+        {
+          "id": "q12-1",
+          "question": "What is the primary function of a network honeypot in an enterprise security architecture?",
+          "options": [
+            "To speed up database query execution times.",
+            "To serve as a deliberately vulnerable, highly monitored decoy system that alerts defenders to unauthorized reconnaissance or lateral movement.",
+            "To encrypt all inbound email messages automatically.",
+            "To replace traditional perimeter firewalls entirely."
+          ],
+          "correctIndex": 1,
+          "explanation": "A honeypot has no legitimate production value; any connection attempt to it is inherently suspicious. It provides high-fidelity intrusion alerts and threat intelligence on adversary tactics."
+        },
+        {
+          "id": "q12-2",
+          "question": "In Linux iptables, which built-in chain processes incoming network packets destined for local sockets and services hosted on the firewall itself?",
+          "options": [
+            "FORWARD",
+            "INPUT",
+            "OUTPUT",
+            "PREROUTING"
+          ],
+          "correctIndex": 1,
+          "explanation": "The INPUT chain filters packets destined for local processes on the receiving system. The FORWARD chain handles packets routed through the host to another destination."
+        }
+      ]
+    },
+    {
+      "moduleId": 13,
+      "questions": [
+        {
+          "id": "q13-1",
+          "question": "Which Apache directive configures the web server to return only 'Apache' in the Server response header, omitting the exact operating system, minor release version, and installed module names?",
+          "options": [
+            "ServerTokens Prod",
+            "ServerSignature On",
+            "KeepAlive Off",
+            "DocumentRoot /var/www"
+          ],
+          "correctIndex": 0,
+          "explanation": "Setting 'ServerTokens Prod' suppresses OS, minor version, and module disclosure (e.g. returns 'Server: Apache' instead of 'Apache/2.4.52 (Ubuntu) OpenSSL/3.0.2 mod_perl/2.0.12')."
+        },
+        {
+          "id": "q13-2",
+          "question": "Why is disabling directory listings ('Options -Indexes') a critical baseline hardening step for production web servers?",
+          "options": [
+            "It disables the server's TCP stack.",
+            "It prevents web servers from automatically displaying directory index listings when no index.html or default document is present, preventing disclosure of backup or config files.",
+            "It enforces 2-factor authentication on all HTTP endpoints.",
+            "It compresses web traffic using gzip."
+          ],
+          "correctIndex": 1,
+          "explanation": "When an index file is absent in a directory, default web configurations display a list of all files in that directory. Removing the 'Indexes' option returns a 403 Forbidden instead of leaking sensitive files."
+        }
+      ]
+    },
+    {
+      "moduleId": 14,
+      "questions": [
+        {
+          "id": "q14-1",
+          "question": "In OWASP Top 10 terminology, what category includes vulnerabilities where an application fails to properly enforce that a user can only access their own private records (e.g. changing id=101 to id=102)?",
+          "options": [
+            "Cryptographic Failures",
+            "Broken Access Control (IDOR)",
+            "Security Misconfiguration",
+            "Server-Side Request Forgery"
+          ],
+          "correctIndex": 1,
+          "explanation": "Broken Access Control (specifically Insecure Direct Object References - IDOR) occurs when an application exposes a reference to an internal object without verifying the requesting user's authorization to that object."
+        },
+        {
+          "id": "q14-2",
+          "question": "What is the primary objective of passive web application security scanning using tools like OWASP ZAP?",
+          "options": [
+            "Flooding the database with DROP TABLE commands.",
+            "Inspecting live HTTP requests and responses passing through the proxy without injecting new payloads, identifying missing headers, insecure cookies, and version leaks.",
+            "Overclocking the web server's CPU.",
+            "Cracking TLS private keys using quantum algorithms."
+          ],
+          "correctIndex": 1,
+          "explanation": "Passive scanning analyzes existing HTTP traffic traversing the interception proxy without modifying requests or injecting active attack vectors, making it safe for production testing."
+        }
+      ]
+    },
+    {
+      "moduleId": 15,
+      "questions": [
+        {
+          "id": "q15-1",
+          "question": "Why do parameterized queries (prepared statements) fundamentally prevent SQL injection vulnerabilities?",
+          "options": [
+            "They encrypt the entire database file with AES.",
+            "They treat user-supplied input strictly as data parameters rather than executable SQL code, pre-compiling the query structure before parameters are bound.",
+            "They convert SQL databases into NoSQL document stores.",
+            "They automatically ban IP addresses that enter single quote characters."
+          ],
+          "correctIndex": 1,
+          "explanation": "Prepared statements send the query template to the database engine first to be compiled into an execution plan. Parameter values are bound afterward strictly as data, making it impossible for input to alter query syntax."
+        },
+        {
+          "id": "q15-2",
+          "question": "In a vulnerable SQL statement: SELECT * FROM items WHERE category = 'X', what is the effect of inputting: gadgets' OR '1'='1?",
+          "options": [
+            "The database immediately shuts down.",
+            "The WHERE condition evaluates to TRUE for every row in the table, returning all catalog records.",
+            "The database drops the items table.",
+            "An error 500 is always returned."
+          ],
+          "correctIndex": 1,
+          "explanation": "The injected quote closes the literal string, and OR '1'='1 creates a tautology (a condition that is always true), causing the query to return every row in the database table."
+        }
+      ]
+    },
+    {
+      "moduleId": 16,
+      "questions": [
+        {
+          "id": "q16-1",
+          "question": "Why does WPA3-Personal's SAE (Simultaneous Authentication of Equals) protocol prevent the offline dictionary attacks that plagued WPA2-PSK?",
+          "options": [
+            "WPA3 eliminates passwords entirely.",
+            "SAE uses a zero-knowledge Dragonfly key exchange requiring active interaction with the AP for each password guess, preventing offline dictionary attacks against captured frames.",
+            "WPA3 only operates on wired Ethernet cables.",
+            "SAE uses 512-bit symmetric keys only."
+          ],
+          "correctIndex": 1,
+          "explanation": "In WPA2, capturing a 4-way handshake allows an attacker to compute the PMK offline against millions of dictionary words without contacting the AP. WPA3 SAE requires online interaction, eliminating offline wordlist cracking."
+        },
+        {
+          "id": "q16-2",
+          "question": "What security vulnerability in Wi-Fi Protected Setup (WPS) allowed attackers to recover WPA/WPA2 pre-shared keys in a matter of hours?",
+          "options": [
+            "The 8-digit PIN is validated in two independent halves (4 digits and 3 digits + checksum), drastically reducing the search space to only 11,000 attempts.",
+            "WPS uses cleartext HTTP on port 80.",
+            "WPS automatically grants root shell access over Telnet.",
+            "WPS disables all encryption on the access point."
+          ],
+          "correctIndex": 0,
+          "explanation": "The WPS PIN architecture checks the first 4 digits and last 3 digits independently. Instead of 100,000,000 possibilities, an attacker only needs at most 10,000 + 1,000 = 11,000 guesses (Reaver attack)."
+        }
+      ]
+    },
+    {
+      "moduleId": 17,
+      "questions": [
+        {
+          "id": "q17-1",
+          "question": "In an Android application package (APK), which XML configuration file declares the application package name, components (Activities, Services), and requested system permissions?",
+          "options": [
+            "build.gradle",
+            "AndroidManifest.xml",
+            "classes.dex",
+            "resources.arsc"
+          ],
+          "correctIndex": 1,
+          "explanation": "AndroidManifest.xml is the central manifest file declaring application components, minimum SDK requirements, and <uses-permission> tags required for security analysis."
+        },
+        {
+          "id": "q17-2",
+          "question": "Which Android Debug Bridge (ADB) command lists all packages installed on a connected authorized test device filtered by a specific keyword?",
+          "options": [
+            "adb shell pm list packages | grep <keyword>",
+            "adb install app.apk",
+            "adb push /sdcard",
+            "adb reboot bootloader"
+          ],
+          "correctIndex": 0,
+          "explanation": "'adb shell pm list packages' invokes the Android Package Manager daemon to list all registered application package identifiers on the device."
+        }
+      ]
+    },
+    {
+      "moduleId": 18,
+      "questions": [
+        {
+          "id": "q18-1",
+          "question": "Why is the use of unencrypted protocols like MQTT (port 1883) and Telnet (port 23) particularly hazardous in IoT and embedded device deployments?",
+          "options": [
+            "They consume 100% of the device flash memory.",
+            "All sensor data, control commands, and device credentials travel in cleartext, enabling eavesdropping, replay attacks, and unauthorized actuation.",
+            "They require specialized satellite transceivers.",
+            "They are incompatible with IPv4."
+          ],
+          "correctIndex": 1,
+          "explanation": "Unencrypted protocols transmit data and authentication strings without cryptographic protection. Anyone on the network path can intercept sensor telemetry or inject rogue actuation commands."
+        },
+        {
+          "id": "q18-2",
+          "question": "What initial step should a security engineer take when auditing the security posture of an IoT firmware binary image?",
+          "options": [
+            "Deploy the binary directly to production cloud servers.",
+            "Inspect the binary using strings, file, and binwalk to identify embedded filesystems, hardcoded private keys, and default credentials.",
+            "Rename the file to firmware.txt.",
+            "Compile the firmware with GCC."
+          ],
+          "correctIndex": 1,
+          "explanation": "Firmware analysis begins by extracting embedded filesystems (SquashFS, CramFS) with tools like binwalk, followed by searching for hardcoded credentials, SSL certificates, and vulnerable binary daemons."
+        }
+      ]
+    },
+    {
+      "moduleId": 19,
+      "questions": [
+        {
+          "id": "q19-1",
+          "question": "Under the cloud Shared Responsibility Model for Infrastructure-as-a-Service (IaaS), who is responsible for operating system patching and firewall rule configurations on virtual machines?",
+          "options": [
+            "The Cloud Service Provider (CSP) exclusively.",
+            "The Customer / Cloud Tenant.",
+            "The third-party hardware vendor.",
+            "Internet Service Providers."
+          ],
+          "correctIndex": 1,
+          "explanation": "In IaaS (such as AWS EC2 or Azure VMs), the CSP secures the physical infrastructure, virtualization hypervisor, and hardware facilities. The customer is responsible for guest OS patching, security groups, and data protection."
+        },
+        {
+          "id": "q19-2",
+          "question": "Which AWS CLI command confirms the active authenticated entity (IAM user, assumed role, or federated identity) and AWS account ID?",
+          "options": [
+            "aws sts get-caller-identity",
+            "aws s3 ls",
+            "aws ec2 describe-instances",
+            "aws iam list-users"
+          ],
+          "correctIndex": 0,
+          "explanation": "'aws sts get-caller-identity' queries the AWS Security Token Service to return the ARN, UserId, and Account ID of the credentials currently in use."
+        }
+      ]
+    },
+    {
+      "moduleId": 20,
+      "questions": [
+        {
+          "id": "q20-1",
+          "question": "What property of a cryptographic hash function ensures that a minor 1-bit change in the input data produces an unpredictable, vastly different output hash?",
+          "options": [
+            "Avalanche Effect",
+            "Homomorphic Encryption",
+            "Non-repudiation",
+            "Key Escrow"
+          ],
+          "correctIndex": 0,
+          "explanation": "The avalanche effect ensures that even a microscopic modification to the plaintext completely scrambles the output hash, preventing pattern analysis and predictability."
+        },
+        {
+          "id": "q20-2",
+          "question": "Which cryptographic approach is used when Alice wants to send an encrypted message to Bob such that only Bob can decrypt it, and Bob can verify the message genuinely originated from Alice?",
+          "options": [
+            "Alice encrypts with Bob's public key and signs with Alice's private key; Bob verifies with Alice's public key and decrypts with Bob's private key.",
+            "Alice encrypts with Alice's private key only.",
+            "Alice encrypts with Bob's private key.",
+            "Alice hashes the message with MD5."
+          ],
+          "correctIndex": 0,
+          "explanation": "Confidentiality is achieved by encrypting with the recipient's public key (only the recipient's private key can decrypt). Authenticity/Integrity is achieved by signing with the sender's private key."
+        }
+      ]
+    },
+    {
+      "moduleId": 21,
+      "questions": [
+        {
+          "id": "q21-1",
+          "question": "In Active Directory Certificate Services (AD CS), what template misconfiguration condition defines the critical ESC1 privilege escalation vulnerability?",
+          "options": [
+            "The template requires Domain Admin approval before issuance.",
+            "The template grants Enroll permissions to unprivileged domain users, has Client Authentication EKU, and sets CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT allowing the requester to specify any Subject Alternative Name (SAN).",
+            "The CA operates without an active internet connection.",
+            "The template is published only on offline Root CAs."
+          ],
+          "correctIndex": 1,
+          "explanation": "ESC1 occurs when an unprivileged user can request a certificate with Client Authentication (enabling Kerberos PKINIT logon) and supply an arbitrary SAN (e.g. administrator@domain.local), immediately impersonating any domain account."
+        },
+        {
+          "id": "q21-2",
+          "question": "What is the primary remediation step to neutralize an ESC1 vulnerability on an active AD CS certificate template?",
+          "options": [
+            "Format the domain controller hard drives.",
+            "Disable 'Supply in the request' (CT_FLAG_ENROLLEE_SUPPLIES_SUBJECT) on the Subject Name tab, or require CA Certificate Manager approval.",
+            "Switch the domain from Active Directory to Azure AD.",
+            "Disable DNS dynamic updates."
+          ],
+          "correctIndex": 1,
+          "explanation": "Configuring the template to 'Build from Active Directory information' forces AD CS to generate the SAN from the requester's actual AD object attributes, preventing arbitrary account impersonation."
+        }
+      ]
+    }
+  ]
+}
